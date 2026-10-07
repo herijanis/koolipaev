@@ -5,7 +5,7 @@
 <link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#eef1f7">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <script>
-const APP_V="1791381259";
+const APP_V="1791381872";
 async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();
  if(v&&v!==APP_V&&sessionStorage.getItem("tried")!==v){sessionStorage.setItem("tried",v);location.replace(location.pathname+"?v="+v);}}catch(e){}}
 checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
@@ -208,6 +208,11 @@ nav.tabs svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:2
 nav.tabs .badge{position:absolute;top:3px;left:calc(50% + 7px);background:var(--warn);color:#fff;font-size:11px;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center;padding:0 5px}
 button:focus-visible,input:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){.in,.task.pop .chk{animation:none}}
+.ai{display:grid;gap:8px;margin-top:12px}
+.ai a{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg);background:var(--card);border-radius:18px;padding:14px 16px;font-weight:700;box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--c) 35%,var(--line))}
+.ai a span{flex:none;width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-size:18px;background:color-mix(in srgb,var(--c) 16%,var(--card))}
+.ai a small{display:block;font-weight:500;color:var(--muted);font-size:13px}
+.ai a:active{transform:scale(.98)}
 </style>
 
 </head><body><main id="app"></main>
@@ -758,10 +763,37 @@ function viewSubjects(){
     return `<button class="scard" data-subj-open="${s}" style="${C(s)}">${hot?'<span class="kt">KT</span>':""}<b>${esc(s)}</b><small>${esc(ED[s].topic)}</small></button>`}).join("")}</div>`;
   return h;
 }
+function aiLink(s, mode){
+  const d = ED[s], plain = x => String(x).replace(/<[^>]+>/g,"");
+  const ctx = `Olen 9. klassi õpilane Eestis (Viimsi Kool). Aine: ${s}. Praegune teema: ${d.topic}.
+`
+    + (d.simple ? `Mida tunnis õpime:
+- ${d.simple.map(plain).join("
+- ")}
+` : "")
+    + (d.terms ? `Tähtsad sõnad: ${d.terms.map(x=>x[0]).join(", ")}.
+` : "")
+    + ((d.tests||[]).length ? `Tulemas: ${d.tests.map(x=>x[1]+" ("+x[0]+")").join("; ")}.
+` : "");
+  const ask = {
+    explain: "Seleta mulle see teema lihtsalt ja huvitavalt lahti, nagu sõber, kes on teemat hästi õppinud. Kasuta lühikesi lauseid ja näiteid päriselust. Lõpus küsi, mis jäi segaseks.",
+    quiz: "Küsi minult selle teema kohta küsimusi ÜKSHAAVAL. Oota minu vastust, ütle kas oli õige, seleta lühidalt ja siis küsi järgmine. Alusta lihtsatest, mine raskemaks.",
+    test: "Mul tuleb sellest teemast kontrolltöö. Tee mulle õppimisplaan päevade kaupa kuni tööni ja seejärel tee proovitöö (5–8 küsimust, nagu päris kontrolltöös). Hinda mu vastuseid alles siis, kui olen kõik ära vastanud."
+  }[mode];
+  let q = ctx + "
+" + ask + " Räägi eesti keeles.";
+  if (q.length > 1800) q = q.slice(0, 1800);
+  return "https://claude.ai/new?q=" + encodeURIComponent(q);
+}
 function viewSubject(s){
   const d = ED[s], today = iso(new Date()), now = new Date();
   let h = `<button class="back" id="sback">‹ Ained</button>
-  <div class="shero ${animate?"in":""}" style="${C(s)}"><div class="k">Praegu õpime</div><h1>${esc(s)}</h1><p>${esc(d.topic)}</p></div>`;
+  <div class="shero ${animate?"in":""}" style="${C(s)}"><div class="k">Praegu õpime</div><h1>${esc(s)}</h1><p>${esc(d.topic)}</p></div>
+  <div class="ai" style="${C(s)}">
+    <a href="${aiLink(s,"explain")}" target="_blank" rel="noopener"><span>💬</span><div>Seleta mulle<small>AI seletab teema lihtsalt lahti</small></div></a>
+    <a href="${aiLink(s,"quiz")}" target="_blank" rel="noopener"><span>🎯</span><div>Küsi minult<small>AI küsib küsimusi ja kontrollib vastuseid</small></div></a>
+    ${(d.tests||[]).some(x=>x[0]>=today)?`<a href="${aiLink(s,"test")}" target="_blank" rel="noopener"><span>📝</span><div>Valmista KT-ks<small>Õppimisplaan + proovitöö</small></div></a>`:""}
+  </div>`;
   const tests = (d.tests||[]).filter(t=>t[0]>=today), hw = (d.hw||[]).filter(t=>t[0]>=today);
   if (tests.length || hw.length){
     h += `<div class="label"><span>Tulemas</span></div><div class="stack">`;
