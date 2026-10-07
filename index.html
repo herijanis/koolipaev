@@ -5,7 +5,7 @@
 <link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#eef1f7">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <script>
-const APP_V="1791382124";
+const APP_V="1791382259";
 async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();
  if(v&&v!==APP_V&&sessionStorage.getItem("tried")!==v){sessionStorage.setItem("tried",v);location.replace(location.pathname+"?v="+v);}}catch(e){}}
 checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
@@ -779,23 +779,17 @@ function photoLink(s){
 const photoBtn = s => `<a class="photo" href="${photoLink(s)}" target="_blank" rel="noopener"><span>📸</span><div>Abi ülesandega<small>Pildista ülesanne ja AI aitab lahendada</small></div></a>`;
 function aiLink(s, mode){
   const d = ED[s], plain = x => String(x).replace(/<[^>]+>/g,"");
-  const ctx = `Olen 9. klassi õpilane Eestis (Viimsi Kool). Aine: ${s}. Praegune teema: ${d.topic}.
-`
-    + (d.simple ? `Mida tunnis õpime:
-- ${d.simple.map(plain).join("
-- ")}
-` : "")
-    + (d.terms ? `Tähtsad sõnad: ${d.terms.map(x=>x[0]).join(", ")}.
-` : "")
-    + ((d.tests||[]).length ? `Tulemas: ${d.tests.map(x=>x[1]+" ("+x[0]+")").join("; ")}.
-` : "");
+  const NL = "\n";
+  const ctx = `Olen 9. klassi õpilane Eestis (Viimsi Kool). Aine: ${s}. Praegune teema: ${d.topic}.` + NL
+    + (d.simple ? "Mida tunnis õpime:" + NL + "- " + d.simple.map(plain).join(NL + "- ") + NL : "")
+    + (d.terms ? `Tähtsad sõnad: ${d.terms.map(x=>x[0]).join(", ")}.` + NL : "")
+    + ((d.tests||[]).length ? `Tulemas: ${d.tests.map(x=>x[1]+" ("+x[0]+")").join("; ")}.` + NL : "");
   const ask = {
     explain: "Seleta mulle see teema lihtsalt ja huvitavalt lahti, nagu sõber, kes on teemat hästi õppinud. Kasuta lühikesi lauseid ja näiteid päriselust. Lõpus küsi, mis jäi segaseks.",
     quiz: "Küsi minult selle teema kohta küsimusi ÜKSHAAVAL. Oota minu vastust, ütle kas oli õige, seleta lühidalt ja siis küsi järgmine. Alusta lihtsatest, mine raskemaks.",
     test: "Mul tuleb sellest teemast kontrolltöö. Tee mulle õppimisplaan päevade kaupa kuni tööni ja seejärel tee proovitöö (5–8 küsimust, nagu päris kontrolltöös). Hinda mu vastuseid alles siis, kui olen kõik ära vastanud."
   }[mode];
-  let q = ctx + "
-" + ask + " Räägi eesti keeles.";
+  let q = ctx + NL + ask + " Räägi eesti keeles.";
   if (q.length > 1800) q = q.slice(0, 1800);
   return "https://claude.ai/new?q=" + encodeURIComponent(q);
 }
