@@ -2,113 +2,167 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Kool">
-<link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#f3f5f8">
-<style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}</style>
+<link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#eef1f7">
+<style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <title>Minu Koolipäev</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Onest:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: one column, one big "now" card on top, everything else quiet; tab bar fixed at the bottom for the thumb */
+/* Layout: one thumb-width column. The hero card wears the colour of the subject you're in right now; everything else stays quiet. Floating tab pill at the bottom. */
 :root{
-  --bg:#f3f5f8; --card:#ffffff; --fg:#141a24; --muted:#6b7585; --line:#e3e7ee;
-  --accent:#2f5bea; --accent-soft:#e6ecfd; --done:#9aa3b2; --warn:#d9480f; --warn-soft:#fdece4;
-  --font:"Onest",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --bg:#eef1f7; --card:#ffffff; --fg:#121826; --muted:#687386; --line:#dfe4ee;
+  --accent:#3d5afe; --soft:#e5e9ff; --warn:#e8590c; --warn-soft:#ffeadd; --good:#12b886;
+  --glass:rgba(255,255,255,.78); --shadow:0 10px 30px -12px rgba(30,40,80,.25);
+  --display:"Bricolage Grotesque","Onest",-apple-system,sans-serif;
+  --body:"Onest",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0f131a; --card:#181e28; --fg:#eef1f6; --muted:#8b95a7; --line:#262e3b;
-  --accent:#7d9bff; --accent-soft:#1f2a47; --done:#5b6475; --warn:#ff8a5c; --warn-soft:#3a2219; color-scheme:dark}}
+  --bg:#0c0f16; --card:#171c27; --fg:#eef1f7; --muted:#8a94a8; --line:#252c3a;
+  --accent:#7b8cff; --soft:#20264a; --warn:#ff8f5a; --warn-soft:#3a2318; --good:#38d9a9;
+  --glass:rgba(23,28,39,.8); --shadow:0 10px 30px -12px rgba(0,0,0,.7); color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0f131a; --card:#181e28; --fg:#eef1f6; --muted:#8b95a7; --line:#262e3b;
-  --accent:#7d9bff; --accent-soft:#1f2a47; --done:#5b6475; --warn:#ff8a5c; --warn-soft:#3a2219; color-scheme:dark}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{background:var(--bg);color:var(--fg);font-family:var(--font);font-size:16px;-webkit-font-smoothing:antialiased}
-main{max-width:520px;margin:0 auto;padding-inline:16px;padding-block:20px calc(96px + env(safe-area-inset-bottom,0px))}
-h1{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:0;text-wrap:balance}
-.sub{color:var(--muted);font-size:15px;margin-top:2px}
-.head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:18px}
-.wk{font-size:13px;font-weight:700;color:var(--accent);background:var(--accent-soft);padding:5px 10px;border-radius:99px;white-space:nowrap}
-.label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:22px 0 8px}
-.stack{display:flex;flex-direction:column;gap:8px}
+  --bg:#0c0f16; --card:#171c27; --fg:#eef1f7; --muted:#8a94a8; --line:#252c3a;
+  --accent:#7b8cff; --soft:#20264a; --warn:#ff8f5a; --warn-soft:#3a2318; --good:#38d9a9;
+  --glass:rgba(23,28,39,.8); --shadow:0 10px 30px -12px rgba(0,0,0,.7); color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;-webkit-font-smoothing:antialiased}
+main{max-width:520px;margin:0 auto;padding-inline:16px;padding-block:18px calc(110px + env(safe-area-inset-bottom,0px))}
 .tnum{font-variant-numeric:tabular-nums}
+h1{font-family:var(--display);font-size:32px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:0;text-wrap:balance}
+.hello{color:var(--muted);font-weight:500;font-size:15px;margin-bottom:4px}
+.head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:16px}
+.chip{font-size:13px;font-weight:700;color:var(--accent);background:var(--soft);padding:6px 11px;border-radius:99px;white-space:nowrap}
+.label{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin:24px 2px 10px;display:flex;justify-content:space-between}
+.stack{display:flex;flex-direction:column;gap:8px}
+.in{animation:rise .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{transform:translateY(8px);opacity:.001}}
 
-/* the hero card */
-.now{background:var(--accent);color:#fff;border-radius:22px;padding:20px}
-.now .k{font-size:13px;font-weight:600;opacity:.85}
-.now .s{font-size:30px;font-weight:800;letter-spacing:-.02em;margin:4px 0 2px;line-height:1.1}
-.now .r{font-size:17px;font-weight:600;opacity:.95}
-.now .room{font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1}
-.now .row{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-top:14px}
-.bar{height:6px;background:rgba(255,255,255,.28);border-radius:9px;margin-top:16px;overflow:hidden}
-.bar i{display:block;height:100%;background:#fff;border-radius:9px}
-.calm{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px}
-.calm .s{font-size:22px;font-weight:700;margin:2px 0}
-.calm .k{color:var(--muted);font-size:14px}
+/* day strip */
+.strip{display:flex;gap:5px;margin-bottom:14px}
+.strip i{flex:1;height:7px;border-radius:9px;background:var(--line);position:relative;overflow:hidden}
+.strip i.done{background:var(--c)}
+.strip i.cur{background:color-mix(in srgb,var(--c) 30%,var(--line))}
+.strip i.cur b{position:absolute;inset:0 auto 0 0;background:var(--c);border-radius:9px}
 
-/* lesson rows */
-.lesson{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;background:var(--card);border-radius:16px;padding:12px 14px}
-.lesson .t{font-size:13px;color:var(--muted);line-height:1.35}
-.lesson .t b{display:block;color:var(--fg);font-size:15px}
-.lesson .n{font-weight:600;min-width:0}
+/* hero */
+.hero{position:relative;overflow:hidden;border-radius:28px;padding:22px;color:#fff;
+  background:linear-gradient(140deg,var(--c) 0%,color-mix(in srgb,var(--c) 62%,#000) 100%);box-shadow:0 18px 40px -18px var(--c)}
+.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.12)}
+.hero .k{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;opacity:.85;display:flex;align-items:center;gap:7px}
+.live{width:8px;height:8px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.7)}
+@media (prefers-reduced-motion:no-preference){.live{animation:pulse 1.8s infinite}}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+.hero .s{font-family:var(--display);font-size:34px;font-weight:800;letter-spacing:-.03em;line-height:1.05;margin:10px 0 0;position:relative;z-index:1}
+.hero .t{font-size:16px;font-weight:500;opacity:.9;margin-top:4px}
+.hero .bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-top:22px;position:relative;z-index:1}
+.hero .room{font-family:var(--display);font-size:52px;font-weight:800;letter-spacing:-.04em;line-height:.85}
+.hero .room small{display:block;font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;opacity:.8;margin-bottom:6px}
+.hero .left{text-align:right}
+.hero .left b{font-family:var(--display);font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:.9}
+.hero .left span{display:block;font-size:13px;font-weight:600;opacity:.85;margin-top:4px}
+.hero .bar{height:6px;background:rgba(255,255,255,.25);border-radius:9px;margin-top:18px;overflow:hidden;position:relative;z-index:1}
+.hero .bar i{display:block;height:100%;background:#fff;border-radius:9px}
+.hero.free{--c:#12b886}
+
+/* next + tiles */
+.next{display:flex;align-items:center;gap:14px;background:var(--card);border-radius:20px;padding:14px 16px;margin-top:10px}
+.next .ic{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:18px;color:var(--c);background:color-mix(in srgb,var(--c) 15%,var(--card))}
+.next .n{flex:1;min-width:0}
+.next .n small{display:block;color:var(--muted);font-size:13px}
+.next .n b{font-weight:700}
+.next .rm{font-family:var(--display);font-weight:800;font-size:22px}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.tile{background:var(--card);border-radius:20px;padding:14px 16px}
+.tile small{display:block;color:var(--muted);font-size:13px;font-weight:500}
+.tile b{display:block;font-family:var(--display);font-size:26px;font-weight:800;letter-spacing:-.02em;margin-top:2px}
+.tile span{font-size:13px;color:var(--muted)}
+
+/* lessons */
+.lesson{display:grid;grid-template-columns:50px 1fr auto;gap:12px;align-items:center;border-radius:18px;padding:12px 14px;
+  background:color-mix(in srgb,var(--c) 9%,var(--card))}
+.lesson .time{font-size:13px;color:var(--muted);line-height:1.3}
+.lesson .time b{display:block;color:var(--fg);font-size:15px}
+.lesson .n{font-weight:700;min-width:0;display:flex;align-items:center;gap:9px}
 .lesson .n small{display:block;color:var(--muted);font-weight:400;font-size:13px}
-.lesson .rm{font-weight:700;font-size:15px}
-.lesson.past{opacity:.45}
-.lesson.cur{outline:2px solid var(--accent)}
-.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:1px}
-.note{background:var(--warn-soft);color:var(--warn);font-weight:600;font-size:14px;border-radius:12px;padding:10px 14px}
+.lesson .rm{font-family:var(--display);font-weight:800;font-size:18px;color:color-mix(in srgb,var(--c) 75%,var(--fg))}
+.lesson.past{opacity:.4}
+.lesson.cur{box-shadow:inset 0 0 0 2px var(--c)}
+.sw{flex:none;width:10px;height:10px;border-radius:4px;background:var(--c)}
+.note{background:var(--warn-soft);color:var(--warn);font-weight:600;font-size:14px;border-radius:16px;padding:12px 16px;margin-bottom:12px}
 
-/* week view */
+/* week */
+.wnav{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;gap:10px}
+.wnav button,.round{font:inherit;font-size:22px;border:0;background:var(--card);color:var(--fg);width:44px;height:44px;border-radius:50%;cursor:pointer;flex:none}
+.wnav div{font-weight:700;text-align:center}
+.wnav div small{display:block;color:var(--muted);font-weight:500;font-size:13px}
 .days{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:14px}
-.days button{font:inherit;border:0;background:var(--card);color:var(--fg);border-radius:14px;padding:9px 0;cursor:pointer}
-.days button span{display:block;font-size:12px;color:var(--muted)}
-.days button b{font-size:17px}
+.days button{font:inherit;border:0;background:var(--card);color:var(--fg);border-radius:16px;padding:10px 0 8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+.days button span{font-size:12px;color:var(--muted);font-weight:600}
+.days button b{font-family:var(--display);font-size:20px;font-weight:800}
+.days button em{display:flex;gap:2px;height:5px}
+.days button em i{width:5px;height:5px;border-radius:50%;background:var(--c)}
 .days button.on{background:var(--fg);color:var(--bg)}
 .days button.on span{color:var(--bg);opacity:.7}
-.days button.today:not(.on) b{color:var(--accent)}
-.wnav{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.wnav button{font:inherit;font-size:22px;border:0;background:var(--card);color:var(--fg);width:42px;height:42px;border-radius:50%;cursor:pointer}
-.wnav div{font-weight:700;text-align:center}
-.wnav div small{display:block;color:var(--muted);font-weight:400;font-size:13px}
+.days button.today:not(.on){box-shadow:inset 0 0 0 2px var(--accent)}
+.empty-day{background:var(--card);border-radius:22px;padding:28px 20px;text-align:center}
+.empty-day b{font-family:var(--display);font-size:24px;font-weight:800;display:block}
+.empty-day span{color:var(--muted)}
 
 /* tasks */
-.task{display:flex;gap:12px;align-items:flex-start;background:var(--card);border-radius:16px;padding:13px 14px}
-.task .chk{flex:none;width:26px;height:26px;border-radius:50%;border:2px solid var(--line);background:none;cursor:pointer;margin-top:1px;display:grid;place-items:center;color:#fff;font-size:15px;padding:0}
-.task.done .chk{background:var(--done);border-color:var(--done)}
+.task{display:flex;gap:12px;align-items:center;background:var(--card);border-radius:18px;padding:13px 14px}
+.chk{flex:none;width:30px;height:30px;border-radius:50%;border:2.5px solid color-mix(in srgb,var(--c) 60%,var(--line));background:none;cursor:pointer;display:grid;place-items:center;color:#fff;padding:0}
+.chk svg{width:16px;height:16px;stroke:#fff;stroke-width:3.2;fill:none;stroke-linecap:round;stroke-linejoin:round;opacity:0}
+.task.done .chk{background:var(--good);border-color:var(--good)}
+.task.done .chk svg{opacity:1}
+.task.pop .chk{animation:pop .35s}
+@keyframes pop{50%{transform:scale(1.25)}}
 .task .body{flex:1;min-width:0}
 .task .what{font-weight:600;overflow-wrap:anywhere}
-.task .meta{font-size:13px;color:var(--muted);margin-top:2px}
-.task.done .what{text-decoration:line-through;color:var(--done)}
-.task .del{border:0;background:none;color:var(--muted);font-size:20px;cursor:pointer;padding:0 2px}
-.tag{font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;background:var(--warn-soft);color:var(--warn);margin-left:6px;vertical-align:2px}
-.due-soon{color:var(--warn);font-weight:600}
-.big-btn{width:100%;font:inherit;font-weight:700;font-size:17px;border:0;border-radius:16px;padding:15px;background:var(--accent);color:#fff;cursor:pointer}
-.empty{color:var(--muted);text-align:center;padding:28px 10px;line-height:1.5}
-form.add{background:var(--card);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:12px}
-form.add input,form.add select{font:inherit;font-size:16px;width:100%;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:12px;padding:12px}
-.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.seg button{font:inherit;font-weight:600;border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:12px;padding:10px;cursor:pointer}
-.seg button.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.task .meta{font-size:13px;color:var(--muted);margin-top:3px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.task.done .what{text-decoration:line-through;color:var(--muted)}
+.task .del{border:0;background:none;color:var(--muted);font-size:22px;cursor:pointer;padding:0 4px;line-height:1}
+.kt{font-size:11px;font-weight:800;letter-spacing:.04em;padding:3px 7px;border-radius:7px;background:var(--warn-soft);color:var(--warn)}
+.soon{color:var(--warn);font-weight:700}
+.fab{width:100%;font:inherit;font-weight:700;font-size:17px;border:0;border-radius:20px;padding:16px;background:var(--fg);color:var(--bg);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.fab span{font-size:24px;line-height:0}
+.party{text-align:center;padding:30px 16px;background:var(--card);border-radius:24px}
+.party b{font-family:var(--display);font-size:26px;font-weight:800;display:block;margin:6px 0 4px}
+.party span{color:var(--muted)}
+.party .big{font-size:44px}
+form.add{background:var(--card);border-radius:24px;padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow)}
+form.add input{font:inherit;font-size:16px;width:100%;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);border-radius:14px;padding:13px}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--bg);padding:4px;border-radius:14px}
+.seg button{font:inherit;font-weight:700;border:0;background:none;color:var(--muted);border-radius:11px;padding:10px;cursor:pointer}
+.seg button.on{background:var(--card);color:var(--fg);box-shadow:0 2px 8px -2px rgba(0,0,0,.15)}
+.subjects{display:flex;flex-wrap:wrap;gap:6px}
+.subjects button{font:inherit;font-size:14px;font-weight:600;border:0;border-radius:99px;padding:8px 12px;cursor:pointer;color:var(--fg);background:color-mix(in srgb,var(--c) 13%,var(--card))}
+.subjects button.on{background:var(--c);color:#fff}
+.hint{font-size:13px;color:var(--muted)}
 .row2{display:flex;gap:8px}
 .row2 button{flex:1}
-.ghost{font:inherit;font-weight:600;border:0;background:none;color:var(--muted);padding:12px;cursor:pointer}
-.hint{font-size:13px;color:var(--muted);margin-top:-6px}
+.ghost{font:inherit;font-weight:700;border:0;background:var(--bg);color:var(--muted);border-radius:16px;padding:14px;cursor:pointer}
+.go{font:inherit;font-weight:700;font-size:16px;border:0;border-radius:16px;padding:14px;background:var(--accent);color:#fff;cursor:pointer}
+.go:disabled{opacity:.4}
 
-/* tab bar */
-nav.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);display:flex;justify-content:center;padding-bottom:env(safe-area-inset-bottom,0px)}
-nav.tabs div{display:flex;width:100%;max-width:520px}
-nav.tabs button{flex:1;font:inherit;font-size:12px;font-weight:600;border:0;background:none;color:var(--muted);padding:10px 0 12px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;position:relative}
-nav.tabs button.on{color:var(--accent)}
-nav.tabs svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-nav.tabs .badge{position:absolute;top:5px;left:calc(50% + 8px);background:var(--warn);color:#fff;font-size:11px;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center;padding:0 5px}
-button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-@media (prefers-reduced-motion:no-preference){.bar i{transition:width .6s}}
+/* floating tab pill */
+nav.tabs{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));width:min(360px,calc(100% - 32px));
+  background:var(--glass);-webkit-backdrop-filter:blur(18px) saturate(1.6);backdrop-filter:blur(18px) saturate(1.6);
+  border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);display:flex;padding:6px}
+nav.tabs button{flex:1;font:inherit;font-size:11px;font-weight:700;border:0;background:none;color:var(--muted);padding:8px 0 7px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;border-radius:20px;position:relative}
+nav.tabs button.on{color:var(--fg);background:var(--card)}
+nav.tabs svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+nav.tabs .badge{position:absolute;top:3px;left:calc(50% + 7px);background:var(--warn);color:#fff;font-size:11px;min-width:18px;height:18px;border-radius:9px;display:grid;place-items:center;padding:0 5px}
+button:focus-visible,input:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){.in,.task.pop .chk{animation:none}}
 </style>
 
 </head><body><main id="app"></main>
-<nav class="tabs"><div>
+<nav class="tabs" aria-label="Vaated">
   <button id="tab-today" data-tab="today"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Täna</button>
-  <button id="tab-week" data-tab="week"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Tunniplaan</button>
-  <button id="tab-tasks" data-tab="tasks"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></svg>Ülesanded<span class="badge" id="badge" hidden></span></button>
-</div></nav>
+  <button id="tab-week" data-tab="week"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="4"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Tunniplaan</button>
+  <button id="tab-tasks" data-tab="tasks"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="4"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Kodutööd<span class="badge" id="badge" hidden></span></button>
+</nav>
 
 <script>
 const CAL = {"weeks": {"2026-08-31": "A", "2026-09-07": "B", "2026-09-14": "A", "2026-09-21": "B", "2026-09-28": "A", "2026-10-05": "B", "2026-10-12": "A", "2026-10-19": "B", "2026-10-26": "A", "2026-11-02": "A", "2026-11-09": "B", "2026-11-16": "A", "2026-11-23": "B", "2026-11-30": "A", "2026-12-07": "B", "2026-12-14": "A", "2026-12-21": "B", "2026-12-28": "A", "2027-01-04": "B", "2027-01-11": "A", "2027-01-18": "B", "2027-01-25": "A", "2027-02-01": "B", "2027-02-08": "A", "2027-02-15": "B", "2027-02-22": "A", "2027-03-01": "A", "2027-03-08": "B", "2027-03-15": "A", "2027-03-22": "B", "2027-03-29": "A", "2027-04-05": "B", "2027-04-12": "A", "2027-04-19": "A", "2027-04-26": "B", "2027-05-03": "A", "2027-05-10": "B", "2027-05-17": "A", "2027-05-24": "B", "2027-05-31": "A", "2027-06-07": "B", "2027-06-14": "A"}, "off": {"2026-10-26": "Koolivaheaeg", "2026-10-27": "Koolivaheaeg", "2026-10-28": "Koolivaheaeg", "2026-10-29": "Koolivaheaeg", "2026-10-30": "Koolivaheaeg", "2026-12-18": "Jõulukontsert", "2026-12-21": "Koolivaheaeg", "2026-12-22": "Koolivaheaeg", "2026-12-23": "Koolivaheaeg", "2026-12-24": "Koolivaheaeg", "2026-12-25": "Koolivaheaeg", "2026-12-28": "Koolivaheaeg", "2026-12-29": "Koolivaheaeg", "2026-12-30": "Koolivaheaeg", "2026-12-31": "Koolivaheaeg", "2027-01-01": "Koolivaheaeg", "2027-02-22": "Koolivaheaeg", "2027-02-23": "Koolivaheaeg", "2027-02-24": "Koolivaheaeg", "2027-02-25": "Koolivaheaeg", "2027-02-26": "Koolivaheaeg", "2027-03-26": "Vaba päev", "2027-04-12": "Koolivaheaeg", "2027-04-13": "Koolivaheaeg", "2027-04-14": "Koolivaheaeg", "2027-04-15": "Koolivaheaeg", "2027-04-16": "Koolivaheaeg", "2027-06-09": "Koolivaheaeg", "2027-06-10": "Koolivaheaeg", "2027-06-11": "Koolivaheaeg", "2027-06-14": "Koolivaheaeg", "2027-06-15": "Koolivaheaeg", "2027-06-16": "Koolivaheaeg", "2027-06-17": "Koolivaheaeg", "2027-06-18": "Koolivaheaeg"}, "notes": {"2026-09-15": "Loeng edasiõppimisvõimalustest", "2026-09-29": "Lapsevanemate üldkoosolek kell 18.00", "2026-10-05": "Õpetajate päev", "2026-10-15": "Iseõppepäev", "2026-11-23": "Iseõppepäev", "2027-01-11": "Iseõppepäev", "2027-02-10": "Iseõppepäev", "2027-03-25": "Iseõppepäev", "2027-05-05": "Iseõppepäev"}};
@@ -121,7 +175,7 @@ const TT = [
  [3,1,"A","Eesti keel","Pappel","C241"],[3,2,"","Geograafia","Ojassalu","C204"],[3,3,"","Kehaline","Rünne","D0"],[3,4,"","Vene keel","Reimann","C119"],
  [4,1,"","Ühiskonnaõpetus","Vaarend","C223"],[4,2,"","Ajalugu","Kapsi","C229"],[4,3,"","Füüsika","Luus","C210"],[4,4,"A","Vene keel","Reimann","C119"]
 ];
-const COLORS = {"Matemaatika":"#2f5bea","Eesti keel":"#e8590c","Kirjandus":"#f08c00","Inglise keel":"#0ca678","Vene keel":"#c2255c","Keemia":"#7048e8","Füüsika":"#1c7ed6","Bioloogia":"#37b24d","Geograafia":"#0b7285","Ajalugu":"#a0522d","Ühiskonnaõpetus":"#868e96","Muusika":"#d6336c","Käsitöö":"#e67700","Kehaline":"#f59f00","Klassijuhataja tund":"#5c7cfa"};
+const COLORS = {"Matemaatika":"#3d5afe","Eesti keel":"#f76707","Kirjandus":"#e8590c","Inglise keel":"#0ca678","Vene keel":"#d6336c","Keemia":"#7048e8","Füüsika":"#1c7ed6","Bioloogia":"#2f9e44","Geograafia":"#0c8599","Ajalugu":"#b35c1e","Ühiskonnaõpetus":"#5f6b7a","Muusika":"#c2255c","Käsitöö":"#e67700","Kehaline":"#f59f00","Klassijuhataja tund":"#4c6ef5"};
 const SUBJECTS = [...new Set(TT.map(l=>l[3]))].filter(s=>s!=="Klassijuhataja tund").sort((a,b)=>a.localeCompare(b,"et"));
 const DAYS = ["Esmaspäev","Teisipäev","Kolmapäev","Neljapäev","Reede","Laupäev","Pühapäev"];
 const DS = ["E","T","K","N","R"];
@@ -130,38 +184,45 @@ const MON = ["jaanuar","veebruar","märts","aprill","mai","juuni","juuli","augus
 // ---- date helpers (local time) ----
 const iso = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
 const parse = s => { const [y,m,d]=s.split("-").map(Number); return new Date(y,m-1,d); };
-const addDays = (d,n) => { const x=new Date(d); x.setDate(x.getDate()+n); return x; };
+const addDays = (d,n) => { const x=new Date(d.getFullYear(),d.getMonth(),d.getDate()); x.setDate(x.getDate()+n); return x; };
 const dow = d => (d.getDay()+6)%7;
-const monday = d => addDays(new Date(d.getFullYear(),d.getMonth(),d.getDate()), -dow(d));
+const monday = d => addDays(d, -dow(d));
 const mins = hm => { const [h,m]=hm.split(":").map(Number); return h*60+m; };
 const nice = d => `${d.getDate()}. ${MON[d.getMonth()]}`;
-function weekOf(d){ return CAL.weeks[iso(monday(d))] || null; }
+const dayDiff = (a,b) => Math.round((parse(iso(a))-parse(iso(b)))/864e5);
+const cap = s => s.charAt(0).toUpperCase()+s.slice(1);
+const dur = m => m<60 ? `${m} min` : `${Math.floor(m/60)} h ${m%60} min`;
+const weekOf = d => CAL.weeks[iso(monday(d))] || null;
 function lessonsOn(d){
   const k=iso(d), dw=dow(d);
   if (dw>4 || CAL.off[k]) return [];
-  const w = weekOf(d);
-  if (!w) return [];
+  const w = weekOf(d); if (!w) return [];
   return TT.filter(l=>l[0]===dw && (l[2]===""||l[2]===w)).sort((a,b)=>a[1]-b[1])
     .map(l=>({p:l[1],subj:l[3],teacher:l[4],room:l[5],start:BELLS[l[1]][0],end:BELLS[l[1]][1]}));
 }
-function nextSchoolDay(from){
-  for (let i=1;i<60;i++){ const d=addDays(from,i); if (lessonsOn(d).length) return d; }
-  return null;
-}
+function nextSchoolDay(from){ for (let i=1;i<60;i++){ const d=addDays(from,i); if (lessonsOn(d).length) return d; } return null; }
 function relDay(d, today){
-  const diff = Math.round((parse(iso(d))-parse(iso(today)))/864e5);
-  if (diff===0) return "täna"; if (diff===1) return "homme"; if (diff===-1) return "eile";
-  if (diff>1 && diff<7) return DAYS[dow(d)].toLowerCase();
+  const diff = dayDiff(d,today);
+  if (diff===0) return "täna"; if (diff===1) return "homme"; if (diff===2) return "ülehomme"; if (diff===-1) return "eile";
+  if (diff>2 && diff<7) return DAYS[dow(d)].toLowerCase();
   return nice(d);
 }
+function nextBreak(now){
+  const k = iso(now);
+  const first = Object.keys(CAL.off).filter(d=>d>k && CAL.off[d]==="Koolivaheaeg").sort()[0];
+  if (!first) return null;
+  return {days: dayDiff(parse(first), now), date: parse(first)};
+}
 const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const dot = s => `<span class="dot" style="background:${COLORS[s]||"#888"}"></span>`;
+const C = s => `--c:${COLORS[s]||"#868e96"}`;
+function greeting(h){ return h<5?"Head ööd":h<11?"Tere hommikust":h<17?"Tere päevast":"Head õhtut"; }
 
 // ---- state ----
-let tab = "today", weekOffset = 0, selDay = null, tasks = [], adding = false, form = {type:"Kodutöö",subj:"",what:"",due:""};
+let tab = "today", weekOffset = 0, selDay = null, tasks = [], adding = false, popId = null, animate = true;
+let form = {type:"Kodutöö",subj:"",what:"",due:""};
 try { tab = localStorage.getItem("tab") || "today"; } catch(e){}
 
-// ---- storage: db when available, else this browser only ----
+// ---- storage: db when the page runs inside Claude, else this phone ----
 let db = null;
 const LS = "tasks-local";
 function loadLocal(){ try { tasks = JSON.parse(localStorage.getItem(LS)||"[]"); } catch(e){ tasks=[]; } }
@@ -171,10 +232,7 @@ loadLocal();
   if (!window.claude?.use) return;
   db = await window.claude.use("db");
   if (!db) return;
-  db.collection("tasks").onSnapshot(snap => {
-    tasks = snap.docs.map(d=>({id:d.id,...d.data()}));
-    render();
-  }, () => { db = null; });
+  db.collection("tasks").onSnapshot(snap => { tasks = snap.docs.map(d=>({id:d.id,...d.data()})); render(); }, () => { db = null; });
 })();
 async function saveTask(t){
   if (db) { try { await db.collection("tasks").doc(t.id).set({type:t.type,subj:t.subj,what:t.what,due:t.due,done:!!t.done,created:t.created}); return; } catch(e){} }
@@ -190,50 +248,80 @@ function nextLessonDate(subj){
   return iso(addDays(now,1));
 }
 
-// ---- views ----
-function lessonRow(l, state){
-  return `<div class="lesson ${state||""}"><div class="t tnum"><b>${l.start}</b>${l.end}</div>
-    <div class="n">${dot(l.subj)}${esc(l.subj)}<small>${esc(l.teacher)}</small></div><div class="rm">${esc(l.room)}</div></div>`;
-}
-function dueTasks(dateIso){ return tasks.filter(t=>!t.done && t.due===dateIso); }
-function taskMini(list, when){
+// ---- pieces ----
+const lessonRow = (l, state="") => `<div class="lesson ${state}" style="${C(l.subj)}"><div class="time tnum"><b>${l.start}</b>${l.end}</div>
+  <div class="n"><span class="sw"></span><div>${esc(l.subj)}<small>${esc(l.teacher)}</small></div></div><div class="rm">${esc(l.room)}</div></div>`;
+const nextCard = (l, label) => `<div class="next" style="${C(l.subj)}"><div class="ic">${esc(l.subj[0])}</div>
+  <div class="n"><small>${label}</small><b>${esc(l.subj)}</b></div><div class="rm">${esc(l.room)}</div></div>`;
+const openTasks = () => tasks.filter(t=>!t.done);
+function dueBlock(list, when){
   if (!list.length) return "";
-  return `<div class="label">Esita ${when}</div><div class="stack">${list.map(t=>`<div class="lesson" style="grid-template-columns:1fr"><div class="n">${dot(t.subj)}${esc(t.subj)}${t.type==="Kontrolltöö"?'<span class="tag">KT</span>':""}<small>${esc(t.what)}</small></div></div>`).join("")}</div>`;
+  return `<div class="label"><span>Esita ${when}</span><span>${list.length}</span></div><div class="stack">${list.map(t=>taskRow(t)).join("")}</div>`;
+}
+function taskRow(t){
+  const now = new Date(), today = iso(now), d = parse(t.due);
+  const late = !t.done && t.due<today, soon = !t.done && t.due<=iso(addDays(now,1));
+  return `<div class="task ${t.done?"done":""} ${popId===t.id?"pop":""}" style="${C(t.subj)}">
+    <button class="chk" data-done="${t.id}" aria-label="${t.done?"Märgi tegemata":"Märgi tehtuks"}"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></button>
+    <div class="body"><div class="what">${esc(t.what||t.type)}</div>
+    <div class="meta"><span class="sw"></span>${esc(t.subj)}${t.type==="Kontrolltöö"?'<span class="kt">KT</span>':""}<span>·</span><span class="${late||soon?"soon":""}">${late?"hilinenud, ":""}${relDay(d,now)}</span></div></div>
+    <button class="del" data-del="${t.id}" aria-label="Kustuta">×</button></div>`;
 }
 
+// ---- views ----
 function viewToday(){
-  const now = new Date(), t = now.getHours()*60+now.getMinutes();
-  const L = lessonsOn(now), w = weekOf(now), k = iso(now);
-  let h = `<div class="head"><div><h1>${DAYS[dow(now)]}</h1><div class="sub">${nice(now)}</div></div>${w?`<span class="wk">${w}-nädal</span>`:""}</div>`;
-  if (CAL.notes[k]) h += `<div class="note" style="margin-bottom:12px">${esc(CAL.notes[k])}</div>`;
+  const now = new Date(), t = now.getHours()*60+now.getMinutes(), k = iso(now);
+  const L = lessonsOn(now), w = weekOf(now);
+  let h = `<div class="head"><div><div class="hello">${greeting(now.getHours())} 👋</div><h1>${DAYS[dow(now)]}<br>${nice(now)}</h1></div>${w?`<span class="chip">${w}-nädal</span>`:""}</div>`;
+  if (CAL.notes[k]) h += `<div class="note">📌 ${esc(CAL.notes[k])}</div>`;
 
   const cur = L.find(l=>t>=mins(l.start)&&t<mins(l.end));
   const next = L.find(l=>mins(l.start)>t);
+  const nb = nextBreak(now);
+  const breakTile = nb ? `<div class="tile"><small>Vaheajani</small><b class="tnum">${nb.days} p</b><span>${nice(nb.date)}</span></div>` : "";
+
+  if (L.length && (cur||next)){
+    h += `<div class="strip">${L.map(l=>{
+      const s=mins(l.start), e=mins(l.end);
+      if (t>=e) return `<i class="done" style="${C(l.subj)}"></i>`;
+      if (t>=s) return `<i class="cur" style="${C(l.subj)}"><b style="width:${Math.round((t-s)/(e-s)*100)}%"></b></i>`;
+      return `<i style="${C(l.subj)}"></i>`; }).join("")}</div>`;
+  }
+
   if (cur){
     const left = mins(cur.end)-t, pct = Math.round((t-mins(cur.start))/(mins(cur.end)-mins(cur.start))*100);
-    h += `<div class="now"><div class="k">Praegu · lõpeb ${cur.end}</div><div class="s">${esc(cur.subj)}</div>
-      <div class="row"><div class="r">${esc(cur.teacher)}</div><div class="room">${esc(cur.room)}</div></div>
-      <div class="bar"><i style="width:${pct}%"></i></div><div class="k tnum" style="margin-top:8px">veel ${left} min</div></div>`;
-    if (next) h += `<div class="label">Järgmisena</div>${lessonRow(next)}`;
+    h += `<div class="hero ${animate?"in":""}" style="${C(cur.subj)}"><div class="k"><span class="live"></span>Praegu käib</div>
+      <div class="s">${esc(cur.subj)}</div><div class="t">${esc(cur.teacher)} · ${cur.start}–${cur.end}</div>
+      <div class="bottom"><div class="room"><small>Klass</small>${esc(cur.room)}</div><div class="left"><b class="tnum">${left}</b><span>min jäänud</span></div></div>
+      <div class="bar"><i style="width:${pct}%"></i></div></div>`;
+    if (next) h += nextCard(next, `Siis kell ${next.start}`);
   } else if (next){
-    const inMin = mins(next.start)-t;
-    const when = inMin<=60 ? `algab ${inMin} min pärast` : `algab ${next.start}`;
-    h += `<div class="now"><div class="k">${L[0]===next?"Esimene tund":"Järgmine tund"} · ${when}</div><div class="s">${esc(next.subj)}</div>
-      <div class="row"><div class="r">${esc(next.teacher)} · ${next.start}</div><div class="room">${esc(next.room)}</div></div></div>`;
+    const inMin = mins(next.start)-t, first = L[0]===next;
+    h += `<div class="hero ${animate?"in":""}" style="${C(next.subj)}"><div class="k">${first?"Esimene tund":"Vahetund · järgmisena"}</div>
+      <div class="s">${esc(next.subj)}</div><div class="t">${esc(next.teacher)} · ${next.start}–${next.end}</div>
+      <div class="bottom"><div class="room"><small>Klass</small>${esc(next.room)}</div><div class="left"><b class="tnum">${inMin<=90?inMin:next.start}</b><span>${inMin<=90?"min pärast":"algab"}</span></div></div></div>`;
+    const after = L[L.indexOf(next)+1];
+    if (after) h += nextCard(after, `Siis kell ${after.start}`);
   } else {
     const nd = nextSchoolDay(now);
-    const reason = CAL.off[k] ? CAL.off[k] : dow(now)>4 ? "Nädalavahetus" : L.length ? "Koolipäev on läbi" : "Täna tunde pole";
-    h += `<div class="calm"><div class="k">${esc(reason)}</div>`;
+    const reason = CAL.off[k]==="Koolivaheaeg" ? "Vaheaeg! 🌴" : CAL.off[k] ? CAL.off[k] : dow(now)>4 ? "Nädalavahetus! 🎉" : L.length ? "Koolipäev läbi! 🎉" : "Täna tunde pole";
+    h += `<div class="hero free ${animate?"in":""}"><div class="k">Vaba</div><div class="s">${esc(reason)}</div>`;
     if (nd){ const f = lessonsOn(nd)[0];
-      h += `<div class="s">${relDay(nd,now).replace(/^./,c=>c.toUpperCase())} ${f.start} · ${esc(f.subj)}</div><div class="k">Klass ${esc(f.room)}</div>`; }
+      h += `<div class="t">${cap(relDay(nd,now))} algab kool ${f.start}</div>
+      <div class="bottom"><div class="room"><small>${esc(f.subj)}</small>${esc(f.room)}</div></div>`; }
     h += `</div>`;
-    if (nd){ h += taskMini(dueTasks(iso(nd)), relDay(nd,now)); h += `<div class="label">${relDay(nd,now).replace(/^./,c=>c.toUpperCase())}</div><div class="stack">${lessonsOn(nd).map(l=>lessonRow(l)).join("")}</div>`; }
+    const due = nd ? openTasks().filter(x=>x.due<=iso(nd)) : [];
+    h += `<div class="tiles"><div class="tile"><small>Kodutööd</small><b class="tnum">${due.length||"0 ✓"}</b><span>${due.length?"veel teha":"kõik tehtud"}</span></div>${breakTile}</div>`;
+    if (nd){ h += dueBlock(due, relDay(nd,now)); h += `<div class="label"><span>${cap(relDay(nd,now))}</span></div><div class="stack">${lessonsOn(nd).map(l=>lessonRow(l)).join("")}</div>`; }
     return h;
   }
-  h += taskMini(dueTasks(k), "täna");
-  h += `<div class="label">Tänased tunnid</div><div class="stack">${L.map(l=>lessonRow(l, t>=mins(l.end)?"past":l===cur?"cur":"")).join("")}</div>`;
+
+  const end = L[L.length-1].end, toEnd = mins(end)-t;
+  h += `<div class="tiles"><div class="tile"><small>Kool läbi</small><b class="tnum">${end}</b><span>veel ${dur(toEnd)}</span></div>${breakTile}</div>`;
+  h += dueBlock(openTasks().filter(x=>x.due<=k), "täna");
+  h += `<div class="label"><span>Tänased tunnid</span><span>${L.filter(l=>t>=mins(l.end)).length}/${L.length}</span></div><div class="stack">${L.map(l=>lessonRow(l, t>=mins(l.end)?"past":l===cur?"cur":"")).join("")}</div>`;
   const nd = nextSchoolDay(now);
-  if (nd) h += taskMini(dueTasks(iso(nd)), relDay(nd,now));
+  if (nd) h += dueBlock(openTasks().filter(x=>x.due===iso(nd)), relDay(nd,now));
   return h;
 }
 
@@ -241,90 +329,85 @@ function viewWeek(){
   const now = new Date(), mon = addDays(monday(now), weekOffset*7), w = weekOf(mon);
   if (selDay===null) selDay = (weekOffset===0 && dow(now)<5) ? dow(now) : 0;
   const d = addDays(mon, selDay), L = lessonsOn(d), k = iso(d);
-  const title = weekOffset===0?"See nädal":weekOffset===1?"Järgmine nädal":weekOffset===-1?"Eelmine nädal":`${nice(mon)}`;
-  let h = `<div class="head"><div><h1>Tunniplaan</h1><div class="sub">9D</div></div></div>
-  <div class="wnav"><button id="wprev" aria-label="Eelmine nädal">‹</button><div>${title}<small>${w?w+"-nädal · ":""}${nice(mon)} – ${nice(addDays(mon,4))}</small></div><button id="wnext" aria-label="Järgmine nädal">›</button></div>
-  <div class="days">${DS.map((s,i)=>{const dd=addDays(mon,i);return `<button data-day="${i}" class="${i===selDay?"on":""} ${iso(dd)===iso(now)?"today":""}"><span>${s}</span><b>${dd.getDate()}</b></button>`}).join("")}</div>`;
-  if (CAL.notes[k]) h += `<div class="note" style="margin-bottom:10px">${esc(CAL.notes[k])}</div>`;
+  const title = weekOffset===0?"See nädal":weekOffset===1?"Järgmine nädal":weekOffset===-1?"Eelmine nädal":`Nädal ${nice(mon)}`;
+  let h = `<div class="head"><div><div class="hello">9D</div><h1>Tunniplaan</h1></div>${w?`<span class="chip">${w}-nädal</span>`:""}</div>
+  <div class="wnav"><button id="wprev" aria-label="Eelmine nädal">‹</button><div>${title}<small>${nice(mon)} – ${nice(addDays(mon,4))}</small></div><button id="wnext" aria-label="Järgmine nädal">›</button></div>
+  <div class="days">${DS.map((s,i)=>{const dd=addDays(mon,i), ls=lessonsOn(dd);
+    return `<button data-day="${i}" class="${i===selDay?"on":""} ${iso(dd)===iso(now)?"today":""}"><span>${s}</span><b>${dd.getDate()}</b><em>${ls.map(l=>`<i style="${C(l.subj)}"></i>`).join("")}</em></button>`}).join("")}</div>`;
+  if (CAL.notes[k]) h += `<div class="note">📌 ${esc(CAL.notes[k])}</div>`;
   h += L.length ? `<div class="stack">${L.map(l=>lessonRow(l)).join("")}</div>`
-       : `<div class="calm"><div class="s">${esc(CAL.off[k] || "Tunde pole")}</div></div>`;
-  const due = tasks.filter(t=>!t.done && t.due===k);
-  if (due.length) h += taskMini(due, relDay(d,now));
+       : `<div class="empty-day"><b>${CAL.off[k]==="Koolivaheaeg"?"Vaheaeg 🌴":esc(CAL.off[k]||"Tunde pole")}</b><span>${nice(d)}</span></div>`;
+  h += dueBlock(openTasks().filter(t=>t.due===k), relDay(d,now));
   return h;
 }
 
 function viewTasks(){
-  const now = new Date(), today = iso(now);
-  let h = `<div class="head"><div><h1>Ülesanded</h1><div class="sub">Kodutööd ja kontrolltööd</div></div></div>`;
+  const now = new Date(), today = iso(now), open = openTasks().sort((a,b)=>a.due.localeCompare(b.due));
+  let h = `<div class="head"><div><div class="hello">${open.length?`${open.length} teha`:"Puhas leht"}</div><h1>Kodutööd</h1></div></div>`;
   if (adding){
     h += `<form class="add" id="addform">
       <div class="seg"><button type="button" data-type="Kodutöö" class="${form.type==="Kodutöö"?"on":""}">Kodutöö</button><button type="button" data-type="Kontrolltöö" class="${form.type==="Kontrolltöö"?"on":""}">Kontrolltöö</button></div>
-      <select id="f-subj" aria-label="Aine"><option value="">Vali aine…</option>${SUBJECTS.map(s=>`<option ${s===form.subj?"selected":""}>${s}</option>`).join("")}</select>
+      <div class="subjects">${SUBJECTS.map(s=>`<button type="button" data-subj="${s}" style="${C(s)}" class="${s===form.subj?"on":""}">${s}</button>`).join("")}</div>
       <input id="f-what" placeholder="${form.type==="Kontrolltöö"?"Mis teema?":"Mida teha? nt lk 42 ül 3–5"}" value="${esc(form.what)}" autocomplete="off">
       <input id="f-due" type="date" value="${form.due}" aria-label="Tähtaeg">
-      <div class="hint">${form.subj?"Tähtajaks pandi järgmine "+esc(form.subj.toLowerCase())+" tund":"Tähtaeg täitub ise, kui valid aine"}</div>
-      <div class="row2"><button type="button" class="ghost" id="f-cancel">Tühista</button><button class="big-btn" type="submit">Lisa</button></div>
+      <div class="hint">${form.subj?`Tähtaeg: järgmine tund (${relDay(parse(form.due),now)})`:"Vali aine, siis pane ma tähtaja ise"}</div>
+      <div class="row2"><button type="button" class="ghost" id="f-cancel">Tühista</button><button class="go" type="submit" ${form.subj?"":"disabled"}>Lisa</button></div>
     </form>`;
   } else {
-    h += `<button class="big-btn" id="addbtn">+ Lisa ülesanne</button>`;
+    h += `<button class="fab" id="addbtn"><span>+</span> Lisa kodutöö</button>`;
   }
-  const open = tasks.filter(t=>!t.done).sort((a,b)=>a.due.localeCompare(b.due));
-  const done = tasks.filter(t=>t.done).sort((a,b)=>b.due.localeCompare(a.due)).slice(0,10);
-  const row = t => {
-    const d = parse(t.due), late = t.due<today, soon = t.due<=iso(addDays(now,1));
-    return `<div class="task ${t.done?"done":""}"><button class="chk" data-done="${t.id}" aria-label="Märgi tehtuks">${t.done?"✓":""}</button>
-      <div class="body"><div class="what">${esc(t.what||t.type)}</div><div class="meta">${dot(t.subj)}${esc(t.subj)}${t.type==="Kontrolltöö"?'<span class="tag">KT</span>':""} · <span class="${!t.done&&(soon||late)?"due-soon":""}">${late&&!t.done?"hilinenud · ":""}${relDay(d,now)}</span></div></div>
-      <button class="del" data-del="${t.id}" aria-label="Kustuta">×</button></div>`;
-  };
-  h += `<div class="label">Teha</div>`;
-  h += open.length ? `<div class="stack">${open.map(row).join("")}</div>` : `<div class="empty">Kõik tehtud 🎉<br>Uue kodutöö lisamiseks vajuta ülal olevat nuppu.</div>`;
-  if (done.length) h += `<div class="label">Tehtud</div><div class="stack">${done.map(row).join("")}</div>`;
+  const groups = [["Hilinenud",t=>t.due<today],["Täna",t=>t.due===today],["Homme",t=>t.due===iso(addDays(now,1))],["Sel nädalal",t=>t.due>iso(addDays(now,1))&&t.due<=iso(addDays(monday(now),6))],["Hiljem",t=>t.due>iso(addDays(monday(now),6))]];
+  if (!open.length && !adding){
+    const any = tasks.length;
+    h += `<div class="party" style="margin-top:14px"><div class="big">${any?"🏆":"✨"}</div><b>${any?"Kõik tehtud!":"Siin on tühi"}</b><span>${any?"Võid rahulikult chillida.":"Kui saad kodutöö, lisa see siia ja ära enam muretse."}</span></div>`;
+  }
+  for (const [name, f] of groups){
+    const g = open.filter(f); if (!g.length) continue;
+    h += `<div class="label"><span>${name}</span><span>${g.length}</span></div><div class="stack">${g.map(taskRow).join("")}</div>`;
+  }
+  const done = tasks.filter(t=>t.done).sort((a,b)=>b.due.localeCompare(a.due)).slice(0,8);
+  if (done.length) h += `<div class="label"><span>Tehtud</span><span>${tasks.filter(t=>t.done).length}</span></div><div class="stack">${done.map(taskRow).join("")}</div>`;
   return h;
 }
 
 function render(){
-  const app = document.getElementById("app");
-  const focusId = document.activeElement?.id;
+  const app = document.getElementById("app"), focusId = document.activeElement?.id;
   app.innerHTML = tab==="today"?viewToday():tab==="week"?viewWeek():viewTasks();
+  animate = false; popId = null;
   document.querySelectorAll("nav.tabs button").forEach(b=>b.classList.toggle("on", b.dataset.tab===tab));
-  const tomorrow = iso(addDays(new Date(),1));
-  const urgent = tasks.filter(t=>!t.done && t.due<=tomorrow).length;
+  const urgent = tasks.filter(t=>!t.done && t.due<=iso(addDays(new Date(),1))).length;
   const badge = document.getElementById("badge"); badge.hidden = !urgent; badge.textContent = urgent;
   if (focusId && document.getElementById(focusId)) document.getElementById(focusId).focus();
 }
 
 document.querySelector("nav.tabs").addEventListener("click", e=>{
   const b = e.target.closest("button"); if (!b) return;
-  tab = b.dataset.tab; if (tab==="week"){ weekOffset=0; selDay=null; }
+  tab = b.dataset.tab; animate = true; if (tab==="week"){ weekOffset=0; selDay=null; }
   try { localStorage.setItem("tab", tab); } catch(e){}
   render(); window.scrollTo(0,0);
 });
-document.getElementById("app").addEventListener("click", e=>{
+const app = document.getElementById("app");
+app.addEventListener("click", e=>{
   const b = e.target.closest("button"); if (!b) return;
   if (b.id==="wprev"){ weekOffset--; selDay=0; render(); }
   else if (b.id==="wnext"){ weekOffset++; selDay=0; render(); }
   else if (b.dataset.day){ selDay=+b.dataset.day; render(); }
-  else if (b.id==="addbtn"){ adding=true; form={type:"Kodutöö",subj:"",what:"",due:iso(addDays(new Date(),1))}; render(); document.getElementById("f-subj").focus(); }
+  else if (b.id==="addbtn"){ adding=true; form={type:"Kodutöö",subj:"",what:"",due:iso(addDays(new Date(),1))}; render(); }
   else if (b.id==="f-cancel"){ adding=false; render(); }
   else if (b.dataset.type){ form.type=b.dataset.type; render(); }
-  else if (b.dataset.done){ const t=tasks.find(x=>x.id===b.dataset.done); if (t) saveTask({...t,done:!t.done}); }
+  else if (b.dataset.subj){ form.subj=b.dataset.subj; form.due=nextLessonDate(form.subj); render(); document.getElementById("f-what").focus(); }
+  else if (b.dataset.done){ const t=tasks.find(x=>x.id===b.dataset.done); if (t){ popId=t.id; saveTask({...t,done:!t.done}); } }
   else if (b.dataset.del){ removeTask(b.dataset.del); }
 });
-document.getElementById("app").addEventListener("input", e=>{
-  if (e.target.id==="f-what") form.what=e.target.value;
-  if (e.target.id==="f-due") form.due=e.target.value;
-});
-document.getElementById("app").addEventListener("change", e=>{
-  if (e.target.id==="f-subj"){ form.subj=e.target.value; if (form.subj) form.due=nextLessonDate(form.subj); render(); }
-  if (e.target.id==="f-due") form.due=e.target.value;
-});
-document.getElementById("app").addEventListener("submit", e=>{
-  e.preventDefault();
-  if (!form.subj){ document.getElementById("f-subj").focus(); return; }
+app.addEventListener("input", e=>{ if (e.target.id==="f-what") form.what=e.target.value; });
+app.addEventListener("change", e=>{ if (e.target.id==="f-due"){ form.due=e.target.value; render(); } });
+app.addEventListener("submit", e=>{
+  e.preventDefault(); if (!form.subj) return;
   const t = {id:"t"+Date.now().toString(36)+Math.random().toString(36).slice(2,6), type:form.type, subj:form.subj, what:form.what.trim(), due:form.due||iso(addDays(new Date(),1)), done:false, created:Date.now()};
   adding=false; saveTask(t); render();
 });
+document.addEventListener("visibilitychange", ()=>{ if (!document.hidden && !adding){ animate=true; render(); } });
 render();
-setInterval(()=>{ if (tab!=="tasks" || !adding) render(); }, 30000);
+setInterval(()=>{ if (!adding) render(); }, 20000);
 </script>
 </body></html>
