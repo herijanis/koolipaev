@@ -410,4 +410,8 @@ document.addEventListener("visibilitychange", ()=>{ if (!document.hidden && !add
 render();
 setInterval(()=>{ if (!adding) render(); }, 20000);
 </script>
-</body></html>
+<script id="upd">
+const APP_V="1791374018";
+async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();if(v&&v!==APP_V)location.reload();}catch(e){}}
+checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
+</script></body></html>
