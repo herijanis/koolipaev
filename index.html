@@ -2,10 +2,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Kool">
-<link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#eef1f7">
+<link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#f4efe8">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <script>
-const APP_V="1791382259";
+const APP_V="1791384302";
 async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();
  if(v&&v!==APP_V&&sessionStorage.getItem("tried")!==v){sessionStorage.setItem("tried",v);location.replace(location.pathname+"?v="+v);}}catch(e){}}
 checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
@@ -14,24 +14,16 @@ document.addEventListener("touchmove",e=>{if(e.touches.length>1)e.preventDefault
 </script>
 <title>Minu Koolipäev</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Onest:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Onest:wght@400;500;600;700&display=swap">
 <style>
 /* Layout: one thumb-width column. The hero card wears the colour of the subject you're in right now; everything else stays quiet. Floating tab pill at the bottom. */
 :root{
-  --bg:#eef1f7; --card:#ffffff; --fg:#121826; --muted:#687386; --line:#dfe4ee;
-  --accent:#3d5afe; --soft:#e5e9ff; --warn:#e8590c; --warn-soft:#ffeadd; --good:#12b886;
-  --glass:rgba(255,255,255,.78); --shadow:0 10px 30px -12px rgba(30,40,80,.25);
-  --display:"Bricolage Grotesque","Onest",-apple-system,sans-serif;
+  --bg:#f4efe8; --card:#fbf8f3; --fg:#2e2824; --muted:#8f847a; --line:#e6ded3;
+  --accent:#8b6f5a; --soft:#ece3d8; --warn:#b5654a; --warn-soft:#f3e2d9; --good:#7d9a7e;
+  --glass:rgba(251,248,243,.84); --shadow:0 12px 30px -16px rgba(80,60,40,.28); color-scheme:light;
+  --display:"Fraunces",Georgia,serif;
   --body:"Onest",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0c0f16; --card:#171c27; --fg:#eef1f7; --muted:#8a94a8; --line:#252c3a;
-  --accent:#7b8cff; --soft:#20264a; --warn:#ff8f5a; --warn-soft:#3a2318; --good:#38d9a9;
-  --glass:rgba(23,28,39,.8); --shadow:0 10px 30px -12px rgba(0,0,0,.7); color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0c0f16; --card:#171c27; --fg:#eef1f7; --muted:#8a94a8; --line:#252c3a;
-  --accent:#7b8cff; --soft:#20264a; --warn:#ff8f5a; --warn-soft:#3a2318; --good:#38d9a9;
-  --glass:rgba(23,28,39,.8); --shadow:0 10px 30px -12px rgba(0,0,0,.7); color-scheme:dark}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{min-height:100%;overscroll-behavior:none}
 html{-webkit-text-size-adjust:100%}
@@ -218,6 +210,28 @@ button:focus-visible,input:focus-visible{outline:2.5px solid var(--accent);outli
 .photo span{flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:19px;background:rgba(255,255,255,.18)}
 .photo small{display:block;font-weight:500;opacity:.85;font-size:13px}
 .ai .photo{margin-top:0}
+
+/* soft beige theme: pastel tints with dark espresso text instead of saturated colour blocks */
+h1,.hero .s,.hero .room,.hero .left b,.next .rm,.tile b,.lesson .rm,.days button b,.empty-day b,.party b,.exam .when b,.scard b,.shero h1{font-weight:600;letter-spacing:-.01em}
+h1{font-size:34px}
+.hero,.shero{color:var(--fg);background:color-mix(in srgb,var(--c) 24%,var(--card));box-shadow:var(--shadow)}
+.hero::after{background:color-mix(in srgb,var(--c) 22%,transparent)}
+.hero .k,.shero .k{opacity:1;color:color-mix(in srgb,var(--c) 55%,var(--fg))}
+.hero .room{color:color-mix(in srgb,var(--c) 55%,var(--fg))}
+.hero .bar{background:rgba(46,40,36,.09)}
+.hero .bar i{background:color-mix(in srgb,var(--c) 70%,var(--fg))}
+.live{background:color-mix(in srgb,var(--c) 70%,var(--fg));box-shadow:none}
+.hero.free{--c:#94a678}
+.shero h1{color:var(--fg)}
+.photo{color:var(--card);background:var(--fg)}
+.photo span{background:rgba(255,255,255,.12)}
+.subjects button.on{background:color-mix(in srgb,var(--c) 75%,#2e2824);color:#fff}
+.chip{color:var(--accent);background:var(--soft)}
+.fab{background:var(--fg);color:var(--card)}
+.days button.on{background:var(--fg);color:var(--card)}
+.days button.on span{color:var(--card)}
+.task,.next,.tile,.card,.empty-day,.party,.days button,.wnav button{box-shadow:0 1px 0 var(--line)}
+nav.tabs button.on{color:var(--fg);background:var(--soft)}
 </style>
 
 </head><body><main id="app"></main>
@@ -542,7 +556,7 @@ const TT = [
  [3,1,"A","Eesti keel","Pappel","C241"],[3,2,"","Geograafia","Ojassalu","C204"],[3,3,"","Kehaline","Rünne","D0"],[3,4,"","Vene keel","Reimann","C119"],
  [4,1,"","Ühiskonnaõpetus","Vaarend","C223"],[4,2,"","Ajalugu","Kapsi","C229"],[4,3,"","Füüsika","Luus","C210"],[4,4,"A","Vene keel","Reimann","C119"]
 ];
-const COLORS = {"Matemaatika":"#3d5afe","Eesti keel":"#f76707","Kirjandus":"#e8590c","Inglise keel":"#0ca678","Vene keel":"#d6336c","Keemia":"#7048e8","Füüsika":"#1c7ed6","Bioloogia":"#2f9e44","Geograafia":"#0c8599","Ajalugu":"#b35c1e","Ühiskonnaõpetus":"#5f6b7a","Muusika":"#c2255c","Käsitöö":"#e67700","Kehaline":"#f59f00","Klassijuhataja tund":"#4c6ef5"};
+const COLORS = {"Matemaatika": "#7f95b8", "Eesti keel": "#c99a6b", "Kirjandus": "#b98a8a", "Inglise keel": "#8fa889", "Vene keel": "#c48b9f", "Keemia": "#9d8fb8", "Füüsika": "#7fa3ad", "Bioloogia": "#94a678", "Geograafia": "#6f9a96", "Ajalugu": "#a68668", "Ühiskonnaõpetus": "#9c958c", "Muusika": "#c08a96", "Käsitöö": "#c8a26e", "Kehaline": "#d1a75d", "Klassijuhataja tund": "#8d9bb5"};
 const SUBJECTS = [...new Set(TT.map(l=>l[3]))].filter(s=>s!=="Klassijuhataja tund").sort((a,b)=>a.localeCompare(b,"et"));
 const DAYS = ["Esmaspäev","Teisipäev","Kolmapäev","Neljapäev","Reede","Laupäev","Pühapäev"];
 const DS = ["E","T","K","N","R"];
