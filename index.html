@@ -5,7 +5,7 @@
 <link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#eef1f7">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <script>
-const APP_V="1791374246";
+const APP_V="1791380622";
 async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();
  if(v&&v!==APP_V&&sessionStorage.getItem("tried")!==v){sessionStorage.setItem("tried",v);location.replace(location.pathname+"?v="+v);}}catch(e){}}
 checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
@@ -156,6 +156,48 @@ form.add input{font:inherit;font-size:16px;width:100%;border:1.5px solid var(--l
 .go{font:inherit;font-weight:700;font-size:16px;border:0;border-radius:16px;padding:14px;background:var(--accent);color:#fff;cursor:pointer}
 .go:disabled{opacity:.4}
 
+/* subjects */
+.exam{display:flex;align-items:center;gap:12px;background:var(--card);border-radius:18px;padding:12px 14px;cursor:pointer;border:0;font:inherit;color:inherit;text-align:left;width:100%}
+.exam .when{flex:none;width:66px;text-align:center;border-radius:12px;padding:7px 6px;background:color-mix(in srgb,var(--c) 14%,var(--card));color:color-mix(in srgb,var(--c) 80%,var(--fg))}
+.exam .when b{display:block;font-family:var(--display);font-size:20px;font-weight:800;line-height:1}
+.exam .when b.w{font-size:16px;line-height:20px}
+.exam .when span{font-size:10px;font-weight:700}
+.exam .when.hot{background:var(--warn);color:#fff}
+.exam .body{flex:1;min-width:0}
+.exam .body b{display:block;font-weight:700}
+.exam .body small{color:var(--muted);font-size:13px}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.scard{font:inherit;color:inherit;text-align:left;border:0;cursor:pointer;border-radius:20px;padding:14px;min-height:96px;display:flex;flex-direction:column;justify-content:space-between;gap:8px;
+  background:color-mix(in srgb,var(--c) 11%,var(--card));position:relative}
+.scard b{font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.01em;color:color-mix(in srgb,var(--c) 70%,var(--fg))}
+.scard small{font-size:13px;color:var(--muted);line-height:1.3}
+.scard .kt{position:absolute;top:12px;right:12px}
+.back{font:inherit;font-weight:700;border:0;background:var(--card);color:var(--fg);border-radius:99px;padding:9px 15px 9px 11px;cursor:pointer;margin-bottom:14px}
+.shero{border-radius:26px;padding:20px;color:#fff;background:linear-gradient(140deg,var(--c) 0%,color-mix(in srgb,var(--c) 62%,#000) 100%);box-shadow:0 18px 40px -18px var(--c)}
+.shero .k{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;opacity:.85}
+.shero h1{color:#fff;margin-top:4px}
+.shero p{margin:10px 0 0;font-weight:600;font-size:17px;opacity:.95}
+.card{background:var(--card);border-radius:20px;padding:16px}
+.card ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:9px;line-height:1.45}
+.card .sub{color:var(--muted);font-size:14px;margin-top:4px}
+.ktcard{background:var(--warn-soft);border-radius:18px;padding:14px 16px}
+.ktcard b{color:var(--warn)}
+.ktcard div{font-size:14px;margin-top:4px}
+.terms{display:flex;flex-direction:column;gap:6px}
+.term{border:0;font:inherit;color:inherit;text-align:left;background:var(--card);border-radius:16px;padding:12px 14px;cursor:pointer;width:100%}
+.term b{font-weight:700}
+.term span{display:block;color:var(--muted);font-size:14px;margin-top:3px}
+.term .tap{display:inline;color:var(--accent);font-size:13px;font-weight:600;margin-left:6px}
+.q{background:var(--card);border-radius:20px;padding:16px}
+.q .qq{font-weight:700;margin-bottom:10px;line-height:1.4}
+.q .opts{display:flex;flex-direction:column;gap:6px}
+.q .opts button{font:inherit;text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);border-radius:14px;padding:11px 13px;cursor:pointer}
+.q .opts button.ok{background:var(--good);border-color:var(--good);color:#fff}
+.q .opts button.bad{background:var(--warn);border-color:var(--warn);color:#fff}
+.q .opts button:disabled{cursor:default}
+.q .opts button:disabled:not(.ok):not(.bad){opacity:.5}
+.score{text-align:center;font-weight:700;padding:14px;border-radius:18px;background:var(--soft);color:var(--accent)}
+
 /* floating tab pill */
 nav.tabs{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));width:min(360px,calc(100% - 32px));
   background:var(--glass);-webkit-backdrop-filter:blur(18px) saturate(1.6);backdrop-filter:blur(18px) saturate(1.6);
@@ -173,10 +215,314 @@ button:focus-visible,input:focus-visible{outline:2.5px solid var(--accent);outli
   <button id="tab-today" data-tab="today"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Täna</button>
   <button id="tab-week" data-tab="week"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="4"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Tunniplaan</button>
   <button id="tab-tasks" data-tab="tasks"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="4"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Kodutööd<span class="badge" id="badge" hidden></span></button>
+  <button id="tab-subj" data-tab="subj"><svg viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/></svg>Ained</button>
 </nav>
 
 <script>
 const CAL = {"weeks": {"2026-08-31": "A", "2026-09-07": "B", "2026-09-14": "A", "2026-09-21": "B", "2026-09-28": "A", "2026-10-05": "B", "2026-10-12": "A", "2026-10-19": "B", "2026-10-26": "A", "2026-11-02": "A", "2026-11-09": "B", "2026-11-16": "A", "2026-11-23": "B", "2026-11-30": "A", "2026-12-07": "B", "2026-12-14": "A", "2026-12-21": "B", "2026-12-28": "A", "2027-01-04": "B", "2027-01-11": "A", "2027-01-18": "B", "2027-01-25": "A", "2027-02-01": "B", "2027-02-08": "A", "2027-02-15": "B", "2027-02-22": "A", "2027-03-01": "A", "2027-03-08": "B", "2027-03-15": "A", "2027-03-22": "B", "2027-03-29": "A", "2027-04-05": "B", "2027-04-12": "A", "2027-04-19": "A", "2027-04-26": "B", "2027-05-03": "A", "2027-05-10": "B", "2027-05-17": "A", "2027-05-24": "B", "2027-05-31": "A", "2027-06-07": "B", "2027-06-14": "A"}, "off": {"2026-10-26": "Koolivaheaeg", "2026-10-27": "Koolivaheaeg", "2026-10-28": "Koolivaheaeg", "2026-10-29": "Koolivaheaeg", "2026-10-30": "Koolivaheaeg", "2026-12-18": "Jõulukontsert", "2026-12-21": "Koolivaheaeg", "2026-12-22": "Koolivaheaeg", "2026-12-23": "Koolivaheaeg", "2026-12-24": "Koolivaheaeg", "2026-12-25": "Koolivaheaeg", "2026-12-28": "Koolivaheaeg", "2026-12-29": "Koolivaheaeg", "2026-12-30": "Koolivaheaeg", "2026-12-31": "Koolivaheaeg", "2027-01-01": "Koolivaheaeg", "2027-02-22": "Koolivaheaeg", "2027-02-23": "Koolivaheaeg", "2027-02-24": "Koolivaheaeg", "2027-02-25": "Koolivaheaeg", "2027-02-26": "Koolivaheaeg", "2027-03-26": "Vaba päev", "2027-04-12": "Koolivaheaeg", "2027-04-13": "Koolivaheaeg", "2027-04-14": "Koolivaheaeg", "2027-04-15": "Koolivaheaeg", "2027-04-16": "Koolivaheaeg", "2027-06-09": "Koolivaheaeg", "2027-06-10": "Koolivaheaeg", "2027-06-11": "Koolivaheaeg", "2027-06-14": "Koolivaheaeg", "2027-06-15": "Koolivaheaeg", "2027-06-16": "Koolivaheaeg", "2027-06-17": "Koolivaheaeg", "2027-06-18": "Koolivaheaeg"}, "notes": {"2026-09-15": "Loeng edasiõppimisvõimalustest", "2026-09-29": "Lapsevanemate üldkoosolek kell 18.00", "2026-10-05": "Õpetajate päev", "2026-10-15": "Iseõppepäev", "2026-11-23": "Iseõppepäev", "2027-01-11": "Iseõppepäev", "2027-02-10": "Iseõppepäev", "2027-03-25": "Iseõppepäev", "2027-05-05": "Iseõppepäev"}};
+// Stuudiumist loetud 7.10.2026. topic = mida praegu õpitakse, tests = tulevad tööd, hw = kodutöö,
+// simple = lihtsalt öeldes, terms = [sõna, tähendus], quiz = [küsimus, [vastused], õige indeks]
+const ED_DATE = "7. okt";
+const ED = {
+ "Geograafia": {
+  topic: "Eesti asend ja geoloogia",
+  tests: [["2026-10-08","KT: Eesti asend ja geoloogia","Õpikust lk 8–11, 18–21, 36–39 + töölehed ja harjutustöö. Stuudiumis oli ka märge „töö on edasi lükatud“ – küsi õpetajalt üle."]],
+  simple: [
+   "Eesti on Põhja-Euroopas, Läänemere idarannikul. Naabrid maismaal: Läti ja Venemaa. Üle mere: Soome ja Rootsi.",
+   "Geoloogiliselt kuulub Eesti <b>Ida-Euroopa platvormi</b> koosseisu.",
+   "Eesti maapõu on 3 korrusega: all <b>aluskord</b> (kõvad kristalsed kivimid: graniit, gneiss), keskel <b>pealiskord</b> (settekivimid: liivakivi, savi, lubjakivi, põlevkivi), peal <b>pinnakate</b> (pehmed setted: moreen, liiv, savi, turvas).",
+   "Kihid on viltu lõuna poole. Põhjas tulevad maapinnale vanemad kihid (kambrium, ordoviitsium), saartel silur, Lõuna-Eestis noorem devon.",
+   "Põhja-Eesti pankrannik (klint): üleval ordoviitsiumi lubjakivi, all pehmem kambriumi liivakivi ja sinisavi. Meri uuristab pehmet alumist osa, seepärast kukuvad ülevalt tükid alla (rusukalle).",
+   "Devonist nooremaid settekivimeid Eestis pole, sest pärast devoni oli Eesti ala enamasti maismaa ja kivimid kulusid ära.",
+   "Pinnakatte tõi peamiselt mandrijää. Jää tõi kaasa ka rändrahnud (Skandinaaviast/Soomest)."
+  ],
+  terms: [
+   ["Aluskord","Alumine kiht kurrutatud kristalsetest kivimitest (graniit, gneiss). Eelkambriumi ajast."],
+   ["Pealiskord","Aluskorra peal olevad settekivimid (Vanaaegkond: kambrium, ordoviitsium, silur, devon)."],
+   ["Pinnakate","Kõige pealmised pehmed setted (kvaternaar): moreen, liiv, savi, turvas."],
+   ["Platvorm","Maakoore osa: kristalne aluskord + seda kattev settekivimitest pealiskord."],
+   ["Kilp","Koht, kus kristalne aluskord tuleb maapinnale (nt Soomes ja Rootsis)."],
+   ["Moreen","Mandrijää kuhjatud sorteerimata sete (segamini savi, liiv, kivid)."],
+   ["Klint","Pankrannik – järsk astang, Põhja-Eestis lubjakivist."],
+   ["Rändrahn","Suur kivi, mille mandrijää tõi kaugelt (Skandinaaviast)."]
+  ],
+  quiz: [
+   ["Millisest kivimist on Põhja-Eesti pankranniku ülemine osa?",["Devoni liivakivi","Ordoviitsiumi lubjakivi","Graniit"],1],
+   ["Mis on aluskorras?",["Kristalsed kivimid nagu graniit ja gneiss","Moreen ja turvas","Lubjakivi ja põlevkivi"],0],
+   ["Kuidas erineb Põhja-Eesti moreen Lõuna-Eesti moreenist?",["Põhja-Eesti oma on punakaspruun ja kivivaene","Põhja-Eesti oma on hallikas ja kivirohke","Need on täpselt samasugused"],1],
+   ["Miks puuduvad Eestis devonist nooremad settekivimid?",["Mandrijää viis need kõik ära","Pärast devoni oli Eesti peamiselt maismaa ja kivimid kulusid","Eesti oli kogu aeg sügava mere all"],1],
+   ["Kuidas said rändrahnud Eestisse?",["Vulkaanid paiskasid need","Jõed veeretasid need","Mandrijää tõi need põhja poolt"],2],
+   ["Mille järgi saab aru, et liiv ja savi on settinud vees, moreen aga mitte?",["Vees settinud setted on kihiti ja sorteeritud, moreen on segamini","Moreen on alati punane","Vees settinud setted on kõvemad"],0]
+  ]
+ },
+ "Ajalugu": {
+  topic: "Esimene maailmasõda (1914–1918)",
+  tests: [["2026-10-09","KT: Esimene maailmasõda","Õpetaja küsimused ja slaidid on Teras. Too kaasa õpimapp: töölehed „Euroopa liigub sõtta“ ja „Esimene maailmasõda“ (+ Opiqus „Esimese maailmasõja tagajärjed“)."]],
+  simple: [
+   "Sõda kestis <b>28. juuli 1914 – 11. november 1918</b>.",
+   "Põhjused: suurriigid tahtsid rohkem võimu ja kolooniaid (imperialism), Suurbritannia ja Saksamaa võistlesid liidrikoha pärast, Prantsusmaa tahtis tagasi Elsass-Lotringit, Venemaa ja Austria-Ungari võistlesid Balkanil.",
+   "<b>Ajend</b>: 28. juunil 1914 tappis Gavrilo Princip Sarajevos Austria-Ungari troonipärija Franz Ferdinandi.",
+   "Kaks poolt: <b>Antant</b> (Suurbritannia, Prantsusmaa, Venemaa; hiljem Itaalia 1915, USA 1917 jt) ja <b>Keskriigid</b> (Saksamaa, Austria-Ungari, hiljem Osmanite riik ja Bulgaaria).",
+   "Saksamaa plaan (Schlieffeni plaan): kiiresti Prantsusmaa purustada, siis Venemaa. Ei õnnestunud – Marne'i jõel peatati ja algas <b>positsioonisõda</b> kaevikutes.",
+   "Uued relvad: mürkgaas (sakslased, Ypres 1915), leegiheitja, tank (britid, Somme 1916), lennukid, allveelaevad, kuulipildujad.",
+   "Lõpp: Venemaa lahkus sõjast (Brest-Litovski rahu, 3.3.1918), USA tuli appi, keskriigid alistusid järjest. Saksamaa sõlmis vaherahu 11.11.1918.",
+   "Tagajärjed: ~10 miljonit sõdurit hukkus. Lagunesid 4 impeeriumi: Saksa, Austria-Ungari, Vene ja Osmani. Tekkisid uued riigid: Eesti, Läti, Leedu, Soome, Poola, Tšehhoslovakkia, Jugoslaavia.",
+   "Pariisi rahukonverents 1919–1920. <b>Versailles' leping</b> (1919): Saksamaa süüdi, maksab reparatsioone, kaotab alasid ja kolooniad, armee väikseks.",
+   "Eesti: Eesti mehed sõdisid Vene armees, 1918 okupeeris Eesti Saksamaa, 24. veebruaril 1918 kuulutati välja Eesti iseseisvus."
+  ],
+  terms: [
+   ["Atentaat","Poliitiline mõrv või mõrvakatse (nt Franz Ferdinandi tapmine)."],
+   ["Ultimaatum","Viimane nõudmine, mille täitmata jätmisel ähvardatakse jõuga (Austria-Ungari → Serbia)."],
+   ["Mobilisatsioon","Sõjaväe kokkukutsumine ja sõjaks valmis panemine."],
+   ["Genotsiid","Terve rahva hävitamine (nt armeenlased Osmanite riigis)."],
+   ["Kapituleeruma","Alistuma, sõjas alla andma."],
+   ["Reparatsioon","Hüvitis, mida kaotanud riik maksab sõjas tekitatud kahju eest."],
+   ["Positsioonisõda","Rinne seisab paigal, pooled kaitsevad oma kaevikuid."],
+   ["Manööversõda","Väed liiguvad kiiresti, rinne muutub."],
+   ["Imperialism","Suurriikide püüd laiendada võimu ja saada kolooniaid."]
+  ],
+  quiz: [
+   ["Mis oli Esimese maailmasõja ajend?",["Lusitania uputamine","Franz Ferdinandi tapmine Sarajevos","Venemaa revolutsioon"],1],
+   ["Millised riigid olid alguses Antandis?",["Suurbritannia, Prantsusmaa, Venemaa","Saksamaa, Austria-Ungari, Itaalia","USA, Jaapan, Hiina"],0],
+   ["Miks nimetatakse Balkanit Euroopa püssirohukeldriks?",["Seal tehti kõige rohkem püssirohtu","Seal oli palju rahvuslikke pingeid ja suurriikide huve – väike säde võis sõja vallandada","Seal olid Euroopa suurimad relvaladud"],1],
+   ["Kes kasutas esimesena mürkgaasi?",["Britid","Prantslased","Sakslased"],2],
+   ["Millal sõlmiti vaherahu, millega sõda lõppes?",["11. november 1918","28. juuni 1914","24. veebruar 1918"],0],
+   ["Mis on reparatsioon?",["Uus relv","Sõja kahjude hüvitis","Rahukonverentsi nimi"],1]
+  ]
+ },
+ "Matemaatika": {
+  topic: "Ruutfunktsioon",
+  tests: [["2026-10-13","KT nr 2: Ruutfunktsioon",""],["2026-11-13","KT nr 3: Algebraliste murdude korrutamine ja jagamine",""],["2026-12-08","KT nr 4: Kõik tehted algebraliste murdudega",""]],
+  simple: [
+   "Ruutfunktsioon: <b>y = ax² + bx + c</b>. Graafik on U-kujuline <b>parabool</b>.",
+   "<b>a</b> näitab suunda: a positiivne → parabool avaneb üles, a negatiivne → alla. Mida suurem a, seda kitsam parabool.",
+   "<b>c</b> näitab, kus parabool lõikab y-telge: punktis (0; c).",
+   "<b>Haripunkt</b> (kõige alumine või ülemine punkt): x = −b / (2a). Siis pane see x valemisse ja arvuta y.",
+   "<b>Sümmeetriatelg</b> on sirge x = −b/(2a) – see jagab parabooli kaheks võrdseks pooleks.",
+   "<b>Nullkohad</b> = kus parabool lõikab x-telge. Lahenda ax² + bx + c = 0. Diskriminant D = b² − 4ac: D > 0 → 2 nullkohta, D = 0 → 1, D < 0 → nullkohti pole.",
+   "Joonestamiseks: leia haripunkt, nullkohad ja y-telje lõikepunkt, tee väärtuste tabel ja ühenda punktid sujuvalt. NB! Õpetaja vaatab ka vormistust."
+  ],
+  terms: [
+   ["Parabool","Ruutfunktsiooni U-kujuline graafik."],
+   ["Haripunkt","Parabooli kõige madalam (a>0) või kõrgeim (a<0) punkt."],
+   ["Nullkoht","x väärtus, kus y = 0 (graafik lõikab x-telge)."],
+   ["Diskriminant","D = b² − 4ac; näitab mitu nullkohta on."],
+   ["Sümmeetriatelg","Püstsirge läbi haripunkti: x = −b/(2a)."],
+   ["Vabaliige","c – näitab y-telje lõikepunkti."]
+  ],
+  quiz: [
+   ["Kuhu avaneb y = −2x² + 3?",["Üles","Alla","Paremale"],1],
+   ["Kus lõikab y = x² − 4x + 3 y-telge?",["(0; 3)","(3; 0)","(0; −4)"],0],
+   ["Mis on y = x² − 4x + 3 haripunkti x?",["−2","4","2"],2],
+   ["Millised on y = x² − 4x + 3 nullkohad?",["1 ja 3","−1 ja −3","2 ja 4"],0],
+   ["Kui D < 0, siis parabool…",["lõikab x-telge kahes kohas","ei lõika x-telge","puudutab x-telge"],1],
+   ["Kumb parabool on kitsam?",["y = 5x²","y = 0,5x²","Mõlemad on samad"],0]
+  ]
+ },
+ "Füüsika": {
+  topic: "Soojushulk, kehade soojenemine ja jahtumine",
+  tests: [["2026-10-23","KT: Soojushulk. Kehade soojenemine ja jahtumine","Õpik lk 19–35. Teras on ülesanded ja lünktekst."]],
+  hw: [["2026-10-09","Ülesanded 5 ja 6 (tööleht Teras)"]],
+  simple: [
+   "Kõik kehad koosnevad osakestest, mis liiguvad pidevalt. <b>Siseenergia</b> = kõigi osakeste liikumis- ja vastastikmõju energia kokku.",
+   "Soojus liigub alati <b>soojemalt kehalt külmemale</b>, kuni temperatuurid on võrdsed (soojuslik tasakaal).",
+   "Soojusülekandel on 3 liiki: <b>soojusjuhtivus</b> (tahketes, nt metall), <b>konvektsioon</b> (vedelikes ja gaasides – soe tõuseb üles), <b>soojuskiirgus</b> (levib ka tühjuses, nt Päikeselt).",
+   "Soojushulk: <b>Q = c · m · Δt</b>. Q – soojushulk (J), c – erisoojus (J/(kg·°C)), m – mass (kg), Δt = t₂ − t₁ – temperatuuri muutus.",
+   "Kui keha soojeneb, on Q positiivne; kui jahtub, negatiivne.",
+   "Kui segad sooja ja külma: <b>Q₁ + Q₂ = 0</b> – üks annab ära sama palju, kui teine saab.",
+   "Tumedad ja suurema pinnaga kehad kiirgavad (ja neelavad) rohkem soojust."
+  ],
+  terms: [
+   ["Siseenergia","Keha osakeste kineetiliste ja potentsiaalsete energiate summa."],
+   ["Soojushulk (Q)","Energia, mille keha soojusülekandel saab või kaotab. Ühik džaul (J)."],
+   ["Erisoojus (c)","Kui palju energiat on vaja 1 kg aine soojendamiseks 1 °C võrra."],
+   ["Soojusjuhtivus","Soojus liigub osakeselt osakesele, aine ise ei liigu."],
+   ["Konvektsioon","Soe vedelik/gaas tõuseb üles, külm vajub alla – tekib ringlus."],
+   ["Soojuskiirgus","Elektromagnetlaine, levib ka vaakumis."],
+   ["Soojuslik tasakaal","Olek, kus kehade temperatuurid on võrdsed."]
+  ],
+  quiz: [
+   ["Mis on soojushulga valem?",["Q = m · g · h","Q = c · m · Δt","Q = m / V"],1],
+   ["Kui palju energiat kulub 5 kg vase soojendamiseks 20 °C võrra? (c = 387 J/(kg·°C))",["38 700 J","1 935 J","7 740 J"],0],
+   ["Milline soojusülekanne toimub ka vaakumis?",["Soojusjuhtivus","Konvektsioon","Soojuskiirgus"],2],
+   ["Kus konvektsiooni EI toimu?",["Tahketes kehades","Vees","Õhus"],0],
+   ["Segati 20 kg 80 °C vett ja 5 kg 10 °C vett. Milline on lõpptemperatuur?",["45 °C","66 °C","70 °C"],1],
+   ["Milline materjal juhib soojust kõige paremini?",["Puit","Vask","Plastik"],1]
+  ]
+ },
+ "Keemia": {
+  topic: "Happed",
+  hw: [["2026-10-14","Lõpeta TV ül 2.10"]],
+  simple: [
+   "<b>Hape</b> on aine, mis annab vees vesinikioone <b>H⁺</b>. Hape = vesinik + happeanioon, nt HCl → H⁺ + Cl⁻.",
+   "Happed on hapu maitsega, söövitavad ja muudavad indikaatori (nt lakmuse) <b>punaseks</b>.",
+   "Tugevad happed: HCl, H₂SO₄, HNO₃. Nõrgad: H₂CO₃, H₂S.",
+   "<b>Hape + alus → sool + vesi</b> (neutralisatsioon). Nt HCl + NaOH → NaCl + H₂O.",
+   "<b>Hape + aluseline oksiid → sool + vesi</b>. Nt CaO + 2HCl → CaCl₂ + H₂O.",
+   "<b>Hape + aktiivne metall → sool + vesinik (H₂)</b>.",
+   "Võrrandi tasakaalustamise järjekord: 1) metall, 2) happeanioon, 3) H, 4) O."
+  ],
+  terms: [
+   ["HCl","Vesinikkloriidhape (soolhape) – tugev"],
+   ["H₂SO₄","Väävelhape – tugev"],
+   ["HNO₃","Lämmastikhape – tugev"],
+   ["H₃PO₄","Fosforhape"],
+   ["H₂CO₃","Süsihape – nõrk"],
+   ["Neutralisatsioon","Happe ja aluse reaktsioon, tekib sool ja vesi."],
+   ["Indikaator","Aine, mis muudab värvi happes/aluses."]
+  ],
+  quiz: [
+   ["Mis ioone annavad happed vees?",["OH⁻","H⁺","Na⁺"],1],
+   ["Mis värvi muutub lakmus happes?",["Punaseks","Siniseks","Roheliseks"],0],
+   ["Mis tekib reaktsioonis hape + alus?",["Sool + vesinik","Sool + vesi","Oksiid + vesi"],1],
+   ["Mis on H₂SO₄?",["Väävelhape","Soolhape","Süsihape"],0],
+   ["Mis gaas eraldub, kui hape reageerib aktiivse metalliga?",["Hapnik","Süsihappegaas","Vesinik"],2]
+  ]
+ },
+ "Kirjandus": {
+  topic: "Muistne loodususund → A. Kitzbergi „Libahunt“",
+  tests: [["2026-10-14","A. Kitzberg „Libahunt“","Loe näidend läbi."],["2026-11-18","Vabalt valitud eestikeelne noorteromaan","Ideid: loemind.keskraamatukogu.ee (9. klass)"]],
+  simple: [
+   "Muistsed eestlased uskusid, et <b>loodus on hingestatud</b>: puudel, kividel, allikatel ja loomadel on hing.",
+   "Igal paigal olid oma haldjad (metsa-, vee-, majahaldjas). Pühades kohtades (hiied, ohvrikivid, allikad) palvetati ja ohverdati.",
+   "Inimene oli looduse osa, mitte peremees. Loodusest võeti nii palju, kui vaja, ja tänati.",
+   "„Libahunt“ (1912): Tiina kasvab külas võõrana, teda kardetakse ja peetakse libahundiks. Ta armastab Margust. Näidend räägib <b>eelarvamustest</b>, sellest, kuidas kogukond tõrjub teistsugust inimest, ning <b>vabadusest</b>."
+  ],
+  terms: [
+   ["Loodususund","Usk, mille järgi kõik looduses on hingestatud."],
+   ["Hiis","Püha mets või metsatukk."],
+   ["Haldjas","Paiga, looduse või asja vaim/kaitsja."],
+   ["Libahunt","Rahvausus inimene, kes võib muutuda hundiks."],
+   ["Näidend","Teos, mis on kirjutatud laval mängimiseks (dialoogid, vaatused)."]
+  ],
+  quiz: [
+   ["Mida tähendab „hingestatud loodus“?",["Loodus on ainult inimese jaoks","Kõigel looduses on hing","Loodust ei tohi puudutada"],1],
+   ["Mis on hiis?",["Püha mets","Talu nimi","Muinasjutu tegelane"],0],
+   ["Kes kirjutas „Libahundi“?",["A. H. Tammsaare","August Kitzberg","Oskar Luts"],1],
+   ["Mis on „Libahundi“ peamine teema?",["Sõda","Eelarvamused ja teistsuguse inimese tõrjumine","Linnaelu"],1]
+  ]
+ },
+ "Eesti keel": {
+  topic: "Lihtlause ja koondlause",
+  tests: [["2026-11-05","KT: Lihtlause",""]],
+  simple: [
+   "<b>Lihtlauses</b> on üks öeldis (tegusõna, mis muutub pöördes): „Mari <u>loeb</u> raamatut.“",
+   "<b>Koondlause</b> on lihtlause, kus on mitu samaliiki lauseliiget (koondliiget): „Ostsin <u>leiba, piima ja juustu</u>.“",
+   "Koondliikmete vahele pane <b>koma</b>, kui sidesõna pole: „Õunad, pirnid, ploomid.“",
+   "Sidesõnade <b>ja, ning, ega, ehk, või</b> ette koma ei panda (kui need ei kordu).",
+   "Sidesõnade <b>aga, kuid, vaid, ent</b> ette pannakse koma: „Ta on väike, aga tugev.“"
+  ],
+  terms: [
+   ["Öeldis","Mida keegi teeb? Pöördeline verb."],
+   ["Alus","Kes? Mis? – lauses tegija."],
+   ["Sihitis","Keda? Mida? – millele tegevus on suunatud."],
+   ["Määrus","Kus? Millal? Kuidas? Miks?"],
+   ["Koondliige","Mitu samaliiki lauseliiget järjest."]
+  ],
+  quiz: [
+   ["Kas siia käib koma? „Ta on vaene(,) aga õnnelik.“",["Jah","Ei"],0],
+   ["Kas siia käib koma? „Ostsin õunu(,) ja pirne.“",["Jah","Ei"],1],
+   ["Mis on lauses „Koer haukus valjult“ öeldis?",["Koer","haukus","valjult"],1],
+   ["Mis on koondlause?",["Lause, kus on kaks öeldist ja kaks lauset","Lihtlause, kus on mitu samaliiki lauseliiget","Väga lühike lause"],1]
+  ]
+ },
+ "Bioloogia": {
+  topic: "Keha üldehitus, nahk, luud, lihased",
+  tests: [["2026-11-04","KT: Keha üldehitus, nahk, luud, lihased","Opiq e-õpik: 9d Bioloogia"]],
+  simple: [
+   "Keha koosneb rakkudest → kudedest → elunditest → elundkondadest. Koed: epiteel-, side-, lihas- ja närvikude.",
+   "<b>Nahk</b> on 3 kihti: marrasknahk (pealmine), pärisnahk (veresooned, higi- ja rasunäärmed, karvanääpsud), nahaalune rasvkude.",
+   "Naha ülesanded: kaitse, kehatemperatuuri hoidmine (higistamine), tundlikkus, D-vitamiini tootmine.",
+   "Täiskasvanul on umbes <b>206 luud</b>. Luus on mineraalained (kõvadus) ja orgaanilised ained (elastsus). Punases luuüdis tekivad vererakud.",
+   "Lihaseid on 3 liiki: <b>skeletilihas</b> (liigutab keha, allub tahtele), <b>silelihas</b> (siseelundites), <b>südamelihas</b>.",
+   "Lihased saavad ainult kokku tõmbuda, seepärast töötavad nad paarikaupa (nt kakspealihas painutab, kolmpealihas sirutab kätt)."
+  ],
+  terms: [
+   ["Marrasknahk","Naha pealmine kiht, kaitseb."],
+   ["Pärisnahk","Naha keskmine kiht – näärmed, veresooned, närvilõpmed."],
+   ["Liiges","Kahe luu liikuv ühendus (nt põlv)."],
+   ["Kõõlus","Ühendab lihase luuga."],
+   ["Punane luuüdi","Luu sees, toodab vererakke."]
+  ],
+  quiz: [
+   ["Mitu luud on täiskasvanul umbes?",["106","206","306"],1],
+   ["Milline lihas allub tahtele?",["Skeletilihas","Silelihas","Südamelihas"],0],
+   ["Kus tekivad vererakud?",["Kõõlustes","Punases luuüdis","Nahas"],1],
+   ["Milles on higinäärmed?",["Pärisnahas","Marrasknahas","Luus"],0]
+  ]
+ },
+ "Vene keel": {
+  topic: "Välimus (Dima) ja tegusõna minevik",
+  hw: [["2026-10-08","Loe õ lk 13 Dima välimusest, kirjuta välja uued sõnad (lk 14–15, 20), kirjelda vihikusse Dima välimust (lk 14 p 3)."]],
+  simple: [
+   "Välimuse kirjeldamine: Он высокий / низкий. У него светлые / тёмные волосы. У него голубые / карие глаза.",
+   "Minevik tehakse tegusõna tüvest + <b>-л</b>: он чита<b>л</b>, она чита<b>ла</b>, оно чита<b>ло</b>, они чита<b>ли</b>.",
+   "Minevikus ei muutu tegusõna isiku järgi (я/ты/он – kõik читал), vaid soo ja arvu järgi."
+  ],
+  terms: [
+   ["высокий / низкий","pikk / lühike"],["худой / полный","kõhn / tüse"],["волосы","juuksed"],["глаза","silmad"],
+   ["светлые / тёмные","heledad / tumedad"],["голубые / карие","sinised / pruunid (silmad)"],["усы / борода","vuntsid / habe"],["веснушки","tedretähnid"]
+  ],
+  quiz: [
+   ["Kuidas on vene keeles „pikk (inimene)“?",["низкий","высокий","худой"],1],
+   ["„Ta (naine) luges“ on…",["она читал","она читала","она читали"],1],
+   ["Mida tähendab „карие глаза“?",["sinised silmad","pruunid silmad","suured silmad"],1],
+   ["„Nemad mängisid“ on…",["они играли","они играл","они играла"],0]
+  ]
+ },
+ "Muusika": {
+  topic: "Ansambel ja esituskoosseisud",
+  tests: [["2026-10-12","Tunnikontroll: ansambli koosseisud","Too vihik, kus on 16. küsimuse vastused täislausetega."]],
+  simple: [
+   "Ansambel = väike esinejate rühm, igal oma partii.",
+   "Koosseisude nimed: 2 – <b>duo / duett</b>, 3 – <b>trio / tertsett</b>, 4 – <b>kvartett</b>, 5 – <b>kvintett</b>, 6 – <b>sekstett</b>, 7 – <b>septett</b>, 8 – <b>oktett</b>, 9 – <b>nonett</b>.",
+   "Tavaliselt duett ja tertsett on lauljad, duo ja trio pillimängijad."
+  ],
+  terms: [["Duo/duett","2"],["Trio/tertsett","3"],["Kvartett","4"],["Kvintett","5"],["Sekstett","6"],["Septett","7"],["Oktett","8"],["Nonett","9"]],
+  quiz: [
+   ["Mitu esinejat on kvintetis?",["4","5","6"],1],
+   ["Kuidas nimetatakse 8 esinejaga ansamblit?",["Oktett","Nonett","Septett"],0],
+   ["Mitu esinejat on nonetis?",["7","8","9"],2],
+   ["Mitu esinejat on sekstetis?",["6","7","5"],0]
+  ]
+ },
+ "Inglise keel": {
+  topic: "Present perfect simple vs continuous",
+  simple: [
+   "<b>Present perfect simple</b>: have/has + V3. Tulemus või mitu korda: <i>I have read three books.</i>",
+   "<b>Present perfect continuous</b>: have/has been + -ing. Kui kaua tegevus kestnud: <i>I have been reading for two hours.</i>",
+   "for = kui kaua (for 2 hours), since = mis ajast (since Monday)."
+  ],
+  terms: [["have done","tulemus / mitu"],["have been doing","kestus / kui kaua"],["for","ajavahemik"],["since","alates"]],
+  quiz: [
+   ["„I ___ for this bus for 20 minutes!“",["have waited","have been waiting","waited"],1],
+   ["„She ___ three emails today.“",["has written","has been writing","is writing"],0],
+   ["„I have lived here ___ 2020.“",["for","since","from"],1]
+  ]
+ },
+ "Ühiskonnaõpetus": {
+  topic: "Maksud",
+  hw: [["2026-10-09","Ptk 6 Maksud – tööleht"]],
+  simple: [
+   "Maksud on raha, mida inimesed ja ettevõtted maksavad riigile ja omavalitsusele. Selle eest makstakse koolid, haiglad, teed, politsei jne.",
+   "<b>Otsene maks</b> võetakse sissetulekult või varalt (tulumaks, maamaks). <b>Kaudne maks</b> on peidetud hinna sisse (käibemaks, aktsiis).",
+   "Sotsiaalmaksu maksab tööandja – sellest tulevad pension ja ravikindlustus.",
+   "Makse kogub Maksu- ja Tolliamet (MTA). Riigi tulud ja kulud on kirjas riigieelarves."
+  ],
+  terms: [["Tulumaks","Maks sissetulekult (palgalt)."],["Käibemaks","Kauba/teenuse hinna sees olev maks."],["Aktsiis","Lisamaks nt kütusele, alkoholile, tubakale."],["Sotsiaalmaks","Tööandja maks pensioni ja tervishoiu jaoks."],["Riigieelarve","Riigi aasta tulude ja kulude plaan."]],
+  quiz: [
+   ["Milline on kaudne maks?",["Tulumaks","Käibemaks","Maamaks"],1],
+   ["Kes kogub Eestis makse?",["Eesti Pank","Maksu- ja Tolliamet","Riigikogu"],1],
+   ["Aktsiisi makstakse näiteks…",["kütuselt","leivalt","kooliraamatutelt"],0]
+  ]
+ },
+ "Käsitöö": {
+  topic: "Tikkimine ja kudumine",
+  tests: [["2026-10-12","I ülesande hindamine (tunni lõpus)","Juhend Teras."],["2026-11-16","II ülesanne: töö kavandamine, materjalide arvutamine",""],["2026-12-14","III ülesanne: töö teostamine",""]],
+  simple: ["Kui võtsid töö koju, too see tundi kaasa.","Õppevideod (parema- ja vasakukäelistele) on Teras rubriigis „Kirjandus ja materjalid“."]
+ }
+};
+
 const BELLS = {1:["09:00","10:20"],2:["10:30","11:50"],3:["12:35","13:55"],4:["14:05","15:25"]};
 // [day 0=Mon, period, week ""=every/"A"/"B", subject, teacher, room]
 const TT = [
@@ -381,9 +727,58 @@ function viewTasks(){
   return h;
 }
 
+// ---- subjects (content from Stuudium, see ED) ----
+let subj = null, openTerms = new Set(), answers = {};
+function upcomingExams(){
+  const today = iso(new Date()), out = [];
+  for (const [s, d] of Object.entries(ED)) for (const [due, what, note] of (d.tests||[])) if (due>=today) out.push({s, due, what, note});
+  return out.sort((a,b)=>a.due.localeCompare(b.due));
+}
+function whenBox(due){
+  const now = new Date(), diff = dayDiff(parse(due), now), d = parse(due);
+  const top = diff===0?"täna":diff===1?"homme":diff<7?`${diff} p`:`${d.getDate()}.${d.getMonth()+1}`;
+  const bottom = diff<7 ? DAYS[dow(d)].toLowerCase() : "";
+  return `<div class="when ${diff<=2?"hot":""}"><b class="${diff<=1?"w":""}">${top}</b><span>${bottom}</span></div>`;
+}
+function viewSubjects(){
+  if (subj && ED[subj]) return viewSubject(subj);
+  const today = iso(new Date()), soon = iso(addDays(new Date(),7)), ex = upcomingExams();
+  let h = `<div class="head"><div><div class="hello">Stuudiumist · ${ED_DATE}</div><h1>Ained</h1></div></div>`;
+  if (ex.length) h += `<div class="label"><span>Tulevad tööd</span></div><div class="stack">${ex.slice(0,4).map(e=>
+    `<button class="exam" data-subj-open="${e.s}" style="${C(e.s)}">${whenBox(e.due)}<div class="body"><b>${esc(e.s)}</b><small>${esc(e.what)}</small></div></button>`).join("")}</div>`;
+  h += `<div class="label"><span>Kõik ained</span></div><div class="sgrid">${Object.keys(ED).map(s=>{
+    const hot = (ED[s].tests||[]).some(t=>t[0]>=today && t[0]<=soon);
+    return `<button class="scard" data-subj-open="${s}" style="${C(s)}">${hot?'<span class="kt">KT</span>':""}<b>${esc(s)}</b><small>${esc(ED[s].topic)}</small></button>`}).join("")}</div>`;
+  return h;
+}
+function viewSubject(s){
+  const d = ED[s], today = iso(new Date()), now = new Date();
+  let h = `<button class="back" id="sback">‹ Ained</button>
+  <div class="shero ${animate?"in":""}" style="${C(s)}"><div class="k">Praegu õpime</div><h1>${esc(s)}</h1><p>${esc(d.topic)}</p></div>`;
+  const tests = (d.tests||[]).filter(t=>t[0]>=today), hw = (d.hw||[]).filter(t=>t[0]>=today);
+  if (tests.length || hw.length){
+    h += `<div class="label"><span>Tulemas</span></div><div class="stack">`;
+    h += tests.map(([due,what,note])=>`<div class="ktcard"><b>${esc(what)}</b> · ${relDay(parse(due),now)}${note?`<div>${esc(note)}</div>`:""}</div>`).join("");
+    h += hw.map(([due,what])=>`<div class="card"><b>Kodutöö</b> · ${relDay(parse(due),now)}<div class="sub">${esc(what)}</div></div>`).join("");
+    h += `</div>`;
+  }
+  if (d.simple) h += `<div class="label"><span>Lihtsalt öeldes</span></div><div class="card"><ul>${d.simple.map(x=>`<li>${x}</li>`).join("")}</ul></div>`;
+  if (d.terms) h += `<div class="label"><span>Tähtsad sõnad</span><span>puuduta</span></div><div class="terms">${d.terms.map(([t,def],i)=>{const k=s+i, o=openTerms.has(k);
+    return `<button class="term" data-term="${esc(k)}"><b>${esc(t)}</b>${o?`<span>${esc(def)}</span>`:`<em class="tap">?</em>`}</button>`}).join("")}</div>`;
+  if (d.quiz){
+    const a = answers[s]||{}, done = Object.keys(a).length, right = d.quiz.filter((q,i)=>a[i]===q[2]).length;
+    h += `<div class="label"><span>Harjuta</span><span>${done}/${d.quiz.length}</span></div><div class="stack">${d.quiz.map(([q,opts,ok],i)=>`<div class="q"><div class="qq">${i+1}. ${esc(q)}</div><div class="opts">${opts.map((o,j)=>{
+      const cls = a[i]===undefined?"":j===ok?"ok":j===a[i]?"bad":"";
+      return `<button data-q="${i}" data-a="${j}" class="${cls}" ${a[i]!==undefined?"disabled":""}>${esc(o)}</button>`}).join("")}</div></div>`).join("")}`;
+    if (done===d.quiz.length) h += `<div class="score">${right}/${d.quiz.length} õigesti ${right===d.quiz.length?"🏆":right>=d.quiz.length/2?"👍":"💪"}</div><button class="ghost" id="qreset">Proovi uuesti</button>`;
+    h += `</div>`;
+  }
+  return h;
+}
+
 function render(){
   const app = document.getElementById("app"), focusId = document.activeElement?.id;
-  app.innerHTML = tab==="today"?viewToday():tab==="week"?viewWeek():viewTasks();
+  app.innerHTML = tab==="today"?viewToday():tab==="week"?viewWeek():tab==="subj"?viewSubjects():viewTasks();
   animate = false; popId = null;
   document.querySelectorAll("nav.tabs button").forEach(b=>b.classList.toggle("on", b.dataset.tab===tab));
   const urgent = tasks.filter(t=>!t.done && t.due<=iso(addDays(new Date(),1))).length;
@@ -393,7 +788,7 @@ function render(){
 
 document.querySelector("nav.tabs").addEventListener("click", e=>{
   const b = e.target.closest("button"); if (!b) return;
-  tab = b.dataset.tab; animate = true; if (tab==="week"){ weekOffset=0; selDay=null; }
+  tab = b.dataset.tab; animate = true; if (tab==="week"){ weekOffset=0; selDay=null; } if (tab==="subj") subj=null;
   try { localStorage.setItem("tab", tab); } catch(e){}
   render(); window.scrollTo(0,0);
 });
@@ -409,6 +804,11 @@ app.addEventListener("click", e=>{
   else if (b.dataset.subj){ form.subj=b.dataset.subj; form.due=nextLessonDate(form.subj); render(); document.getElementById("f-what").focus(); }
   else if (b.dataset.done){ const t=tasks.find(x=>x.id===b.dataset.done); if (t){ popId=t.id; saveTask({...t,done:!t.done}); } }
   else if (b.dataset.del){ removeTask(b.dataset.del); }
+  else if (b.dataset.subjOpen){ subj=b.dataset.subjOpen; animate=true; render(); window.scrollTo(0,0); }
+  else if (b.id==="sback"){ subj=null; render(); window.scrollTo(0,0); }
+  else if (b.dataset.term){ const k=b.dataset.term; openTerms.has(k)?openTerms.delete(k):openTerms.add(k); render(); }
+  else if (b.dataset.q){ (answers[subj] ||= {})[b.dataset.q]=+b.dataset.a; render(); }
+  else if (b.id==="qreset"){ answers[subj]={}; render(); }
 });
 app.addEventListener("input", e=>{ if (e.target.id==="f-what") form.what=e.target.value; });
 app.addEventListener("change", e=>{ if (e.target.id==="f-due"){ form.due=e.target.value; render(); } });
