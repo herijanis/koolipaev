@@ -1,6 +1,10 @@
 # Fetches 9D's dated timetable (with substitutions and events) from Viimsi Kool's public Edupage
 # for yesterday .. +13 days and writes live.json for the app. Run by .github/workflows/live.yml.
-import json, re, urllib.request, datetime, zoneinfo
+import json, re, socket, urllib.request, datetime, zoneinfo
+
+# GitHub runners have no IPv6 route; Edupage resolves to IPv6 first
+_gai = socket.getaddrinfo
+socket.getaddrinfo = lambda host, *a, **k: [r for r in _gai(host, *a, **k) if r[0] == socket.AF_INET] or _gai(host, *a, **k)
 
 BASE = "https://viimsi.edupage.org/timetable/server/"
 CLASS_ID = "-290"  # 9D
