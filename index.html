@@ -5,7 +5,7 @@
 <link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#f4efe8">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <script>
-const APP_V="1791385701";
+const APP_V="1791386350";
 async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();
  if(v&&v!==APP_V&&sessionStorage.getItem("tried")!==v){sessionStorage.setItem("tried",v);location.replace(location.pathname+"?v="+v);}}catch(e){}}
 checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
@@ -839,6 +839,7 @@ function viewTasks(){
   }
   const doneAll = allTasks().filter(t=>t.done), done = doneAll.sort((a,b)=>b.due.localeCompare(a.due)).slice(0,8);
   if (done.length) h += `<div class="label"><span>Tehtud</span><span>${doneAll.length}</span></div><div class="stack">${done.map(taskRow).join("")}</div>`;
+  if (Object.keys(autoState).length || tasks.some(t=>t.done)) h += `<button class="ghost" id="restore" style="width:100%;margin-top:14px">↺ Too kõik kodutööd tagasi</button>`;
   return h;
 }
 
@@ -970,6 +971,11 @@ app.addEventListener("click", e=>{
   else if (b.dataset.del){
     const t = allTasks().find(x=>x.id===b.dataset.del);
     if (t && t.auto){ autoState[t.id]="hidden"; saveAuto(); render(); } else removeTask(b.dataset.del);
+  }
+  else if (b.id==="restore"){
+    autoState = {}; saveAuto();
+    for (const t of tasks.filter(x=>x.done)) saveTask({...t, done:false});
+    render();
   }
   else if (b.dataset.subjGo){ tab="subj"; subj = ED[b.dataset.subjGo] ? b.dataset.subjGo : null; animate=true; render(); window.scrollTo(0,0); }
   else if (b.id==="fcstart"){ const n=ED[subj].terms.length; fc={s:subj, queue:[...Array(n).keys()].sort(()=>Math.random()-.5), flip:false, known:0, total:n}; render(); window.scrollTo(0,0); }
