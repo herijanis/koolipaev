@@ -5,7 +5,7 @@
 <link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#f4efe8">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <script>
-const APP_V="1791385046";
+const APP_V="1791385701";
 async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();
  if(v&&v!==APP_V&&sessionStorage.getItem("tried")!==v){sessionStorage.setItem("tried",v);location.replace(location.pathname+"?v="+v);}}catch(e){}}
 checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
@@ -732,7 +732,7 @@ function taskRow(t){
 function viewToday(){
   const now = new Date(), t = now.getHours()*60+now.getMinutes(), k = iso(now);
   const L = lessonsOn(now), w = weekOf(now);
-  let h = `<div class="head"><div><div class="hello">${greeting(now.getHours())} 👋</div><h1>${DAYS[dow(now)]}<br>${nice(now)}</h1></div><div class="chips">${w?`<span class="chip">${w}-nädal</span>`:""}${streakChip()}</div></div>`;
+  let h = `<div class="head"><div><div class="hello">${greeting(now.getHours())}, Elisabet 👋</div><h1>${DAYS[dow(now)]}<br>${nice(now)}</h1></div><div class="chips">${w?`<span class="chip">${w}-nädal</span>`:""}${streakChip()}</div></div>`;
   if (CAL.notes[k]) h += `<div class="note">📌 ${esc(CAL.notes[k])}</div>`;
   for (const e of ((LIVE && LIVE.events && LIVE.events[k]) || [])) if (e.name!==CAL.notes[k]) h += `<div class="note">📌 ${esc(e.name)}${e.start!=="00:00"?` · ${e.start}–${e.end}`:""}</div>`;
   const kts = openTasks().filter(x=>x.type==="Kontrolltöö" && x.due>=k && x.due<=iso(addDays(now,3)));
@@ -831,7 +831,7 @@ function viewTasks(){
   const groups = [["Hilinenud",t=>t.due<today],["Täna",t=>t.due===today],["Homme",t=>t.due===iso(addDays(now,1))],["Sel nädalal",t=>t.due>iso(addDays(now,1))&&t.due<=iso(addDays(monday(now),6))],["Hiljem",t=>t.due>iso(addDays(monday(now),6))]];
   if (!open.length && !adding){
     const any = allTasks().length;
-    h += `<div class="party" style="margin-top:14px"><div class="big">${any?"🏆":"✨"}</div><b>${any?"Kõik tehtud!":"Siin on tühi"}</b><span>${any?"Võid rahulikult chillida.":"Kui saad kodutöö, lisa see siia ja ära enam muretse."}</span></div>`;
+    h += `<div class="party" style="margin-top:14px"><div class="big">${any?"🏆":"✨"}</div><b>${any?"Kõik tehtud, Elisabet!":"Siin on tühi"}</b><span>${any?"Võid rahulikult chillida.":"Kui saad kodutöö, lisa see siia ja ära enam muretse."}</span></div>`;
   }
   for (const [name, f] of groups){
     const g = open.filter(f); if (!g.length) continue;
@@ -847,7 +847,7 @@ let subj = null, openTerms = new Set(), answers = {}, fc = null;
 function viewCards(){
   const d = ED[fc.s];
   let h = `<button class="back" id="fcclose">‹ ${esc(fc.s)}</button>`;
-  if (!fc.queue.length) return h + `<div class="party"><div class="big">🎉</div><b>Kõik ${fc.total} sõna selged!</b><span>Tubli, see päev läheb seeriasse 🔥 ${streak()}</span></div>
+  if (!fc.queue.length) return h + `<div class="party"><div class="big">🎉</div><b>Kõik ${fc.total} sõna selged, Elisabet!</b><span>Tubli, see päev läheb seeriasse 🔥 ${streak()}</span></div>
     <div class="row2" style="margin-top:12px"><button class="ghost" id="fcagain">Veel kord</button><button class="go" id="fcclose">Valmis</button></div>`;
   const [term, def] = d.terms[fc.queue[0]];
   h += `<div class="label"><span>Mõistekaardid</span><span>${fc.known}/${fc.total} selge</span></div>
