@@ -1,9 +1,17 @@
 <!doctype html><html lang="et"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Kool">
 <link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#eef1f7">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
+<script>
+const APP_V="1791374111";
+async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();
+ if(v&&v!==APP_V&&sessionStorage.getItem("tried")!==v){sessionStorage.setItem("tried",v);location.replace(location.pathname+"?v="+v);}}catch(e){}}
+checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
+["gesturestart","gesturechange"].forEach(ev=>document.addEventListener(ev,e=>e.preventDefault(),{passive:false}));
+document.addEventListener("touchmove",e=>{if(e.touches.length>1)e.preventDefault();},{passive:false});
+</script>
 <title>Minu Koolipäev</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Onest:wght@400;500;600;700&display=swap">
@@ -25,7 +33,9 @@
   --accent:#7b8cff; --soft:#20264a; --warn:#ff8f5a; --warn-soft:#3a2318; --good:#38d9a9;
   --glass:rgba(23,28,39,.8); --shadow:0 10px 30px -12px rgba(0,0,0,.7); color-scheme:dark}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{min-height:100%}
+html,body{min-height:100%;overscroll-behavior:none}
+html{-webkit-text-size-adjust:100%;touch-action:manipulation}
+button,nav,.lesson,.hero,.next,.tile,.days,.chip,h1,.hello,.label{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;-webkit-font-smoothing:antialiased}
 main{max-width:520px;margin:0 auto;padding-inline:16px;padding-block:18px calc(110px + env(safe-area-inset-bottom,0px))}
 .tnum{font-variant-numeric:tabular-nums}
@@ -410,8 +420,4 @@ document.addEventListener("visibilitychange", ()=>{ if (!document.hidden && !add
 render();
 setInterval(()=>{ if (!adding) render(); }, 20000);
 </script>
-<script id="upd">
-const APP_V="1791374018";
-async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();if(v&&v!==APP_V)location.reload();}catch(e){}}
-checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
-</script></body></html>
+</body></html>
