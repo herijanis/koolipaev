@@ -1,0 +1,23 @@
+# Refreshes live.json (9D timetable with substitutions) from Edupage every 15 minutes on school days.
+name: Asendused
+on:
+  schedule:
+    - cron: "*/15 4-15 * * 1-5"   # 07–18 Estonian time
+    - cron: "0 17,19 * * 0-4"     # evening check for the next day
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python fetch_live.py
+      - run: |
+          git config user.name "koolipaev-bot"
+          git config user.email "koolipaev-bot@users.noreply.github.com"
+          git add live.json
+          git diff --cached --quiet || (git commit -m "Asendused $(date -u +%H:%M)" && git push)
