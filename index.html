@@ -5,7 +5,7 @@
 <link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#eef1f7">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <script>
-const APP_V="1791380622";
+const APP_V="1791381259";
 async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();
  if(v&&v!==APP_V&&sessionStorage.getItem("tried")!==v){sessionStorage.setItem("tried",v);location.replace(location.pathname+"?v="+v);}}catch(e){}}
 checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
@@ -683,8 +683,15 @@ function viewToday(){
 }
 
 function viewWeek(){
-  const now = new Date(), mon = addDays(monday(now), weekOffset*7), w = weekOf(mon);
-  if (selDay===null) selDay = (weekOffset===0 && dow(now)<5) ? dow(now) : 0;
+  const now = new Date();
+  if (selDay===null){
+    // open on today while school is on, otherwise on the next school day
+    const todayL = lessonsOn(now), t = now.getHours()*60+now.getMinutes();
+    const target = (todayL.length && t < mins(todayL[todayL.length-1].end)) ? now : (nextSchoolDay(now) || now);
+    weekOffset = Math.round((monday(target)-monday(now))/(7*864e5));
+    selDay = Math.min(dow(target),4);
+  }
+  const mon = addDays(monday(now), weekOffset*7), w = weekOf(mon);
   const d = addDays(mon, selDay), L = lessonsOn(d), k = iso(d);
   const title = weekOffset===0?"See nädal":weekOffset===1?"Järgmine nädal":weekOffset===-1?"Eelmine nädal":`Nädal ${nice(mon)}`;
   let h = `<div class="head"><div><div class="hello">9D</div><h1>Tunniplaan</h1></div>${w?`<span class="chip">${w}-nädal</span>`:""}</div>
