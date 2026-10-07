@@ -5,7 +5,7 @@
 <link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#eef1f7">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <script>
-const APP_V="1791381872";
+const APP_V="1791382124";
 async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();
  if(v&&v!==APP_V&&sessionStorage.getItem("tried")!==v){sessionStorage.setItem("tried",v);location.replace(location.pathname+"?v="+v);}}catch(e){}}
 checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
@@ -213,6 +213,11 @@ button:focus-visible,input:focus-visible{outline:2.5px solid var(--accent);outli
 .ai a span{flex:none;width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-size:18px;background:color-mix(in srgb,var(--c) 16%,var(--card))}
 .ai a small{display:block;font-weight:500;color:var(--muted);font-size:13px}
 .ai a:active{transform:scale(.98)}
+.photo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;border-radius:20px;padding:15px 16px;font-weight:700;margin-top:10px;
+  background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 60%,#000))}
+.photo span{flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:19px;background:rgba(255,255,255,.18)}
+.photo small{display:block;font-weight:500;opacity:.85;font-size:13px}
+.ai .photo{margin-top:0}
 </style>
 
 </head><body><main id="app"></main>
@@ -724,6 +729,7 @@ function viewTasks(){
     </form>`;
   } else {
     h += `<button class="fab" id="addbtn"><span>+</span> Lisa kodutöö</button>`;
+    h += photoBtn("");
   }
   const groups = [["Hilinenud",t=>t.due<today],["Täna",t=>t.due===today],["Homme",t=>t.due===iso(addDays(now,1))],["Sel nädalal",t=>t.due>iso(addDays(now,1))&&t.due<=iso(addDays(monday(now),6))],["Hiljem",t=>t.due>iso(addDays(monday(now),6))]];
   if (!open.length && !adding){
@@ -763,6 +769,14 @@ function viewSubjects(){
     return `<button class="scard" data-subj-open="${s}" style="${C(s)}">${hot?'<span class="kt">KT</span>':""}<b>${esc(s)}</b><small>${esc(ED[s].topic)}</small></button>`}).join("")}</div>`;
   return h;
 }
+function photoLink(s){
+  const d = s && ED[s];
+  let q = "Olen 9. klassi õpilane Eestis. " + (s ? `Aine: ${s}` + (d ? `, praegune teema: ${d.topic}` : "") + ". " : "")
+    + "Saadan sulle kohe pildi ülesandest. Aita mul see lahendada: loe ülesanne pildilt ette, lahenda samm-sammult ja seleta iga sammu lihtsalt, et ma saaksin aru, mitte ainult vastust. "
+    + "Kui pildil on mitu ülesannet, küsi, millega alustame. Lõpus anna üks sarnane ülesanne harjutamiseks. Räägi eesti keeles.";
+  return "https://claude.ai/new?q=" + encodeURIComponent(q);
+}
+const photoBtn = s => `<a class="photo" href="${photoLink(s)}" target="_blank" rel="noopener"><span>📸</span><div>Abi ülesandega<small>Pildista ülesanne ja AI aitab lahendada</small></div></a>`;
 function aiLink(s, mode){
   const d = ED[s], plain = x => String(x).replace(/<[^>]+>/g,"");
   const ctx = `Olen 9. klassi õpilane Eestis (Viimsi Kool). Aine: ${s}. Praegune teema: ${d.topic}.
@@ -790,6 +804,7 @@ function viewSubject(s){
   let h = `<button class="back" id="sback">‹ Ained</button>
   <div class="shero ${animate?"in":""}" style="${C(s)}"><div class="k">Praegu õpime</div><h1>${esc(s)}</h1><p>${esc(d.topic)}</p></div>
   <div class="ai" style="${C(s)}">
+    ${photoBtn(s)}
     <a href="${aiLink(s,"explain")}" target="_blank" rel="noopener"><span>💬</span><div>Seleta mulle<small>AI seletab teema lihtsalt lahti</small></div></a>
     <a href="${aiLink(s,"quiz")}" target="_blank" rel="noopener"><span>🎯</span><div>Küsi minult<small>AI küsib küsimusi ja kontrollib vastuseid</small></div></a>
     ${(d.tests||[]).some(x=>x[0]>=today)?`<a href="${aiLink(s,"test")}" target="_blank" rel="noopener"><span>📝</span><div>Valmista KT-ks<small>Õppimisplaan + proovitöö</small></div></a>`:""}
