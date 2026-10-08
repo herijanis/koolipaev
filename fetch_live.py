@@ -1,6 +1,6 @@
 # Fetches 9D's dated timetable (with substitutions and events) from Viimsi Kool's public Edupage
 # for yesterday .. +13 days and writes live.json for the app. Run by .github/workflows/live.yml.
-import json, re, socket, urllib.request, datetime, zoneinfo
+import json, re, socket, sys, time, urllib.request, datetime, zoneinfo
 
 # GitHub runners have no IPv6 route; Edupage resolves to IPv6 first
 _gai = socket.getaddrinfo
@@ -17,9 +17,16 @@ NAMES = {
 
 def call(path, func, args):
     body = json.dumps({"__args": [None] + args, "__gsh": "00000000"}).encode()
-    req = urllib.request.Request(f"{BASE}{path}?__func={func}", body, {"Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return json.load(r)["r"]
+    req = urllib.request.Request(f"{BASE}{path}?__func={func}", body,
+                                 {"Content-Type": "application/json", "User-Agent": "Mozilla/5.0 (koolipaev)"})
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=90) as r:
+                return json.load(r)["r"]
+        except OSError:
+            if attempt == 2:
+                raise
+            time.sleep(20)
 
 def main():
     today = datetime.datetime.now(zoneinfo.ZoneInfo("Europe/Tallinn")).date()
@@ -74,4 +81,9 @@ def main():
     json.dump(out, open("live.json", "w", encoding="utf8"), ensure_ascii=False, separators=(",", ":"))
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except OSError as e:
+        # Edupage is sometimes unreachable from GitHub's servers; keep the last live.json and try next run
+        print("Edupage ei vastanud:", e)
+        sys.exit(0)
