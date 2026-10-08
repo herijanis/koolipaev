@@ -5,7 +5,7 @@
 <link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#f4efe8">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <script>
-const APP_V="1791386350";
+const APP_V="1791436760";
 async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();
  if(v&&v!==APP_V&&sessionStorage.getItem("tried")!==v){sessionStorage.setItem("tried",v);location.replace(location.pathname+"?v="+v);}}catch(e){}}
 checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
@@ -252,10 +252,45 @@ nav.tabs button.on{color:var(--fg);background:var(--soft)}
 .row2 .ghost{background:var(--card)}
 .fcbar{height:6px;border-radius:9px;background:var(--line);overflow:hidden;margin-bottom:12px}
 .fcbar i{display:block;height:100%;background:color-mix(in srgb,var(--c) 70%,var(--fg));border-radius:9px}
+.lunch{width:100%;font:inherit;text-align:left;border:0;cursor:pointer;color:var(--fg);background:var(--card);border-radius:20px;padding:14px 16px;margin-top:10px;box-shadow:0 1px 0 var(--line);display:block}
+.lhead{display:flex;align-items:center;gap:12px}
+.lic{flex:none;width:40px;height:40px;border-radius:13px;display:grid;place-items:center;font-size:19px;background:#f3e7d3}
+.lmain{flex:1;min-width:0}
+.lmain small{display:block;color:var(--muted);font-size:13px}
+.lmain b{display:block;font-weight:700}
+.lmain i{display:block;font-style:normal;color:#6f8a62;font-size:14px;margin-top:2px}
+.chev{font-style:normal;color:var(--muted);font-size:22px;line-height:1;transition:transform .3s}
+.lunch.open .chev{transform:rotate(90deg)}
+.lmore{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.lunch.open .lmore{grid-template-rows:1fr}
+.lmore>div{overflow:hidden}
+.lmore p{margin:10px 0 0 52px;color:var(--muted);font-size:14px;line-height:1.45}
+.news{display:flex;flex-direction:column;gap:8px}
+.news a{display:block;text-decoration:none;color:var(--fg);background:var(--card);border-radius:16px;padding:12px 14px;box-shadow:0 1px 0 var(--line)}
+.news small{display:block;color:var(--muted);font-size:12px;margin-bottom:2px}
+.news b{font-weight:600;font-size:15px}
+/* motion: staggered entry on tab change, sliding tab pill, card flips, press feedback */
+nav.tabs .pill{position:absolute;top:6px;bottom:6px;left:0;width:0;border-radius:20px;background:var(--soft);z-index:0}
+nav.tabs button{z-index:1}
+nav.tabs button.on{background:none}
+.task,.scard,.exam,.ktbanner,.lunch,.fab,.go,.ghost,.next,.news a,.ai a,.photo,.days button{transition:transform .15s ease}
+.task:active,.scard:active,.exam:active,.ktbanner:active,.lunch:active,.fab:active,.go:active,.ghost:active,.news a:active,.ai a:active,.photo:active,.days button:active{transform:scale(.975)}
+@media (prefers-reduced-motion:no-preference){
+  nav.tabs .pill{transition:transform .45s cubic-bezier(.3,1.25,.5,1),width .45s cubic-bezier(.3,1.25,.5,1)}
+  .stagger>*{animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
+  .stagger>*:nth-child(2){animation-delay:.04s}.stagger>*:nth-child(3){animation-delay:.08s}.stagger>*:nth-child(4){animation-delay:.12s}
+  .stagger>*:nth-child(5){animation-delay:.16s}.stagger>*:nth-child(6){animation-delay:.2s}.stagger>*:nth-child(7){animation-delay:.24s}
+  .stagger>*:nth-child(n+8){animation-delay:.28s}
+  .flash.fx-flip{animation:flipin .4s cubic-bezier(.2,.8,.2,1)}
+  .flash.fx-next{animation:slidein .4s cubic-bezier(.2,.8,.2,1)}
+  @keyframes flipin{from{transform:perspective(900px) rotateY(-80deg);opacity:.4}}
+  @keyframes slidein{from{transform:translateX(40px) rotate(2deg);opacity:0}}
+  .chk.pop{animation:pop .35s}
+}
 </style>
 
 </head><body><main id="app"></main>
-<nav class="tabs" aria-label="Vaated">
+<nav class="tabs" aria-label="Vaated"><span class="pill" aria-hidden="true"></span>
   <button id="tab-today" data-tab="today"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Täna</button>
   <button id="tab-week" data-tab="week"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="4"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Tunniplaan</button>
   <button id="tab-tasks" data-tab="tasks"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="4"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>Kodutööd<span class="badge" id="badge" hidden></span></button>
@@ -626,7 +661,26 @@ function cancelledOn(d){
   return bakedOn(d).filter(b=>!live.some(l=>l.p===b.p)).map(b=>({...b, cancelled:true}));
 }
 const dayRows = d => lessonsOn(d).concat(cancelledOn(d)).sort((a,b)=>a.start.localeCompare(b.start));
+let EVENTS = {}, MENU = {}, NEWS = [], lunchOpen = false;
+function lunchCard(d, label){
+  const m = MENU[iso(d)]; if (!m) return "";
+  return `<button class="lunch ${lunchOpen?"open":""}" id="lunch"><div class="lhead"><span class="lic">🍽️</span><div class="lmain"><small>${label}</small><b>${esc(m.main)}</b>${m.veg?`<i>🌱 ${esc(m.veg)}</i>`:""}</div><em class="chev">›</em></div>
+    <div class="lmore"><div>${m.sides.length?`<p>${m.sides.map(esc).join(" · ")}</p>`:""}${m.snack?`<p>🍎 Snäkk: ${esc(m.snack)}</p>`:""}</div></div></button>`;
+}
+function newsBlock(){
+  if (!NEWS.length) return "";
+  return `<div class="label"><span>Koolis räägitakse</span></div><div class="news">${NEWS.slice(0,3).map(n=>`<a href="${esc(n.link)}" target="_blank" rel="noopener"><small>${relDay(parse(n.date),new Date())}</small><b>${esc(n.title)}</b></a>`).join("")}</div>`;
+}
+function eventNotes(k){
+  const list = ((LIVE && LIVE.events && LIVE.events[k]) || []).concat(EVENTS[k] || []), seen = new Set([CAL.notes[k]]);
+  return list.filter(e=>!seen.has(e.name) && seen.add(e.name)).map(e=>{
+    const time = e.start && e.start!=="00:00" ? ` · ${e.start}${e.end && e.end!==e.start ? "–"+e.end : ""}` : "";
+    return `<div class="note">📌 ${esc(e.name)}${time}</div>`; }).join("");
+}
 async function loadLive(){
+  const get = async f => { try { const r = await fetch(f+"?"+Date.now(), {cache:"no-store"}); return r.ok ? await r.json() : null; } catch(e){ return null; } };
+  const [ev, menu, news] = await Promise.all([get("events.json"), get("menu.json"), get("news.json")]);
+  if (ev) EVENTS = ev; if (menu) MENU = menu; if (news) NEWS = news;
   try { const r = await fetch("live.json?"+Date.now(), {cache:"no-store"}); if (r.ok){ LIVE = await r.json(); if (!adding) render(); } } catch(e){}
 }
 function nextSchoolDay(from){ for (let i=1;i<60;i++){ const d=addDays(from,i); if (lessonsOn(d).length) return d; } return null; }
@@ -734,7 +788,7 @@ function viewToday(){
   const L = lessonsOn(now), w = weekOf(now);
   let h = `<div class="head"><div><div class="hello">${greeting(now.getHours())}, Elisabet 👋</div><h1>${DAYS[dow(now)]}<br>${nice(now)}</h1></div><div class="chips">${w?`<span class="chip">${w}-nädal</span>`:""}${streakChip()}</div></div>`;
   if (CAL.notes[k]) h += `<div class="note">📌 ${esc(CAL.notes[k])}</div>`;
-  for (const e of ((LIVE && LIVE.events && LIVE.events[k]) || [])) if (e.name!==CAL.notes[k]) h += `<div class="note">📌 ${esc(e.name)}${e.start!=="00:00"?` · ${e.start}–${e.end}`:""}</div>`;
+  h += eventNotes(k);
   const kts = openTasks().filter(x=>x.type==="Kontrolltöö" && x.due>=k && x.due<=iso(addDays(now,3)));
   h += kts.map(x=>`<button class="ktbanner" data-subj-go="${esc(x.subj)}" style="${C(x.subj)}"><span>📝</span><div><b>${cap(relDay(parse(x.due),now))} ${esc(x.subj.toLowerCase())} KT</b><small>${esc(x.what)}</small></div><em>Valmista ette ›</em></button>`).join("");
 
@@ -775,17 +829,19 @@ function viewToday(){
     h += `</div>`;
     const due = nd ? openTasks().filter(x=>x.due<=iso(nd)) : [];
     h += `<div class="tiles"><div class="tile"><small>Kodutööd</small><b class="tnum">${due.length||"0 ✓"}</b><span>${due.length?"veel teha":"kõik tehtud"}</span></div>${breakTile}</div>`;
+    if (nd) h += lunchCard(nd, cap(relDay(nd,now))+" lõunaks");
     if (nd){ h += dueBlock(due, relDay(nd,now)); h += `<div class="label"><span>${cap(relDay(nd,now))}</span></div><div class="stack">${dayRows(nd).map(l=>lessonRow(l)).join("")}</div>`; }
-    return h;
+    return h + newsBlock();
   }
 
   const end = L[L.length-1].end, toEnd = mins(end)-t;
   h += `<div class="tiles"><div class="tile"><small>Kool läbi</small><b class="tnum">${end}</b><span>veel ${dur(toEnd)}</span></div>${breakTile}</div>`;
+  h += lunchCard(now, "Täna lõunaks");
   h += dueBlock(openTasks().filter(x=>x.due<=k), "täna");
   h += `<div class="label"><span>Tänased tunnid</span><span>${L.filter(l=>t>=mins(l.end)).length}/${L.length}</span></div><div class="stack">${dayRows(now).map(l=>lessonRow(l, t>=mins(l.end)?"past":l===cur?"cur":"")).join("")}</div>`;
   const nd = nextSchoolDay(now);
   if (nd) h += dueBlock(openTasks().filter(x=>x.due===iso(nd)), relDay(nd,now));
-  return h;
+  return h + newsBlock();
 }
 
 function viewWeek(){
@@ -805,9 +861,10 @@ function viewWeek(){
   <div class="days">${DS.map((s,i)=>{const dd=addDays(mon,i), ls=lessonsOn(dd);
     return `<button data-day="${i}" class="${i===selDay?"on":""} ${iso(dd)===iso(now)?"today":""}"><span>${s}</span><b>${dd.getDate()}</b><em>${ls.map(l=>`<i style="${C(l.subj)}"></i>`).join("")}</em></button>`}).join("")}</div>`;
   if (CAL.notes[k]) h += `<div class="note">📌 ${esc(CAL.notes[k])}</div>`;
-  for (const e of ((LIVE && LIVE.events && LIVE.events[k]) || [])) if (e.name!==CAL.notes[k]) h += `<div class="note">📌 ${esc(e.name)}${e.start!=="00:00"?` · ${e.start}–${e.end}`:""}</div>`;
+  h += eventNotes(k);
   h += L.length || cancelledOn(d).length ? `<div class="stack">${dayRows(d).map(l=>lessonRow(l)).join("")}</div>`
        : `<div class="empty-day"><b>${CAL.off[k]==="Koolivaheaeg"?"Vaheaeg 🌴":esc(CAL.off[k]||"Tunde pole")}</b><span>${nice(d)}</span></div>`;
+  h += lunchCard(d, "Lõuna");
   h += dueBlock(openTasks().filter(t=>t.due===k), relDay(d,now));
   return h;
 }
@@ -844,7 +901,7 @@ function viewTasks(){
 }
 
 // ---- subjects (content from Stuudium, see ED) ----
-let subj = null, openTerms = new Set(), answers = {}, fc = null;
+let subj = null, openTerms = new Set(), answers = {}, fc = null, fx = "";
 function viewCards(){
   const d = ED[fc.s];
   let h = `<button class="back" id="fcclose">‹ ${esc(fc.s)}</button>`;
@@ -853,7 +910,7 @@ function viewCards(){
   const [term, def] = d.terms[fc.queue[0]];
   h += `<div class="label"><span>Mõistekaardid</span><span>${fc.known}/${fc.total} selge</span></div>
     <div class="fcbar" style="${C(fc.s)}"><i style="width:${Math.round(fc.known/fc.total*100)}%"></i></div>
-    <button class="flash ${fc.flip?"flip":""}" id="fcflip" style="${C(fc.s)}"><small>${fc.flip?esc(term):"Mis see on?"}</small><b>${esc(fc.flip?def:term)}</b><em>${fc.flip?"":"Puuduta, et näha vastust"}</em></button>`;
+    <button class="flash ${fc.flip?"flip":""} ${fx?"fx-"+fx:""}" id="fcflip" style="${C(fc.s)}"><small>${fc.flip?esc(term):"Mis see on?"}</small><b>${esc(fc.flip?def:term)}</b><em>${fc.flip?"":"Puuduta, et näha vastust"}</em></button>`;
   if (fc.flip) h += `<div class="row2"><button class="ghost" id="fcno">Ei teadnud</button><button class="go" id="fcyes">Teadsin ✓</button></div>`;
   return h;
 }
@@ -939,8 +996,11 @@ function viewSubject(s){
 function render(){
   const app = document.getElementById("app"), focusId = document.activeElement?.id;
   app.innerHTML = tab==="today"?viewToday():tab==="week"?viewWeek():tab==="subj"?viewSubjects():viewTasks();
-  animate = false; popId = null;
+  if (animate){ app.classList.remove("stagger"); void app.offsetWidth; app.classList.add("stagger"); clearTimeout(render.st); render.st = setTimeout(()=>app.classList.remove("stagger"), 900); }
+  animate = false; popId = null; fx = "";
   document.querySelectorAll("nav.tabs button").forEach(b=>b.classList.toggle("on", b.dataset.tab===tab));
+  const on = document.querySelector("nav.tabs button.on"), pill = document.querySelector("nav.tabs .pill");
+  if (on && pill){ pill.style.width = on.offsetWidth+"px"; pill.style.transform = `translateX(${on.offsetLeft}px)`; }
   const urgent = openTasks().filter(t=>t.due<=iso(addDays(new Date(),1))).length;
   const badge = document.getElementById("badge"); badge.hidden = !urgent; badge.textContent = urgent;
   if (focusId && document.getElementById(focusId)) document.getElementById(focusId).focus();
@@ -972,6 +1032,7 @@ app.addEventListener("click", e=>{
     const t = allTasks().find(x=>x.id===b.dataset.del);
     if (t && t.auto){ autoState[t.id]="hidden"; saveAuto(); render(); } else removeTask(b.dataset.del);
   }
+  else if (b.id==="lunch"){ lunchOpen=!lunchOpen; b.classList.toggle("open", lunchOpen); }
   else if (b.id==="restore"){
     autoState = {}; saveAuto();
     for (const t of tasks.filter(x=>x.done)) saveTask({...t, done:false});
@@ -979,9 +1040,9 @@ app.addEventListener("click", e=>{
   }
   else if (b.dataset.subjGo){ tab="subj"; subj = ED[b.dataset.subjGo] ? b.dataset.subjGo : null; animate=true; render(); window.scrollTo(0,0); }
   else if (b.id==="fcstart"){ const n=ED[subj].terms.length; fc={s:subj, queue:[...Array(n).keys()].sort(()=>Math.random()-.5), flip:false, known:0, total:n}; render(); window.scrollTo(0,0); }
-  else if (b.id==="fcflip"){ fc.flip=!fc.flip; render(); }
-  else if (b.id==="fcyes"){ fc.queue.shift(); fc.known++; fc.flip=false; if (!fc.queue.length) markStudied(); render(); }
-  else if (b.id==="fcno"){ fc.queue.push(fc.queue.shift()); fc.flip=false; render(); }
+  else if (b.id==="fcflip"){ fc.flip=!fc.flip; fx="flip"; render(); }
+  else if (b.id==="fcyes"){ fc.queue.shift(); fc.known++; fc.flip=false; fx="next"; if (!fc.queue.length) markStudied(); render(); }
+  else if (b.id==="fcno"){ fc.queue.push(fc.queue.shift()); fc.flip=false; fx="next"; render(); }
   else if (b.id==="fcagain"){ fc.queue=[...Array(fc.total).keys()].sort(()=>Math.random()-.5); fc.known=0; fc.flip=false; render(); }
   else if (b.id==="fcclose"){ fc=null; render(); window.scrollTo(0,0); }
   else if (b.dataset.subjOpen){ subj=b.dataset.subjOpen; animate=true; render(); window.scrollTo(0,0); }

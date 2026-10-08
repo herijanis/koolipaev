@@ -16,8 +16,9 @@ jobs:
         with:
           python-version: "3.12"
       - run: python fetch_live.py
+      - run: pip install -q pypdf && python fetch_school.py
       - run: |
           git config user.name "koolipaev-bot"
           git config user.email "koolipaev-bot@users.noreply.github.com"
-          git add live.json
+          git add live.json menu.json news.json
           git diff --cached --quiet || (git commit -m "Asendused $(date -u +%H:%M)" && git push)
