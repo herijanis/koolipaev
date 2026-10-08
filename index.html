@@ -5,7 +5,7 @@
 <link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#f4efe8">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <script>
-const APP_V="1791436760";
+const APP_V="1791437242";
 async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();
  if(v&&v!==APP_V&&sessionStorage.getItem("tried")!==v){sessionStorage.setItem("tried",v);location.replace(location.pathname+"?v="+v);}}catch(e){}}
 checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
@@ -70,7 +70,7 @@ h1{font-family:var(--display);font-size:32px;font-weight:800;letter-spacing:-.03
 
 /* next + tiles */
 .next{display:flex;align-items:center;gap:14px;background:var(--card);border-radius:20px;padding:14px 16px;margin-top:10px}
-.next .ic{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:18px;color:var(--c);background:color-mix(in srgb,var(--c) 15%,var(--card))}
+.next .ic{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:18px;color:var(--c);background:color-mix(in srgb,var(--c) 24%,var(--card))}
 .next .n{flex:1;min-width:0}
 .next .n small{display:block;color:var(--muted);font-size:13px}
 .next .n b{font-weight:700}
@@ -83,7 +83,7 @@ h1{font-family:var(--display);font-size:32px;font-weight:800;letter-spacing:-.03
 
 /* lessons */
 .lesson{display:grid;grid-template-columns:50px 1fr auto;gap:12px;align-items:center;border-radius:18px;padding:12px 14px;
-  background:color-mix(in srgb,var(--c) 9%,var(--card))}
+  background:color-mix(in srgb,var(--c) 16%,var(--card))}
 .lesson .time{font-size:13px;color:var(--muted);line-height:1.3}
 .lesson .time b{display:block;color:var(--fg);font-size:15px}
 .lesson .n{font-weight:700;min-width:0;display:flex;align-items:center;gap:9px}
@@ -139,7 +139,7 @@ form.add input{font:inherit;font-size:16px;width:100%;border:1.5px solid var(--l
 .seg button{font:inherit;font-weight:700;border:0;background:none;color:var(--muted);border-radius:11px;padding:10px;cursor:pointer}
 .seg button.on{background:var(--card);color:var(--fg);box-shadow:0 2px 8px -2px rgba(0,0,0,.15)}
 .subjects{display:flex;flex-wrap:wrap;gap:6px}
-.subjects button{font:inherit;font-size:14px;font-weight:600;border:0;border-radius:99px;padding:8px 12px;cursor:pointer;color:var(--fg);background:color-mix(in srgb,var(--c) 13%,var(--card))}
+.subjects button{font:inherit;font-size:14px;font-weight:600;border:0;border-radius:99px;padding:8px 12px;cursor:pointer;color:var(--fg);background:color-mix(in srgb,var(--c) 22%,var(--card))}
 .subjects button.on{background:var(--c);color:#fff}
 .hint{font-size:13px;color:var(--muted)}
 .row2{display:flex;gap:8px}
@@ -150,7 +150,7 @@ form.add input{font:inherit;font-size:16px;width:100%;border:1.5px solid var(--l
 
 /* subjects */
 .exam{display:flex;align-items:center;gap:12px;background:var(--card);border-radius:18px;padding:12px 14px;cursor:pointer;border:0;font:inherit;color:inherit;text-align:left;width:100%}
-.exam .when{flex:none;width:66px;text-align:center;border-radius:12px;padding:7px 6px;background:color-mix(in srgb,var(--c) 14%,var(--card));color:color-mix(in srgb,var(--c) 80%,var(--fg))}
+.exam .when{flex:none;width:66px;text-align:center;border-radius:12px;padding:7px 6px;background:color-mix(in srgb,var(--c) 22%,var(--card));color:color-mix(in srgb,var(--c) 80%,var(--fg))}
 .exam .when b{display:block;font-family:var(--display);font-size:20px;font-weight:800;line-height:1}
 .exam .when b.w{font-size:16px;line-height:20px}
 .exam .when span{font-size:10px;font-weight:700}
@@ -160,7 +160,7 @@ form.add input{font:inherit;font-size:16px;width:100%;border:1.5px solid var(--l
 .exam .body small{color:var(--muted);font-size:13px}
 .sgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .scard{font:inherit;color:inherit;text-align:left;border:0;cursor:pointer;border-radius:20px;padding:14px;min-height:96px;display:flex;flex-direction:column;justify-content:space-between;gap:8px;
-  background:color-mix(in srgb,var(--c) 11%,var(--card));position:relative}
+  background:color-mix(in srgb,var(--c) 20%,var(--card));position:relative}
 .scard b{font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.01em;color:color-mix(in srgb,var(--c) 70%,var(--fg))}
 .scard small{font-size:13px;color:var(--muted);line-height:1.3}
 .scard .kt{position:absolute;top:12px;right:12px}
@@ -202,7 +202,7 @@ button:focus-visible,input:focus-visible{outline:2.5px solid var(--accent);outli
 @media (prefers-reduced-motion:reduce){.in,.task.pop .chk{animation:none}}
 .ai{display:grid;gap:8px;margin-top:12px}
 .ai a{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg);background:var(--card);border-radius:18px;padding:14px 16px;font-weight:700;box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--c) 35%,var(--line))}
-.ai a span{flex:none;width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-size:18px;background:color-mix(in srgb,var(--c) 16%,var(--card))}
+.ai a span{flex:none;width:36px;height:36px;border-radius:12px;display:grid;place-items:center;font-size:18px;background:color-mix(in srgb,var(--c) 24%,var(--card))}
 .ai a small{display:block;font-weight:500;color:var(--muted);font-size:13px}
 .ai a:active{transform:scale(.98)}
 .photo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;border-radius:20px;padding:15px 16px;font-weight:700;margin-top:10px;
@@ -214,7 +214,7 @@ button:focus-visible,input:focus-visible{outline:2.5px solid var(--accent);outli
 /* soft beige theme: pastel tints with dark espresso text instead of saturated colour blocks */
 h1,.hero .s,.hero .room,.hero .left b,.next .rm,.tile b,.lesson .rm,.days button b,.empty-day b,.party b,.exam .when b,.scard b,.shero h1{font-weight:600;letter-spacing:-.01em}
 h1{font-size:34px}
-.hero,.shero{color:var(--fg);background:color-mix(in srgb,var(--c) 24%,var(--card));box-shadow:var(--shadow)}
+.hero,.shero{color:var(--fg);background:color-mix(in srgb,var(--c) 36%,var(--card));box-shadow:var(--shadow)}
 .hero::after{background:color-mix(in srgb,var(--c) 22%,transparent)}
 .hero .k,.shero .k{opacity:1;color:color-mix(in srgb,var(--c) 55%,var(--fg))}
 .hero .room{color:color-mix(in srgb,var(--c) 55%,var(--fg))}
@@ -243,7 +243,7 @@ nav.tabs button.on{color:var(--fg);background:var(--soft)}
 .ktbanner div{flex:1;min-width:0}
 .ktbanner small{display:block;color:var(--muted);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ktbanner em{font-style:normal;font-weight:700;font-size:13px;color:var(--warn);white-space:nowrap}
-.flash{width:100%;min-height:260px;font:inherit;border:0;cursor:pointer;border-radius:28px;padding:28px 22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;color:var(--fg);background:color-mix(in srgb,var(--c) 22%,var(--card));box-shadow:var(--shadow);margin-bottom:12px}
+.flash{width:100%;min-height:260px;font:inherit;border:0;cursor:pointer;border-radius:28px;padding:28px 22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;color:var(--fg);background:color-mix(in srgb,var(--c) 32%,var(--card));box-shadow:var(--shadow);margin-bottom:12px}
 .flash small{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:color-mix(in srgb,var(--c) 55%,var(--fg))}
 .flash b{font-family:var(--display);font-size:30px;font-weight:600;line-height:1.15}
 .flash.flip b{font-family:var(--body);font-size:19px;font-weight:500;line-height:1.45}
@@ -254,7 +254,7 @@ nav.tabs button.on{color:var(--fg);background:var(--soft)}
 .fcbar i{display:block;height:100%;background:color-mix(in srgb,var(--c) 70%,var(--fg));border-radius:9px}
 .lunch{width:100%;font:inherit;text-align:left;border:0;cursor:pointer;color:var(--fg);background:var(--card);border-radius:20px;padding:14px 16px;margin-top:10px;box-shadow:0 1px 0 var(--line);display:block}
 .lhead{display:flex;align-items:center;gap:12px}
-.lic{flex:none;width:40px;height:40px;border-radius:13px;display:grid;place-items:center;font-size:19px;background:#f3e7d3}
+.lic{flex:none;width:40px;height:40px;border-radius:13px;display:grid;place-items:center;font-size:19px;background:linear-gradient(135deg,#fde2c4,#f9d0d6)}
 .lmain{flex:1;min-width:0}
 .lmain small{display:block;color:var(--muted);font-size:13px}
 .lmain b{display:block;font-weight:700}
@@ -287,6 +287,12 @@ nav.tabs button.on{background:none}
   @keyframes slidein{from{transform:translateX(40px) rotate(2deg);opacity:0}}
   .chk.pop{animation:pop .35s}
 }
+.exam .when b.w{font-size:16px}
+.tile:first-child{background:linear-gradient(160deg,#eef3fd,var(--card) 70%)}
+.tile:nth-child(2){background:linear-gradient(160deg,#eaf6ee,var(--card) 70%)}
+.lunch{background:linear-gradient(160deg,#fff1e4,var(--card) 65%)}
+.news a{background:linear-gradient(160deg,#f5effc,var(--card) 70%)}
+.chip{background:linear-gradient(135deg,#efe3d4,#f3dfe6)}
 </style>
 
 </head><body><main id="app"></main>
@@ -611,7 +617,7 @@ const TT = [
  [3,1,"A","Eesti keel","Pappel","C241"],[3,2,"","Geograafia","Ojassalu","C204"],[3,3,"","Kehaline","Rünne","D0"],[3,4,"","Vene keel","Reimann","C119"],
  [4,1,"","Ühiskonnaõpetus","Vaarend","C223"],[4,2,"","Ajalugu","Kapsi","C229"],[4,3,"","Füüsika","Luus","C210"],[4,4,"A","Vene keel","Reimann","C119"]
 ];
-const COLORS = {"Matemaatika": "#7f95b8", "Eesti keel": "#c99a6b", "Kirjandus": "#b98a8a", "Inglise keel": "#8fa889", "Vene keel": "#c48b9f", "Keemia": "#9d8fb8", "Füüsika": "#7fa3ad", "Bioloogia": "#94a678", "Geograafia": "#6f9a96", "Ajalugu": "#a68668", "Ühiskonnaõpetus": "#9c958c", "Muusika": "#c08a96", "Käsitöö": "#c8a26e", "Kehaline": "#d1a75d", "Klassijuhataja tund": "#8d9bb5"};
+const COLORS = {"Matemaatika": "#6f8fd6", "Eesti keel": "#e3995a", "Kirjandus": "#de8391", "Inglise keel": "#6fb383", "Vene keel": "#d27fab", "Keemia": "#9b86dc", "Füüsika": "#58a9cc", "Bioloogia": "#8db85a", "Geograafia": "#45a89c", "Ajalugu": "#c98b56", "Ühiskonnaõpetus": "#a8988a", "Muusika": "#e57fa0", "Käsitöö": "#e5ad55", "Kehaline": "#ecb33c", "Klassijuhataja tund": "#8aa0dc"};
 const SUBJECTS = [...new Set(TT.map(l=>l[3]))].filter(s=>s!=="Klassijuhataja tund").sort((a,b)=>a.localeCompare(b,"et"));
 const DAYS = ["Esmaspäev","Teisipäev","Kolmapäev","Neljapäev","Reede","Laupäev","Pühapäev"];
 const DS = ["E","T","K","N","R"];
