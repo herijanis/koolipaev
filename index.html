@@ -5,7 +5,7 @@
 <link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#f4efe8">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <script>
-const APP_V="1791437242";
+const APP_V="1791551680";
 async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();
  if(v&&v!==APP_V&&sessionStorage.getItem("tried")!==v){sessionStorage.setItem("tried",v);location.replace(location.pathname+"?v="+v);}}catch(e){}}
 checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
@@ -305,44 +305,44 @@ nav.tabs button.on{background:none}
 
 <script>
 const CAL = {"weeks": {"2026-08-31": "A", "2026-09-07": "B", "2026-09-14": "A", "2026-09-21": "B", "2026-09-28": "A", "2026-10-05": "B", "2026-10-12": "A", "2026-10-19": "B", "2026-10-26": "A", "2026-11-02": "A", "2026-11-09": "B", "2026-11-16": "A", "2026-11-23": "B", "2026-11-30": "A", "2026-12-07": "B", "2026-12-14": "A", "2026-12-21": "B", "2026-12-28": "A", "2027-01-04": "B", "2027-01-11": "A", "2027-01-18": "B", "2027-01-25": "A", "2027-02-01": "B", "2027-02-08": "A", "2027-02-15": "B", "2027-02-22": "A", "2027-03-01": "A", "2027-03-08": "B", "2027-03-15": "A", "2027-03-22": "B", "2027-03-29": "A", "2027-04-05": "B", "2027-04-12": "A", "2027-04-19": "A", "2027-04-26": "B", "2027-05-03": "A", "2027-05-10": "B", "2027-05-17": "A", "2027-05-24": "B", "2027-05-31": "A", "2027-06-07": "B", "2027-06-14": "A"}, "off": {"2026-10-26": "Koolivaheaeg", "2026-10-27": "Koolivaheaeg", "2026-10-28": "Koolivaheaeg", "2026-10-29": "Koolivaheaeg", "2026-10-30": "Koolivaheaeg", "2026-12-18": "Jõulukontsert", "2026-12-21": "Koolivaheaeg", "2026-12-22": "Koolivaheaeg", "2026-12-23": "Koolivaheaeg", "2026-12-24": "Koolivaheaeg", "2026-12-25": "Koolivaheaeg", "2026-12-28": "Koolivaheaeg", "2026-12-29": "Koolivaheaeg", "2026-12-30": "Koolivaheaeg", "2026-12-31": "Koolivaheaeg", "2027-01-01": "Koolivaheaeg", "2027-02-22": "Koolivaheaeg", "2027-02-23": "Koolivaheaeg", "2027-02-24": "Koolivaheaeg", "2027-02-25": "Koolivaheaeg", "2027-02-26": "Koolivaheaeg", "2027-03-26": "Vaba päev", "2027-04-12": "Koolivaheaeg", "2027-04-13": "Koolivaheaeg", "2027-04-14": "Koolivaheaeg", "2027-04-15": "Koolivaheaeg", "2027-04-16": "Koolivaheaeg", "2027-06-09": "Koolivaheaeg", "2027-06-10": "Koolivaheaeg", "2027-06-11": "Koolivaheaeg", "2027-06-14": "Koolivaheaeg", "2027-06-15": "Koolivaheaeg", "2027-06-16": "Koolivaheaeg", "2027-06-17": "Koolivaheaeg", "2027-06-18": "Koolivaheaeg"}, "notes": {"2026-09-15": "Loeng edasiõppimisvõimalustest", "2026-09-29": "Lapsevanemate üldkoosolek kell 18.00", "2026-10-05": "Õpetajate päev", "2026-10-15": "Iseõppepäev", "2026-11-23": "Iseõppepäev", "2027-01-11": "Iseõppepäev", "2027-02-10": "Iseõppepäev", "2027-03-25": "Iseõppepäev", "2027-05-05": "Iseõppepäev"}};
-// Stuudiumist loetud 7.10.2026. topic = mida praegu õpitakse, tests = tulevad tööd, hw = kodutöö,
+// Stuudiumist loetud 9.10.2026. topic = mida praegu õpitakse, tests = tulevad tööd, hw = kodutöö,
 // simple = lihtsalt öeldes, terms = [sõna, tähendus], quiz = [küsimus, [vastused], õige indeks]
-const ED_DATE = "7. okt";
+const ED_DATE = "9. okt";
 const ED = {
  "Geograafia": {
-  topic: "Eesti asend ja geoloogia",
-  tests: [["2026-10-08","KT: Eesti asend ja geoloogia","Õpikust lk 8–11, 18–21, 36–39 + töölehed ja harjutustöö. Stuudiumis oli ka märge „töö on edasi lükatud“ – küsi õpetajalt üle."]],
+  topic: "Pinnamood ja selle kujunemine",
+  hw: [["2026-10-15","Iseõppepäev: lõpeta tööleht „Pinnamood ja selle kujunemine“ (Teras)"]],
   simple: [
-   "Eesti on Põhja-Euroopas, Läänemere idarannikul. Naabrid maismaal: Läti ja Venemaa. Üle mere: Soome ja Rootsi.",
-   "Geoloogiliselt kuulub Eesti <b>Ida-Euroopa platvormi</b> koosseisu.",
-   "Eesti maapõu on 3 korrusega: all <b>aluskord</b> (kõvad kristalsed kivimid: graniit, gneiss), keskel <b>pealiskord</b> (settekivimid: liivakivi, savi, lubjakivi, põlevkivi), peal <b>pinnakate</b> (pehmed setted: moreen, liiv, savi, turvas).",
-   "Kihid on viltu lõuna poole. Põhjas tulevad maapinnale vanemad kihid (kambrium, ordoviitsium), saartel silur, Lõuna-Eestis noorem devon.",
-   "Põhja-Eesti pankrannik (klint): üleval ordoviitsiumi lubjakivi, all pehmem kambriumi liivakivi ja sinisavi. Meri uuristab pehmet alumist osa, seepärast kukuvad ülevalt tükid alla (rusukalle).",
-   "Devonist nooremaid settekivimeid Eestis pole, sest pärast devoni oli Eesti ala enamasti maismaa ja kivimid kulusid ära.",
-   "Pinnakatte tõi peamiselt mandrijää. Jää tõi kaasa ka rändrahnud (Skandinaaviast/Soomest)."
+   "<b>Pinnamood</b> on maapinna kuju: kõrgustikud, madalikud, orud, mäed, nõod.",
+   "Eesti on madal ja tasane maa. Keskmine kõrgus on umbes 50 m. Kõige kõrgem koht on <b>Suur Munamägi</b> (318 m) Haanja kõrgustikul.",
+   "Eesti pinnamoe kujundas peamiselt <b>mandrijää</b>. Jää lükkas ja kraapis maad, sulades jättis maha moreeni, liiva ja kruusa.",
+   "Mandrijää tekitatud pinnavormid: <b>voored</b> (piklikud künkad, nt Vooremaal), <b>oosid</b> (pikad liivased vallid), <b>mõhnad</b> (ümarad künkad), <b>otsamoreenid</b> (vallid jää serva ees).",
+   "Kui jää sulas, tekkisid suured jääjärved. Nende põhjas settisid liiv ja savi – nii tekkisid tasased <b>tasandikud</b> ja <b>madalikud</b>.",
+   "Ka meri, jõed, tuul ja inimene muudavad pinnamoodi: rannavallid, jõeorud, luited (tuule kuhjatud liivakünkad), karjäärid ja tuhamäed.",
+   "Lõuna-Eestis on kõrgustikud (Haanja, Otepää, Karula), Põhja-Eestis on Pandivere kõrgustik ja paeplatoo ning klint."
   ],
   terms: [
-   ["Aluskord","Alumine kiht kurrutatud kristalsetest kivimitest (graniit, gneiss). Eelkambriumi ajast."],
-   ["Pealiskord","Aluskorra peal olevad settekivimid (Vanaaegkond: kambrium, ordoviitsium, silur, devon)."],
-   ["Pinnakate","Kõige pealmised pehmed setted (kvaternaar): moreen, liiv, savi, turvas."],
-   ["Platvorm","Maakoore osa: kristalne aluskord + seda kattev settekivimitest pealiskord."],
-   ["Kilp","Koht, kus kristalne aluskord tuleb maapinnale (nt Soomes ja Rootsis)."],
-   ["Moreen","Mandrijää kuhjatud sorteerimata sete (segamini savi, liiv, kivid)."],
-   ["Klint","Pankrannik – järsk astang, Põhja-Eestis lubjakivist."],
-   ["Rändrahn","Suur kivi, mille mandrijää tõi kaugelt (Skandinaaviast)."]
+   ["Pinnamood","Maapinna kõrguste ja vormide kogum."],
+   ["Kõrgustik","Ümbrusest kõrgem ala (nt Haanja, Otepää, Pandivere)."],
+   ["Madalik","Madal tasane ala (nt Lääne-Eesti madalik)."],
+   ["Voor","Piklik mandrijää voolu suunas olev küngas."],
+   ["Oos","Pikk kitsas liivast ja kruusast vall, tekkis jääalustes jõgedes."],
+   ["Mõhn","Ümar liivast künkake, tekkis jää sulamisel."],
+   ["Otsamoreen","Vall, mille jää kuhjas oma serva ette."],
+   ["Luide","Tuule kuhjatud liivaküngas."]
   ],
   quiz: [
-   ["Millisest kivimist on Põhja-Eesti pankranniku ülemine osa?",["Devoni liivakivi","Ordoviitsiumi lubjakivi","Graniit"],1],
-   ["Mis on aluskorras?",["Kristalsed kivimid nagu graniit ja gneiss","Moreen ja turvas","Lubjakivi ja põlevkivi"],0],
-   ["Kuidas erineb Põhja-Eesti moreen Lõuna-Eesti moreenist?",["Põhja-Eesti oma on punakaspruun ja kivivaene","Põhja-Eesti oma on hallikas ja kivirohke","Need on täpselt samasugused"],1],
-   ["Miks puuduvad Eestis devonist nooremad settekivimid?",["Mandrijää viis need kõik ära","Pärast devoni oli Eesti peamiselt maismaa ja kivimid kulusid","Eesti oli kogu aeg sügava mere all"],1],
-   ["Kuidas said rändrahnud Eestisse?",["Vulkaanid paiskasid need","Jõed veeretasid need","Mandrijää tõi need põhja poolt"],2],
-   ["Mille järgi saab aru, et liiv ja savi on settinud vees, moreen aga mitte?",["Vees settinud setted on kihiti ja sorteeritud, moreen on segamini","Moreen on alati punane","Vees settinud setted on kõvemad"],0]
+   ["Mis on Eesti kõrgeim koht?",["Emumägi","Suur Munamägi","Vällamägi"],1],
+   ["Mis kujundas Eesti pinnamoodi kõige rohkem?",["Vulkaanid","Mandrijää","Maavärinad"],1],
+   ["Mis on voor?",["Piklik mandrijää tekitatud küngas","Tuule kuhjatud liivaküngas","Sügav org"],0],
+   ["Kes kuhjab luiteid?",["Jõgi","Mandrijää","Tuul"],2],
+   ["Milline on Põhja-Eestis olev kõrgustik?",["Pandivere","Haanja","Karula"],0]
   ]
  },
  "Ajalugu": {
   topic: "Esimene maailmasõda (1914–1918)",
   tests: [["2026-10-09","KT: Esimene maailmasõda","Õpetaja küsimused ja slaidid on Teras. Too kaasa õpimapp: töölehed „Euroopa liigub sõtta“ ja „Esimene maailmasõda“ (+ Opiqus „Esimese maailmasõja tagajärjed“)."]],
+  hw: [["2026-10-16","Järgmises tunnis esitlused ja KT tagasi, siis uus teema. Kui on sinu kord esitleda: loe Terast esitluse juhendit ja räägi oma sõnadega."]],
   simple: [
    "Sõda kestis <b>28. juuli 1914 – 11. november 1918</b>.",
    "Põhjused: suurriigid tahtsid rohkem võimu ja kolooniaid (imperialism), Suurbritannia ja Saksamaa võistlesid liidrikoha pärast, Prantsusmaa tahtis tagasi Elsass-Lotringit, Venemaa ja Austria-Ungari võistlesid Balkanil.",
@@ -378,6 +378,7 @@ const ED = {
  "Matemaatika": {
   topic: "Ruutfunktsioon",
   tests: [["2026-10-13","KT nr 2: Ruutfunktsioon",""],["2026-11-13","KT nr 3: Algebraliste murdude korrutamine ja jagamine",""],["2026-12-08","KT nr 4: Kõik tehted algebraliste murdudega",""]],
+  hw: [["2026-10-12","Eksamiraamat lk 44 ül 60 (a, b) + töölehelt 4 funktsiooni (lahendus vihikusse, joonis töölehele). Kontrolli GeoGebraga."]],
   simple: [
    "Ruutfunktsioon: <b>y = ax² + bx + c</b>. Graafik on U-kujuline <b>parabool</b>.",
    "<b>a</b> näitab suunda: a positiivne → parabool avaneb üles, a negatiivne → alla. Mida suurem a, seda kitsam parabool.",
@@ -407,7 +408,7 @@ const ED = {
  "Füüsika": {
   topic: "Soojushulk, kehade soojenemine ja jahtumine",
   tests: [["2026-10-23","KT: Soojushulk. Kehade soojenemine ja jahtumine","Õpik lk 19–35. Teras on ülesanded ja lünktekst."]],
-  hw: [["2026-10-09","Ülesanded 5 ja 6 (tööleht Teras)"]],
+  hw: [["2026-10-09","Ülesanded 5 ja 6 (tööleht Teras)"],["2026-10-16","Ülesanded 7, 8, 9 ja 12 (tööleht Teras)"]],
   simple: [
    "Kõik kehad koosnevad osakestest, mis liiguvad pidevalt. <b>Siseenergia</b> = kõigi osakeste liikumis- ja vastastikmõju energia kokku.",
    "Soojus liigub alati <b>soojemalt kehalt külmemale</b>, kuni temperatuurid on võrdsed (soojuslik tasakaal).",
@@ -537,8 +538,8 @@ const ED = {
   ]
  },
  "Vene keel": {
-  topic: "Välimus (Dima) ja tegusõna minevik",
-  hw: [["2026-10-08","Loe õ lk 13 Dima välimusest, kirjuta välja uued sõnad (lk 14–15, 20), kirjelda vihikusse Dima välimust (lk 14 p 3)."]],
+  topic: "Välimus (Dima, Laura) ja tegusõna minevik",
+  hw: [["2026-10-15","Iseõppepäev: kuula ja loe dialoog 2 (õ lk 17), kirjuta vihikusse 7 lauset Laura välimusest (nt Она невысокого роста. У неё голубые глаза.). Vasta õ lk 18 küsimustele p 8–11."]],
   simple: [
    "Välimuse kirjeldamine: Он высокий / низкий. У него светлые / тёмные волосы. У него голубые / карие глаза.",
    "Minevik tehakse tegusõna tüvest + <b>-л</b>: он чита<b>л</b>, она чита<b>ла</b>, оно чита<b>ло</b>, они чита<b>ли</b>.",
@@ -546,7 +547,7 @@ const ED = {
   ],
   terms: [
    ["высокий / низкий","pikk / lühike"],["худой / полный","kõhn / tüse"],["волосы","juuksed"],["глаза","silmad"],
-   ["светлые / тёмные","heledad / tumedad"],["голубые / карие","sinised / pruunid (silmad)"],["усы / борода","vuntsid / habe"],["веснушки","tedretähnid"]
+   ["светлые / тёмные","heledad / tumedad"],["голубые / карие","sinised / pruunid (silmad)"],["усы / борода","vuntsid / habe"],["веснушки","tedretähnid"],["невысокого роста","lühikest kasvu"]
   ],
   quiz: [
    ["Kuidas on vene keeles „pikk (inimene)“?",["низкий","высокий","худой"],1],
