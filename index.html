@@ -5,7 +5,7 @@
 <link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#f4efe8">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <script>
-const APP_V="1793552470";
+const APP_V="1793639160";
 async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();
  if(v&&v!==APP_V&&sessionStorage.getItem("tried")!==v){sessionStorage.setItem("tried",v);location.replace(location.pathname+"?v="+v);}}catch(e){}}
 checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
@@ -305,13 +305,13 @@ nav.tabs button.on{background:none}
 
 <script>
 const CAL = {"weeks": {"2026-08-31": "A", "2026-09-07": "B", "2026-09-14": "A", "2026-09-21": "B", "2026-09-28": "A", "2026-10-05": "B", "2026-10-12": "A", "2026-10-19": "B", "2026-10-26": "A", "2026-11-02": "A", "2026-11-09": "B", "2026-11-16": "A", "2026-11-23": "B", "2026-11-30": "A", "2026-12-07": "B", "2026-12-14": "A", "2026-12-21": "B", "2026-12-28": "A", "2027-01-04": "B", "2027-01-11": "A", "2027-01-18": "B", "2027-01-25": "A", "2027-02-01": "B", "2027-02-08": "A", "2027-02-15": "B", "2027-02-22": "A", "2027-03-01": "A", "2027-03-08": "B", "2027-03-15": "A", "2027-03-22": "B", "2027-03-29": "A", "2027-04-05": "B", "2027-04-12": "A", "2027-04-19": "A", "2027-04-26": "B", "2027-05-03": "A", "2027-05-10": "B", "2027-05-17": "A", "2027-05-24": "B", "2027-05-31": "A", "2027-06-07": "B", "2027-06-14": "A"}, "off": {"2026-10-26": "Koolivaheaeg", "2026-10-27": "Koolivaheaeg", "2026-10-28": "Koolivaheaeg", "2026-10-29": "Koolivaheaeg", "2026-10-30": "Koolivaheaeg", "2026-12-18": "Jõulukontsert", "2026-12-21": "Koolivaheaeg", "2026-12-22": "Koolivaheaeg", "2026-12-23": "Koolivaheaeg", "2026-12-24": "Koolivaheaeg", "2026-12-25": "Koolivaheaeg", "2026-12-28": "Koolivaheaeg", "2026-12-29": "Koolivaheaeg", "2026-12-30": "Koolivaheaeg", "2026-12-31": "Koolivaheaeg", "2027-01-01": "Koolivaheaeg", "2027-02-22": "Koolivaheaeg", "2027-02-23": "Koolivaheaeg", "2027-02-24": "Koolivaheaeg", "2027-02-25": "Koolivaheaeg", "2027-02-26": "Koolivaheaeg", "2027-03-26": "Vaba päev", "2027-04-12": "Koolivaheaeg", "2027-04-13": "Koolivaheaeg", "2027-04-14": "Koolivaheaeg", "2027-04-15": "Koolivaheaeg", "2027-04-16": "Koolivaheaeg", "2027-06-09": "Koolivaheaeg", "2027-06-10": "Koolivaheaeg", "2027-06-11": "Koolivaheaeg", "2027-06-14": "Koolivaheaeg", "2027-06-15": "Koolivaheaeg", "2027-06-16": "Koolivaheaeg", "2027-06-17": "Koolivaheaeg", "2027-06-18": "Koolivaheaeg"}, "notes": {"2026-09-15": "Loeng edasiõppimisvõimalustest", "2026-09-29": "Lapsevanemate üldkoosolek kell 18.00", "2026-10-05": "Õpetajate päev", "2026-10-15": "Iseõppepäev", "2026-11-23": "Iseõppepäev", "2027-01-11": "Iseõppepäev", "2027-02-10": "Iseõppepäev", "2027-03-25": "Iseõppepäev", "2027-05-05": "Iseõppepäev"}};
-// Stuudiumist loetud 13.10.2026. topic = mida praegu õpitakse, tests = tulevad tööd, hw = kodutöö,
+// Stuudiumist loetud 02.11.2026. topic = mida praegu õpitakse, tests = tulevad tööd, hw = kodutöö,
 // simple = lihtsalt öeldes, terms = [sõna, tähendus], quiz = [küsimus, [vastused], õige indeks]
-const ED_DATE = "13. okt";
+const ED_DATE = "2. nov";
 const ED = {
  "Geograafia": {
   topic: "Pinnamood ja selle kujunemine",
-  hw: [["2026-10-15","Iseõppepäev: 1) lõpeta tööleht „Pinnamood ja selle kujunemine“ (Teras). 2) Kontuurkaardile märgi: kõrgustikud (Pandivere, Sakala, Otepää, Haanja, Karula, Vooremaa), tasandikud (Kesk-Eesti tasandik, Kõrvemaa), lavamaad (Kagu-Eesti, Harju, Viru), madalikud (Põhja-Eesti rannikumadalik, Lääne-Eesti, Pärnu, Peipsi, Võrtsjärve), nõod ja orundid (Valga ja Hargla nõgu, Võru ja Väikese Emajõe orund), Balti klint. Euroopast: Ida-Euroopa lauskmaa, Skandinaavia mäestik, Alpid, Apenniinid, Püreneed, Uural, Suur-Kaukasus, Karpaadid, Kaspia madalik, Dinaarid, Šoti mägismaa, Kesk-Vene kõrgustik, Saksa-Poola madalik. Abi: Opiq ja esitlus Teras."]],
+  tests: [["2026-11-12","KT: Pinnavormid","Kordamiseks: tööleht „Pinnamood ja selle kujunemine“, kontuurkaart (Eesti kõrgustikud, tasandikud, lavamaad, madalikud, nõod ja orundid, Balti klint; Euroopa mäestikud ja tasandikud), Opiq ja esitlus Teras."]],
   simple: [
    "<b>Pinnamood</b> on maapinna kuju: kõrgustikud, madalikud, orud, mäed, nõod.",
    "Eesti on madal ja tasane maa. Keskmine kõrgus on umbes 50 m. Kõige kõrgem koht on <b>Suur Munamägi</b> (318 m) Haanja kõrgustikul.",
@@ -340,74 +340,66 @@ const ED = {
   ]
  },
  "Ajalugu": {
-  topic: "Esimene maailmasõda (1914–1918)",
-  hw: [["2026-10-16","Järgmises tunnis esitlused ja KT tagasi, siis uus teema. Kui on sinu kord esitleda: loe Terast esitluse juhendit ja räägi oma sõnadega."]],
+  topic: "Rahvusvahelised suhted 1920. aastail (Rahvasteliit)",
+  hw: [["2026-11-06","Loe õpikust uus peatükk nr 3 „Rahvusvahelised suhted 1920. aastail“ (lk 18–21) ja vasta peatüki lõpu küsimustele 1, 6 ja 7 (lk 21). Tunnis on klassikaaslaste esitlus."]],
   simple: [
-   "Sõda kestis <b>28. juuli 1914 – 11. november 1918</b>.",
-   "Põhjused: suurriigid tahtsid rohkem võimu ja kolooniaid (imperialism), Suurbritannia ja Saksamaa võistlesid liidrikoha pärast, Prantsusmaa tahtis tagasi Elsass-Lotringit, Venemaa ja Austria-Ungari võistlesid Balkanil.",
-   "<b>Ajend</b>: 28. juunil 1914 tappis Gavrilo Princip Sarajevos Austria-Ungari troonipärija Franz Ferdinandi.",
-   "Kaks poolt: <b>Antant</b> (Suurbritannia, Prantsusmaa, Venemaa; hiljem Itaalia 1915, USA 1917 jt) ja <b>Keskriigid</b> (Saksamaa, Austria-Ungari, hiljem Osmanite riik ja Bulgaaria).",
-   "Saksamaa plaan (Schlieffeni plaan): kiiresti Prantsusmaa purustada, siis Venemaa. Ei õnnestunud – Marne'i jõel peatati ja algas <b>positsioonisõda</b> kaevikutes.",
-   "Uued relvad: mürkgaas (sakslased, Ypres 1915), leegiheitja, tank (britid, Somme 1916), lennukid, allveelaevad, kuulipildujad.",
-   "Lõpp: Venemaa lahkus sõjast (Brest-Litovski rahu, 3.3.1918), USA tuli appi, keskriigid alistusid järjest. Saksamaa sõlmis vaherahu 11.11.1918.",
-   "Tagajärjed: ~10 miljonit sõdurit hukkus. Lagunesid 4 impeeriumi: Saksa, Austria-Ungari, Vene ja Osmani. Tekkisid uued riigid: Eesti, Läti, Leedu, Soome, Poola, Tšehhoslovakkia, Jugoslaavia.",
-   "Pariisi rahukonverents 1919–1920. <b>Versailles' leping</b> (1919): Saksamaa süüdi, maksab reparatsioone, kaotab alasid ja kolooniad, armee väikseks.",
-   "Eesti: Eesti mehed sõdisid Vene armees, 1918 okupeeris Eesti Saksamaa, 24. veebruaril 1918 kuulutati välja Eesti iseseisvus."
+   "Pärast Esimest maailmasõda tahtsid riigid, et uut suurt sõda enam ei tuleks.",
+   "<b>1920</b> loodi <b>Rahvasteliit</b>. Selle keskus oli <b>Genfis</b> (Šveitsis). Eesmärk: riikide tülid lahendada rääkides, mitte sõdides.",
+   "Rahvasteliit oli nõrk: tal <b>polnud oma sõjaväge</b> ja kõik suurriigid ei olnud liikmed. <b>USA ei astunud kunagi</b> Rahvasteliitu. Saksamaa sai liikmeks alles 1926.",
+   "Rahu tingimused pani paika <b>Versailles' süsteem</b> – võitjad (Suurbritannia, Prantsusmaa) otsustasid. Saksamaa oli rahulolematu ja tahtis kaotatut tagasi.",
+   "1922 sõlmisid Saksamaa ja Nõukogude Venemaa <b>Rapallo lepingu</b> – kaks „tõrjutud“ riiki hakkasid koostööd tegema.",
+   "1925 <b>Locarno lepingutega</b> tunnustas Saksamaa oma läänepiire (Prantsusmaa ja Belgiaga). Euroopas tuli rahulikum aeg.",
+   "1928 <b>Kellogg-Briandi paktiga</b> lubasid paljud riigid, et ei kasuta sõda oma probleemide lahendamiseks.",
+   "Eesti sai Rahvasteliidu liikmeks <b>1921</b>."
   ],
   terms: [
-   ["Atentaat","Poliitiline mõrv või mõrvakatse (nt Franz Ferdinandi tapmine)."],
-   ["Ultimaatum","Viimane nõudmine, mille täitmata jätmisel ähvardatakse jõuga (Austria-Ungari → Serbia)."],
-   ["Mobilisatsioon","Sõjaväe kokkukutsumine ja sõjaks valmis panemine."],
-   ["Genotsiid","Terve rahva hävitamine (nt armeenlased Osmanite riigis)."],
-   ["Kapituleeruma","Alistuma, sõjas alla andma."],
-   ["Reparatsioon","Hüvitis, mida kaotanud riik maksab sõjas tekitatud kahju eest."],
-   ["Positsioonisõda","Rinne seisab paigal, pooled kaitsevad oma kaevikuid."],
-   ["Manööversõda","Väed liiguvad kiiresti, rinne muutub."],
-   ["Imperialism","Suurriikide püüd laiendada võimu ja saada kolooniaid."]
+   ["Rahvasteliit","Rahvusvaheline organisatsioon (1920), mis pidi hoidma rahu."],
+   ["Versailles' süsteem","Pärast I maailmasõda rahulepingutega loodud kord Euroopas."],
+   ["Desarmeerimine","Relvastuse vähendamine."],
+   ["Sanktsioon","Karistus riigile, nt kaubanduse piiramine."],
+   ["Revanšism","Soov kättemaksuks kaotatud alad tagasi saada."],
+   ["Pakt","Riikidevaheline leping."]
   ],
   quiz: [
-   ["Mis oli Esimese maailmasõja ajend?",["Lusitania uputamine","Franz Ferdinandi tapmine Sarajevos","Venemaa revolutsioon"],1],
-   ["Millised riigid olid alguses Antandis?",["Suurbritannia, Prantsusmaa, Venemaa","Saksamaa, Austria-Ungari, Itaalia","USA, Jaapan, Hiina"],0],
-   ["Miks nimetatakse Balkanit Euroopa püssirohukeldriks?",["Seal tehti kõige rohkem püssirohtu","Seal oli palju rahvuslikke pingeid ja suurriikide huve – väike säde võis sõja vallandada","Seal olid Euroopa suurimad relvaladud"],1],
-   ["Kes kasutas esimesena mürkgaasi?",["Britid","Prantslased","Sakslased"],2],
-   ["Millal sõlmiti vaherahu, millega sõda lõppes?",["11. november 1918","28. juuni 1914","24. veebruar 1918"],0],
-   ["Mis on reparatsioon?",["Uus relv","Sõja kahjude hüvitis","Rahukonverentsi nimi"],1]
+   ["Millal loodi Rahvasteliit?",["1914","1920","1945"],1],
+   ["Kus asus Rahvasteliidu keskus?",["Genfis","Londonis","Pariisis"],0],
+   ["Milline suurriik ei astunud kunagi Rahvasteliitu?",["Suurbritannia","Prantsusmaa","USA"],2],
+   ["Miks oli Rahvasteliit nõrk?",["Tal polnud oma sõjaväge ja kõik suurriigid polnud liikmed","Tal oli liiga palju raha","Sellel oli ainult üks liige"],0],
+   ["Millega tunnustas Saksamaa 1925 oma läänepiire?",["Rapallo lepinguga","Locarno lepingutega","Brest-Litovski rahuga"],1]
   ]
  },
  "Matemaatika": {
-  topic: "Ruutfunktsioon",
-  tests: [["2026-10-13","KT nr 2: Ruutfunktsioon",""],["2026-11-13","KT nr 3: Algebraliste murdude korrutamine ja jagamine",""],["2026-12-08","KT nr 4: Kõik tehted algebraliste murdudega",""]],
-  hw: [["2026-10-13","Korda kontrolltööks: tööleht koos lahendustega on Teras (12.10 – Ruutfunktsioonid. Kontrolltööks kordamine)."],["2026-10-15","Konsultatsioon kl 12:30–13:50. Kui tahad minna, registreeru (link Teras: Matemaatika 26-27 → Konsultatsiooni registreerumine)."]],
+  topic: "Tegurdamine ja algebraliste murdude taandamine",
+  tests: [["2026-11-24","KT nr 3: Algebraliste murdude korrutamine ja jagamine",""],["2026-12-15","KT nr 4: Kõik tehted algebraliste murdudega",""]],
+  hw: [["2026-11-03","Tööraamatust ül 87 (1. tulp) ja ül 88 (a–c). NB! Ül 88 lahenda vihikusse. (Tera: 02.11 – Algebraliste murdude taandamine)"],["2026-11-12","Vabatahtlik: kui tahad osaleda matemaatikaolümpiaadil, loe Stuudiumi Suhtlusest kirja ja registreeru kuni 12.11 kl 18.00."]],
   simple: [
-   "Ruutfunktsioon: <b>y = ax² + bx + c</b>. Graafik on U-kujuline <b>parabool</b>.",
-   "<b>a</b> näitab suunda: a positiivne → parabool avaneb üles, a negatiivne → alla. Mida suurem a, seda kitsam parabool.",
-   "<b>c</b> näitab, kus parabool lõikab y-telge: punktis (0; c).",
-   "<b>Haripunkt</b> (kõige alumine või ülemine punkt): x = −b / (2a). Siis pane see x valemisse ja arvuta y.",
-   "<b>Sümmeetriatelg</b> on sirge x = −b/(2a) – see jagab parabooli kaheks võrdseks pooleks.",
-   "<b>Nullkohad</b> = kus parabool lõikab x-telge. Lahenda ax² + bx + c = 0. Diskriminant D = b² − 4ac: D > 0 → 2 nullkohta, D = 0 → 1, D < 0 → nullkohti pole.",
-   "Joonestamiseks: leia haripunkt, nullkohad ja y-telje lõikepunkt, tee väärtuste tabel ja ühenda punktid sujuvalt. NB! Õpetaja vaatab ka vormistust."
+   "<b>Tegurdamine</b> tähendab: kirjuta avaldis <b>korrutisena</b>. Nt 6x + 9 = 3(2x + 3).",
+   "1. võte – <b>ühise teguri toomine sulgude ette</b>: leia, mis on kõigis liikmetes olemas. 4x² + 8x = 4x(x + 2).",
+   "2. võte – <b>abivalemid</b>: a² − b² = (a − b)(a + b); a² + 2ab + b² = (a + b)²; a² − 2ab + b² = (a − b)².",
+   "3. võte – <b>ruutkolmliige</b> ax² + bx + c = a(x − x₁)(x − x₂), kus x₁ ja x₂ on võrrandi ax² + bx + c = 0 lahendid. Nt x² + 5x + 6 = (x + 2)(x + 3).",
+   "<b>Algebraline murd</b> on murd, mille lugejas või nimetajas on tähed, nt (x + 1)/(x − 3).",
+   "<b>Taandamine</b>: tegurda lugeja ja nimetaja, siis kriipsuta läbi <b>ühesugused tegurid</b>. (x² − 4)/(x + 2) = (x − 2)(x + 2)/(x + 2) = x − 2.",
+   "NB! Taandada saab ainult <b>tegureid</b> (korrutatavaid), mitte liidetavaid. (x + 3)/3 ei ole x!"
   ],
   terms: [
-   ["Parabool","Ruutfunktsiooni U-kujuline graafik."],
-   ["Haripunkt","Parabooli kõige madalam (a>0) või kõrgeim (a<0) punkt."],
-   ["Nullkoht","x väärtus, kus y = 0 (graafik lõikab x-telge)."],
-   ["Diskriminant","D = b² − 4ac; näitab mitu nullkohta on."],
-   ["Sümmeetriatelg","Püstsirge läbi haripunkti: x = −b/(2a)."],
-   ["Vabaliige","c – näitab y-telje lõikepunkti."]
+   ["Tegurdamine","Avaldise kirjutamine korrutisena."],
+   ["Tegur","Arv või avaldis, mida korrutatakse."],
+   ["Abivalemid","a² − b² = (a − b)(a + b); (a ± b)² = a² ± 2ab + b²"],
+   ["Ruutkolmliige","Avaldis kujul ax² + bx + c."],
+   ["Algebraline murd","Murd, kus lugejas või nimetajas on muutuja (täht)."],
+   ["Taandamine","Lugeja ja nimetaja jagamine sama teguriga."]
   ],
   quiz: [
-   ["Kuhu avaneb y = −2x² + 3?",["Üles","Alla","Paremale"],1],
-   ["Kus lõikab y = x² − 4x + 3 y-telge?",["(0; 3)","(3; 0)","(0; −4)"],0],
-   ["Mis on y = x² − 4x + 3 haripunkti x?",["−2","4","2"],2],
-   ["Millised on y = x² − 4x + 3 nullkohad?",["1 ja 3","−1 ja −3","2 ja 4"],0],
-   ["Kui D < 0, siis parabool…",["lõikab x-telge kahes kohas","ei lõika x-telge","puudutab x-telge"],1],
-   ["Kumb parabool on kitsam?",["y = 5x²","y = 0,5x²","Mõlemad on samad"],0]
+   ["Tegurda 5x + 10.",["5x(1 + 2)","5(x + 2)","x(5 + 10)"],1],
+   ["Millega võrdub x² − 9?",["(x − 3)(x + 3)","(x − 3)²","(x − 9)(x + 1)"],0],
+   ["Tegurda x² + 5x + 6.",["(x + 1)(x + 6)","(x − 2)(x − 3)","(x + 2)(x + 3)"],2],
+   ["Taanda (x² − 4)/(x + 2).",["x − 2","x + 2","x − 4"],0],
+   ["Kas murrus (x + 3)/3 saab kolmed ära taandada?",["Jah, vastus on x","Ei – taandada saab ainult tegureid, mitte liidetavaid"],1],
+   ["Millega võrdub (a + b)²?",["a² + b²","a² + 2ab + b²","2a + 2b"],1]
   ]
  },
  "Füüsika": {
   topic: "Soojushulk, kehade soojenemine ja jahtumine",
-  tests: [["2026-10-23","KT: Soojushulk. Kehade soojenemine ja jahtumine","Õpik lk 19–35. Teras on ülesanded ja lünktekst."]],
-  hw: [["2026-10-16","Ülesanded 7, 8, 9 ja 12 (tööleht Teras)"]],
   simple: [
    "Kõik kehad koosnevad osakestest, mis liiguvad pidevalt. <b>Siseenergia</b> = kõigi osakeste liikumis- ja vastastikmõju energia kokku.",
    "Soojus liigub alati <b>soojemalt kehalt külmemale</b>, kuni temperatuurid on võrdsed (soojuslik tasakaal).",
@@ -437,7 +429,7 @@ const ED = {
  },
  "Keemia": {
   topic: "Happed",
-  hw: [["2026-10-14","Lõpeta TV ül 2.10"]],
+  tests: [["2026-11-18","KT: Happed","Korda hapete omadusi ja võrrandeid (hape + alus, hape + aluseline oksiid, hape + metall), TV ülesanded ja õpik."]],
   simple: [
    "<b>Hape</b> on aine, mis annab vees vesinikioone <b>H⁺</b>. Hape = vesinik + happeanioon, nt HCl → H⁺ + Cl⁻.",
    "Happed on hapu maitsega, söövitavad ja muudavad indikaatori (nt lakmuse) <b>punaseks</b>.",
@@ -465,14 +457,15 @@ const ED = {
   ]
  },
  "Kirjandus": {
-  topic: "Muistne loodususund → A. Kitzbergi „Libahunt“",
-  hw: [["2026-10-14","Võta „Libahunt“ võimalusel tundi kaasa (teos on ka Digaris)."]],
-  tests: [["2026-10-14","A. Kitzberg „Libahunt“","Loe näidend läbi."],["2026-11-18","Vabalt valitud eestikeelne noorteromaan","Ideid: loemind.keskraamatukogu.ee (9. klass)"]],
+  topic: "A. Kitzbergi „Libahunt“ → luuletuse esitamine",
+  hw: [["2026-11-04","Vali üks luuletus (Tera: Luuletused) ja õpi see peast ilmekalt esitama."],["2026-11-04","„Libahundi“ vastamist saab parandada või järele vastata 4.11 kl 14.00 eesti keele konsultatsioonis."]],
+  tests: [["2026-11-18","Vabalt valitud eestikeelne noorteromaan","Ideid: loemind.keskraamatukogu.ee (9. klass)"]],
   simple: [
    "Muistsed eestlased uskusid, et <b>loodus on hingestatud</b>: puudel, kividel, allikatel ja loomadel on hing.",
    "Igal paigal olid oma haldjad (metsa-, vee-, majahaldjas). Pühades kohtades (hiied, ohvrikivid, allikad) palvetati ja ohverdati.",
    "Inimene oli looduse osa, mitte peremees. Loodusest võeti nii palju, kui vaja, ja tänati.",
-   "„Libahunt“ (1912): Tiina kasvab külas võõrana, teda kardetakse ja peetakse libahundiks. Ta armastab Margust. Näidend räägib <b>eelarvamustest</b>, sellest, kuidas kogukond tõrjub teistsugust inimest, ning <b>vabadusest</b>."
+   "„Libahunt“ (1912): Tiina kasvab külas võõrana, teda kardetakse ja peetakse libahundiks. Ta armastab Margust. Näidend räägib <b>eelarvamustest</b>, sellest, kuidas kogukond tõrjub teistsugust inimest, ning <b>vabadusest</b>.",
+   "Luuletuse peast õppimine: loe luuletust mitu korda valjult, õpi salm salmi haaval. Esita <b>ilmekalt</b>: rahulikult, selge häälega, tee pause ja rõhuta tähtsaid sõnu."
   ],
   terms: [
    ["Loodususund","Usk, mille järgi kõik looduses on hingestatud."],
@@ -491,7 +484,7 @@ const ED = {
  "Eesti keel": {
   topic: "Lihtlause: korduvad täiendid ja määrused, lisand ja üte",
   tests: [["2026-11-03","KT: Lihtlause","Kordamiseks Teras „Lihtlause“: slaidid ja harjutused."]],
-  hw: [["2026-10-15","Iseõppepäev: korduvate täiendite ja määruste kordamine, töölehelt h 6. Lisand ja üte – õpik lk 101, vaata üle slaidid, töölehelt lisandi ja ütte h 1–6 (Tera: Lihtlause)."]],
+  hw: [["2026-11-03","Õpi lihtlause kontrolltööks: vaata üle kõik slaidid ja tehtud harjutused, õpik lk 100–101 (Tera: Lihtlause; Mida pead teadma lihtlause kontrolltöös)."]],
   simple: [
    "<b>Täiend</b> kirjeldab nimisõna (Missugune? Kelle?): „<u>punane</u> auto“. <b>Määrus</b> räägib tegevusest (Kus? Millal? Kuidas?).",
    "<b>Korduvad täiendid</b> on mitu samaväärset täiendit ühe sõna ees. Kui nende vahel pole sidesõna, pane <b>koma</b>: „Tal on <u>suur, valge</u> koer.“",
@@ -518,7 +511,7 @@ const ED = {
  },
  "Bioloogia": {
   topic: "Keha üldehitus, nahk, luud, lihased",
-  tests: [["2026-11-04","KT: Keha üldehitus, nahk, luud, lihased","Opiq e-õpik: 9d Bioloogia"]],
+  tests: [["2026-11-04","KT: Keha üldehitus, nahk, luud, lihased","Opiq e-õpik: 9d Bioloogia"],["2026-11-25","KT: Süda, vereringe, immuunsus",""]],
   simple: [
    "Keha koosneb rakkudest → kudedest → elunditest → elundkondadest. Koed: epiteel-, side-, lihas- ja närvikude.",
    "<b>Nahk</b> on 3 kihti: marrasknahk (pealmine), pärisnahk (veresooned, higi- ja rasunäärmed, karvanääpsud), nahaalune rasvkude.",
@@ -542,27 +535,32 @@ const ED = {
   ]
  },
  "Vene keel": {
-  topic: "Välimus (Dima, Laura) ja tegusõna minevik",
-  hw: [["2026-10-15","Iseõppepäev: kuula ja loe dialoog 2 (õ lk 17), kirjuta vihikusse 7 lauset Laura välimusest (nt Она невысокого роста. У неё голубые глаза.). Vasta õ lk 18 küsimustele p 8–11."]],
+  topic: "Välimus ja iseloomujooned (как описать характер человека)",
+  hw: [["2026-11-05","Lõpeta TV lk 8 ül 13 (a): I veerg – tõlge eesti keelde, II – sünonüüm (sarnane tähendus) ja antonüüm (vastand). Kasuta tunnis õpitud sõnu, abiks õpik lk 22–23. Järgmises tunnis võrdleme, kes milliseid sõnu leidis."]],
   simple: [
    "Välimuse kirjeldamine: Он высокий / низкий. У него светлые / тёмные волосы. У него голубые / карие глаза.",
-   "Minevik tehakse tegusõna tüvest + <b>-л</b>: он чита<b>л</b>, она чита<b>ла</b>, оно чита<b>ло</b>, они чита<b>ли</b>.",
-   "Minevikus ei muutu tegusõna isiku järgi (я/ты/он – kõik читал), vaid soo ja arvu järgi."
+   "Iseloomu kirjeldamine: Он <b>добрый</b> (lahke) и <b>честный</b> (aus). Она <b>умная</b> (tark) и <b>весёлая</b> (rõõmsameelne).",
+   "Omadussõna lõpp muutub soo järgi: он умн<b>ый</b>, она умн<b>ая</b>; он вежлив<b>ый</b>, она вежлив<b>ая</b>.",
+   "Arvamuse avaldamine: <b>Я думаю, что…</b> = Ma arvan, et… Nt Я думаю, что мой друг вежливый.",
+   "<b>Sünonüüm</b> on sarnase tähendusega sõna, <b>antonüüm</b> on vastandsõna: добрый ↔ злой, весёлый ↔ грустный, трудолюбивый ↔ ленивый."
   ],
   terms: [
-   ["высокий / низкий","pikk / lühike"],["худой / полный","kõhn / tüse"],["волосы","juuksed"],["глаза","silmad"],
-   ["светлые / тёмные","heledad / tumedad"],["голубые / карие","sinised / pruunid (silmad)"],["усы / борода","vuntsid / habe"],["веснушки","tedretähnid"],["невысокого роста","lühikest kasvu"]
+   ["добрый / злой","lahke / kuri"],["умный","tark"],["честный","aus"],["вежливый","viisakas"],["общительный","seltskondlik, suhtleb meelsasti"],
+   ["весёлый / грустный","rõõmsameelne / kurb"],["трудолюбивый / ленивый","töökas / laisk"],["Я думаю, что…","Ma arvan, et…"],
+   ["высокий / низкий","pikk / lühike"],["голубые / карие глаза","sinised / pruunid silmad"]
   ],
   quiz: [
-   ["Kuidas on vene keeles „pikk (inimene)“?",["низкий","высокий","худой"],1],
-   ["„Ta (naine) luges“ on…",["она читал","она читала","она читали"],1],
-   ["Mida tähendab „карие глаза“?",["sinised silmad","pruunid silmad","suured silmad"],1],
-   ["„Nemad mängisid“ on…",["они играли","они играл","они играла"],0]
+   ["Mida tähendab „честный“?",["aus","tark","laisk"],0],
+   ["Mis on „трудолюбивый“ (töökas) vastand?",["вежливый","ленивый","добрый"],1],
+   ["Kuidas on „Ta (naine) on tark“?",["Она умный.","Она умная.","Она умные."],1],
+   ["Mida tähendab „Я думаю, что…“?",["Ma tean, et…","Ma arvan, et…","Ma tahan, et…"],1],
+   ["Mida tähendab „общительный“?",["seltskondlik","kuri","pikk"],0]
   ]
  },
  "Muusika": {
   topic: "Orkester",
-  hw: [["2026-11-02","1) Vasta vihikusse täislausetega Tera 15 küsimusele orkestri kohta (õpik alates lk 22). 2) Kirjuta vihikusse KT kuulamise osa (õpik lk 30–31): B. Britten „Young Person's Guide to the Orchestra“ – pillid õpiku järjekorras, jäta ruumi märkmeteks. Teost võid juba kuulata (YouTube link Stuudiumis)."]],
+  tests: [["2026-11-16","KT: Orkester (kuulamine + kirjalik)","Kirjalik osa 15 küsimust + kuulamise osa 10 näidet B. Britteni teosest. Kuulamise ajal võib vihikut kasutada. Tera: ORKESTER tööleht I ja II."]],
+  hw: [["2026-11-16","Valmistu orkestri tööks: 15 küsimust (Tera tööleht) ja Britteni „Young Person's Guide to the Orchestra“ – vihikus kommentaarid pillide kohta õpiku lk 30 tabeli järjekorras (mille järgi pille ja pillirühmi eristad)."]],
   simple: [
    "<b>Orkester</b> on suur pillimängijate koosseis. Seda juhatab <b>dirigent</b>.",
    "Sümfooniaorkestris on 4 pillirühma: <b>keelpillid</b>, <b>puupuhkpillid</b>, <b>vaskpuhkpillid</b> ja <b>löökpillid</b>.",
@@ -581,38 +579,47 @@ const ED = {
   ]
  },
  "Inglise keel": {
-  topic: "Present perfect simple vs continuous",
+  topic: "Eksamiks harjutamine: hoiatused ja keelud, kirja kirjutamine",
   simple: [
-   "<b>Present perfect simple</b>: have/has + V3. Tulemus või mitu korda: <i>I have read three books.</i>",
-   "<b>Present perfect continuous</b>: have/has been + -ing. Kui kaua tegevus kestnud: <i>I have been reading for two hours.</i>",
-   "for = kui kaua (for 2 hours), since = mis ajast (since Monday)."
+   "Tunnis harjutatakse 9. klassi inglise keele lõpueksamiks (eelmise aasta eksamitöö, ka suuline osa).",
+   "<b>Keeld</b>: <i>You mustn't…</i> = sa ei tohi. <i>Don't…!</i> <i>…is not allowed.</i> Siltidel: <i>No smoking. No swimming.</i>",
+   "<b>Pole vaja</b>: <i>You don't have to…</i> = sa ei pea (pole kohustuslik). See EI ole keeld!",
+   "<b>Hoiatus</b>: <i>Be careful! Watch out! Mind the step! Beware of the dog!</i>",
+   "<b>Kiri sõbrale</b>: algus <i>Dear Tom,</i> / <i>Hi Anna,</i> → lõigud (miks kirjutad, põhiosa, küsimus) → lõpp <i>Best wishes,</i> / <i>Love,</i> + sinu nimi."
   ],
-  terms: [["have done","tulemus / mitu"],["have been doing","kestus / kui kaua"],["for","ajavahemik"],["since","alates"]],
+  terms: [["mustn't","ei tohi (keeld)"],["don't have to","ei pea, pole vaja"],["Watch out!","Ettevaatust!"],["Beware of…","Hoidu…, ettevaatust…"],["not allowed","keelatud"],["Best wishes","Parimate soovidega (kirja lõpp)"]],
   quiz: [
-   ["„I ___ for this bus for 20 minutes!“",["have waited","have been waiting","waited"],1],
-   ["„She ___ three emails today.“",["has written","has been writing","is writing"],0],
-   ["„I have lived here ___ 2020.“",["for","since","from"],1]
+   ["„You ___ smoke here. It's forbidden.“",["don't have to","mustn't","needn't"],1],
+   ["Mida tähendab „Watch out!“?",["Vaata aknast välja!","Ettevaatust!","Oota!"],1],
+   ["„You don't have to come“ tähendab…",["Sa ei tohi tulla","Sa ei pea tulema","Sa pead tulema"],1],
+   ["Milline on keelusilt?",["Welcome","No parking","Open"],1],
+   ["Kuidas alustada kirja sõbrale?",["Dear Tom,","Yours faithfully,","Best wishes,"],0]
   ]
  },
  "Ühiskonnaõpetus": {
-  topic: "Maksud",
+  topic: "Riigieelarve ja isiklik eelarve",
   simple: [
-   "Maksud on raha, mida inimesed ja ettevõtted maksavad riigile ja omavalitsusele. Selle eest makstakse koolid, haiglad, teed, politsei jne.",
-   "<b>Otsene maks</b> võetakse sissetulekult või varalt (tulumaks, maamaks). <b>Kaudne maks</b> on peidetud hinna sisse (käibemaks, aktsiis).",
-   "Sotsiaalmaksu maksab tööandja – sellest tulevad pension ja ravikindlustus.",
-   "Makse kogub Maksu- ja Tolliamet (MTA). Riigi tulud ja kulud on kirjas riigieelarves."
+   "<b>Eelarve</b> on plaan: kui palju raha tuleb sisse (tulud) ja kuhu see läheb (kulud).",
+   "<b>Riigieelarve</b> tehakse üheks aastaks. Selle koostab <b>valitsus</b> (Rahandusministeerium) ja vastu võtab <b>Riigikogu</b>.",
+   "Riigi tulud tulevad peamiselt <b>maksudest</b> (sotsiaalmaks, käibemaks, tulumaks, aktsiisid), ka Euroopa Liidu toetustest.",
+   "Riigi kulud: pensionid ja toetused, tervishoid, haridus, riigikaitse, teed, politsei jne.",
+   "Kui kulud on suuremad kui tulud, on <b>puudujääk</b> (defitsiit). Kui tulud on suuremad, on <b>ülejääk</b>.",
+   "<b>Isiklik eelarve</b>: kirjuta üles oma sissetulekud (taskuraha, palk) ja väljaminekud. <b>Püsikulud</b> on iga kuu samad (üür, telefon), <b>muutuvkulud</b> muutuvad (kino, riided). Hea on osa raha <b>säästa</b>."
   ],
-  terms: [["Tulumaks","Maks sissetulekult (palgalt)."],["Käibemaks","Kauba/teenuse hinna sees olev maks."],["Aktsiis","Lisamaks nt kütusele, alkoholile, tubakale."],["Sotsiaalmaks","Tööandja maks pensioni ja tervishoiu jaoks."],["Riigieelarve","Riigi aasta tulude ja kulude plaan."]],
+  terms: [["Riigieelarve","Riigi ühe aasta tulude ja kulude plaan."],["Puudujääk (defitsiit)","Kulud on suuremad kui tulud."],["Ülejääk","Tulud on suuremad kui kulud."],["Püsikulu","Kulu, mis on iga kuu sama (nt üür)."],["Muutuvkulu","Kulu, mis kuust kuusse muutub (nt meelelahutus)."],["Säästmine","Osa raha kõrvale panemine tulevikuks."]],
   quiz: [
-   ["Milline on kaudne maks?",["Tulumaks","Käibemaks","Maamaks"],1],
-   ["Kes kogub Eestis makse?",["Eesti Pank","Maksu- ja Tolliamet","Riigikogu"],1],
-   ["Aktsiisi makstakse näiteks…",["kütuselt","leivalt","kooliraamatutelt"],0]
+   ["Kes võtab riigieelarve vastu?",["President","Riigikogu","Maksu- ja Tolliamet"],1],
+   ["Kes koostab riigieelarve eelnõu?",["Valitsus (Rahandusministeerium)","Eesti Pank","Kohus"],0],
+   ["Mis on eelarve puudujääk?",["Tulud on suuremad kui kulud","Kulud on suuremad kui tulud","Tulud ja kulud on võrdsed"],1],
+   ["Mis on püsikulu?",["Kinopilet","Iga kuu sama kulu, nt telefoniarve","Säästetud raha"],1],
+   ["Kust saab riik suurema osa oma tuludest?",["Maksudest","Laenudest pankadelt","Trahvidest"],0]
   ]
  },
  "Käsitöö": {
   topic: "Tikkimine ja kudumine",
-  tests: [["2026-11-16","II ülesande hindamine (tunni alguses): töö kavandamine, materjalide arvutamine","Juhend Teras."],["2026-12-14","III ülesande hindamine (tunni lõpus): töö teostamine",""]],
-  simple: ["I ülesande võib soovi korral esitada hindamiseks pärast koolivaheaega (kirjeldus Teras).","Kui võtsid töö koju, too see tundi kaasa.","Õppevideod (parema- ja vasakukäelistele) on Teras rubriigis „Kirjandus ja materjalid“."]
+  tests: [["2026-11-30","II ülesande hindamine (tunni alguses): töö kavandamine, materjalide arvutamine","Juhend Teras (II ülesande kirjeldus ja hindamine)."],["2026-12-14","III ülesande hindamine (tunni lõpus): töö teostamine",""]],
+  hw: [["2026-11-16","Võta kaasa oma töövahendid. Tunni lõpus pannakse välja I ülesande hinded."]],
+  simple: ["Praegu tehakse I ja II ülesannet (kirjeldused Teras).","I ülesanne peab olema valmis 16. novembri tunniks.","Õppevideod (parema- ja vasakukäelistele) on Teras rubriigis „Kirjandus ja materjalid“."]
  }
 };
 
