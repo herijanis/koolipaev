@@ -5,7 +5,7 @@
 <link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#f4efe8">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <script>
-const APP_V="1793977678";
+const APP_V="1793984678";
 async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();
  if(v&&v!==APP_V&&sessionStorage.getItem("tried")!==v){sessionStorage.setItem("tried",v);location.replace(location.pathname+"?v="+v);}}catch(e){}}
 checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
@@ -305,13 +305,14 @@ nav.tabs button.on{background:none}
 
 <script>
 const CAL = {"weeks": {"2026-08-31": "A", "2026-09-07": "B", "2026-09-14": "A", "2026-09-21": "B", "2026-09-28": "A", "2026-10-05": "B", "2026-10-12": "A", "2026-10-19": "B", "2026-10-26": "A", "2026-11-02": "A", "2026-11-09": "B", "2026-11-16": "A", "2026-11-23": "B", "2026-11-30": "A", "2026-12-07": "B", "2026-12-14": "A", "2026-12-21": "B", "2026-12-28": "A", "2027-01-04": "B", "2027-01-11": "A", "2027-01-18": "B", "2027-01-25": "A", "2027-02-01": "B", "2027-02-08": "A", "2027-02-15": "B", "2027-02-22": "A", "2027-03-01": "A", "2027-03-08": "B", "2027-03-15": "A", "2027-03-22": "B", "2027-03-29": "A", "2027-04-05": "B", "2027-04-12": "A", "2027-04-19": "A", "2027-04-26": "B", "2027-05-03": "A", "2027-05-10": "B", "2027-05-17": "A", "2027-05-24": "B", "2027-05-31": "A", "2027-06-07": "B", "2027-06-14": "A"}, "off": {"2026-10-26": "Koolivaheaeg", "2026-10-27": "Koolivaheaeg", "2026-10-28": "Koolivaheaeg", "2026-10-29": "Koolivaheaeg", "2026-10-30": "Koolivaheaeg", "2026-12-18": "Jõulukontsert", "2026-12-21": "Koolivaheaeg", "2026-12-22": "Koolivaheaeg", "2026-12-23": "Koolivaheaeg", "2026-12-24": "Koolivaheaeg", "2026-12-25": "Koolivaheaeg", "2026-12-28": "Koolivaheaeg", "2026-12-29": "Koolivaheaeg", "2026-12-30": "Koolivaheaeg", "2026-12-31": "Koolivaheaeg", "2027-01-01": "Koolivaheaeg", "2027-02-22": "Koolivaheaeg", "2027-02-23": "Koolivaheaeg", "2027-02-24": "Koolivaheaeg", "2027-02-25": "Koolivaheaeg", "2027-02-26": "Koolivaheaeg", "2027-03-26": "Vaba päev", "2027-04-12": "Koolivaheaeg", "2027-04-13": "Koolivaheaeg", "2027-04-14": "Koolivaheaeg", "2027-04-15": "Koolivaheaeg", "2027-04-16": "Koolivaheaeg", "2027-06-09": "Koolivaheaeg", "2027-06-10": "Koolivaheaeg", "2027-06-11": "Koolivaheaeg", "2027-06-14": "Koolivaheaeg", "2027-06-15": "Koolivaheaeg", "2027-06-16": "Koolivaheaeg", "2027-06-17": "Koolivaheaeg", "2027-06-18": "Koolivaheaeg"}, "notes": {"2026-09-15": "Loeng edasiõppimisvõimalustest", "2026-09-29": "Lapsevanemate üldkoosolek kell 18.00", "2026-10-05": "Õpetajate päev", "2026-10-15": "Iseõppepäev", "2026-11-23": "Iseõppepäev", "2027-01-11": "Iseõppepäev", "2027-02-10": "Iseõppepäev", "2027-03-25": "Iseõppepäev", "2027-05-05": "Iseõppepäev"}};
-// Stuudiumist loetud 02.11.2026. topic = mida praegu õpitakse, tests = tulevad tööd, hw = kodutöö,
+// Stuudiumist loetud 06.11.2026. topic = mida praegu õpitakse, tests = tulevad tööd, hw = kodutöö,
 // simple = lihtsalt öeldes, terms = [sõna, tähendus], quiz = [küsimus, [vastused], õige indeks]
-const ED_DATE = "2. nov";
+const ED_DATE = "6. nov";
 const ED = {
  "Geograafia": {
   topic: "Pinnamood ja selle kujunemine",
-  tests: [["2026-11-12","KT: Pinnavormid","Kordamiseks: tööleht „Pinnamood ja selle kujunemine“, kontuurkaart (Eesti kõrgustikud, tasandikud, lavamaad, madalikud, nõod ja orundid, Balti klint; Euroopa mäestikud ja tasandikud), Opiq ja esitlus Teras."]],
+  tests: [["2026-11-12","Kaarditöö: Euroopa ja Eesti reljeef","Kontuurkaart: Eesti kõrgustikud, tasandikud, lavamaad, madalikud, nõod ja orundid, Balti klint; Euroopa mäestikud ja tasandikud. Vaata iseõppepäeva ülesannet."],["2026-11-19","KT: Geograafia teooria – reljeef","Teooriatöö lükati klassi palvel 19.11-le. Kordamiseks: tööleht „Pinnamood ja selle kujunemine“, kinnistamise tööleht, näidistöö, Kahoot, Opiq."]],
+  hw: [["2026-11-12","Kaarditöö Euroopa ja Eesti reljeef – vaata iseõppepäeva ülesannet. Puudujad saavad kaarditöö teha teooriatöö päeval tunnis."]],
   simple: [
    "<b>Pinnamood</b> on maapinna kuju: kõrgustikud, madalikud, orud, mäed, nõod.",
    "Eesti on madal ja tasane maa. Keskmine kõrgus on umbes 50 m. Kõige kõrgem koht on <b>Suur Munamägi</b> (318 m) Haanja kõrgustikul.",
@@ -340,10 +341,17 @@ const ED = {
   ]
  },
  "Ajalugu": {
-  topic: "Rahvusvahelised suhted 1920. aastail (Rahvasteliit)",
-  hw: [["2026-11-06","Loe õpikust uus peatükk nr 3 „Rahvusvahelised suhted 1920. aastail“ (lk 18–21) ja vasta peatüki lõpu küsimustele 1, 6 ja 7 (lk 21). Tunnis on klassikaaslaste esitlus."]],
+  topic: "Venemaa ja Türgi pärast I maailmasõda, Ruhri kriis",
+  hw: [["2026-11-13","Loe uuesti õpikust ptk 3 (lk 18–21) Ruhri kriisi kohta ja tee tunnis saadud tööleht lõpuni. Järgmises tunnis kordame teemat – mõned kutsutakse Ruhri kriisi kohta vastama. (Tera: TL Rahvusvahelised suhted)"]],
   simple: [
-   "Pärast Esimest maailmasõda tahtsid riigid, et uut suurt sõda enam ei tuleks.",
+   "<b>Venemaa</b>: 1917 toimusid kaks revolutsiooni. <b>Veebruaris</b> kukutati tsaar ja keisririik kadus. <b>Oktoobris</b> võtsid võimu <b>bolševikud</b>, nende juht oli <b>Lenin</b>.",
+   "Järgnes <b>kodusõda</b> (1918–1920): punased (bolševikud) võitlesid valgete vastu. Punased võitsid. 1922 loodi <b>NSV Liit</b>.",
+   "<b>Komintern</b> (1919) oli bolševike loodud organisatsioon, mis tahtis kommunistlikku revolutsiooni üle kogu maailma.",
+   "<b>Türgi</b>: Osmanite riik kaotas sõja ja pidi loovutama palju alasid. <b>Mustafa Kemal (Atatürk)</b> juhtis vabadussõda ja 1923 sai Türgist <b>vabariik</b>, pealinnaks Ankara. Atatürk muutis riigi kaasaegsemaks.",
+   "<b>Ruhri kriis (1923)</b>: Saksamaa ei jõudnud maksta <b>reparatsioone</b> (sõjakahjude hüvitist). Seepärast okupeerisid <b>Prantsusmaa ja Belgia</b> Saksamaa tööstuspiirkonna <b>Ruhri</b>.",
+   "Saksa töölised vastasid <b>passiivse vastupanuga</b> (streikisid). Saksamaal tekkis <b>hüperinflatsioon</b> – raha muutus peaaegu väärtusetuks.",
+   "Kriis lahenes <b>Dawesi plaaniga</b> (1924): Saksamaa sai laenu ja reparatsioonide maksmine tehti kergemaks.",
+   "Taustaks: pärast Esimest maailmasõda tahtsid riigid, et uut suurt sõda enam ei tuleks.",
    "<b>1920</b> loodi <b>Rahvasteliit</b>. Selle keskus oli <b>Genfis</b> (Šveitsis). Eesmärk: riikide tülid lahendada rääkides, mitte sõdides.",
    "Rahvasteliit oli nõrk: tal <b>polnud oma sõjaväge</b> ja kõik suurriigid ei olnud liikmed. <b>USA ei astunud kunagi</b> Rahvasteliitu. Saksamaa sai liikmeks alles 1926.",
    "Rahu tingimused pani paika <b>Versailles' süsteem</b> – võitjad (Suurbritannia, Prantsusmaa) otsustasid. Saksamaa oli rahulolematu ja tahtis kaotatut tagasi.",
@@ -353,25 +361,26 @@ const ED = {
    "Eesti sai Rahvasteliidu liikmeks <b>1921</b>."
   ],
   terms: [
-   ["Rahvasteliit","Rahvusvaheline organisatsioon (1920), mis pidi hoidma rahu."],
-   ["Versailles' süsteem","Pärast I maailmasõda rahulepingutega loodud kord Euroopas."],
-   ["Desarmeerimine","Relvastuse vähendamine."],
-   ["Sanktsioon","Karistus riigile, nt kaubanduse piiramine."],
-   ["Revanšism","Soov kättemaksuks kaotatud alad tagasi saada."],
-   ["Pakt","Riikidevaheline leping."]
+   ["Bolševikud","Lenini juhitud kommunistlik partei, võttis Venemaal võimu 1917. aasta oktoobris."],
+   ["Kodusõda","Sõda ühe riigi elanike vahel (Venemaal punased vs valged)."],
+   ["Komintern","Kommunistlik Internatsionaal (1919) – pidi levitama revolutsiooni teistesse riikidesse."],
+   ["Reparatsioonid","Sõjakahjude hüvitis, mida kaotaja pidi võitjatele maksma."],
+   ["Ruhri kriis","1923: Prantsusmaa ja Belgia okupeerisid Saksamaa Ruhri piirkonna, sest Saksamaa ei maksnud reparatsioone."],
+   ["Hüperinflatsioon","Väga kiire hindade tõus, raha kaotab peaaegu kogu väärtuse."],
+   ["Rahvasteliit","Rahvusvaheline organisatsioon (1920), mis pidi hoidma rahu."]
   ],
   quiz: [
-   ["Millal loodi Rahvasteliit?",["1914","1920","1945"],1],
-   ["Kus asus Rahvasteliidu keskus?",["Genfis","Londonis","Pariisis"],0],
-   ["Milline suurriik ei astunud kunagi Rahvasteliitu?",["Suurbritannia","Prantsusmaa","USA"],2],
-   ["Miks oli Rahvasteliit nõrk?",["Tal polnud oma sõjaväge ja kõik suurriigid polnud liikmed","Tal oli liiga palju raha","Sellel oli ainult üks liige"],0],
-   ["Millega tunnustas Saksamaa 1925 oma läänepiire?",["Rapallo lepinguga","Locarno lepingutega","Brest-Litovski rahuga"],1]
+   ["Kes juhtis bolševikke 1917. aastal?",["Lenin","Atatürk","Tsaar Nikolai II"],0],
+   ["Millal võtsid bolševikud Venemaal võimu?",["1914 augustis","1917 oktoobris","1923 jaanuaris"],1],
+   ["Kes juhtis Türgi vabariigi loomist?",["Lenin","Mustafa Kemal (Atatürk)","Woodrow Wilson"],1],
+   ["Miks okupeerisid Prantsusmaa ja Belgia 1923 Ruhri piirkonna?",["Saksamaa ei maksnud reparatsioone","Saksamaa ründas Belgiat","Seal algas revolutsioon"],0],
+   ["Mis juhtus Saksamaa rahaga Ruhri kriisi ajal?",["Raha väärtus tõusis","Tekkis hüperinflatsioon","Saksamaa võttis kasutusele euro"],1]
   ]
  },
  "Matemaatika": {
   topic: "Tegurdamine ja algebraliste murdude taandamine",
   tests: [["2026-11-24","KT nr 3: Algebraliste murdude korrutamine ja jagamine",""],["2026-12-15","KT nr 4: Kõik tehted algebraliste murdudega",""]],
-  hw: [["2026-11-03","Tööraamatust ül 87 (1. tulp) ja ül 88 (a–c). NB! Ül 88 lahenda vihikusse. (Tera: 02.11 – Algebraliste murdude taandamine)"],["2026-11-12","Vabatahtlik: kui tahad osaleda matemaatikaolümpiaadil, loe Stuudiumi Suhtlusest kirja ja registreeru kuni 12.11 kl 18.00."]],
+  hw: [["2026-11-09","Tööraamatust ül 88 (d–j): tegurdamise osa lahenda vihikusse, taanda tööraamatus. Vaata tunnis lahendatud ülesanded üle ja jälgi vormistust. (Tera: 03.11 – Algebraliste murdude taandamine. Tunnitöö)"],["2026-11-12","Vabatahtlik: kui tahad osaleda matemaatikaolümpiaadil, loe Stuudiumi Suhtlusest kirja ja registreeru kuni 12.11 kl 18.00."]],
   simple: [
    "<b>Tegurdamine</b> tähendab: kirjuta avaldis <b>korrutisena</b>. Nt 6x + 9 = 3(2x + 3).",
    "1. võte – <b>ühise teguri toomine sulgude ette</b>: leia, mis on kõigis liikmetes olemas. 4x² + 8x = 4x(x + 2).",
@@ -399,37 +408,42 @@ const ED = {
   ]
  },
  "Füüsika": {
-  topic: "Soojushulk, kehade soojenemine ja jahtumine",
+  topic: "Aine agregaatoleku muutumine: sulamine, tahkumine, aurumine, keemine",
+  tests: [["2026-11-27","KT: Aine oleku muutumine. Siseenergia","Õpik ptk 3 (lk 36–48), Tera tööleht „Aine olekud ja siseenergia“, Videoõps „Sulamine ja tahkumine“."]],
+  hw: [["2026-11-13","Ptk 3 „Aine agregaatoleku muutumine“: 10. Sulamine ja tahkumine – tööleht ülesanded 1–4 (Tera: ülesanded. Aine olekud ja siseenergia). Abiks õpik lk 36–48 ja Videoõps „Sulamine ja tahkumine“."]],
   simple: [
-   "Kõik kehad koosnevad osakestest, mis liiguvad pidevalt. <b>Siseenergia</b> = kõigi osakeste liikumis- ja vastastikmõju energia kokku.",
-   "Soojus liigub alati <b>soojemalt kehalt külmemale</b>, kuni temperatuurid on võrdsed (soojuslik tasakaal).",
-   "Soojusülekandel on 3 liiki: <b>soojusjuhtivus</b> (tahketes, nt metall), <b>konvektsioon</b> (vedelikes ja gaasides – soe tõuseb üles), <b>soojuskiirgus</b> (levib ka tühjuses, nt Päikeselt).",
-   "Soojushulk: <b>Q = c · m · Δt</b>. Q – soojushulk (J), c – erisoojus (J/(kg·°C)), m – mass (kg), Δt = t₂ − t₁ – temperatuuri muutus.",
-   "Kui keha soojeneb, on Q positiivne; kui jahtub, negatiivne.",
-   "Kui segad sooja ja külma: <b>Q₁ + Q₂ = 0</b> – üks annab ära sama palju, kui teine saab.",
-   "Tumedad ja suurema pinnaga kehad kiirgavad (ja neelavad) rohkem soojust."
+   "Ainel on 3 olekut (<b>agregaatolekut</b>): <b>tahke</b>, <b>vedel</b> ja <b>gaasiline</b>. Olek oleneb sellest, kui kiiresti osakesed liiguvad ja kui tugevalt nad üksteist tõmbavad.",
+   "<b>Sulamine</b>: tahke → vedel (jää sulab). <b>Tahkumine</b>: vedel → tahke (vesi külmub). Jää sulab ja vesi tahkub <b>0 °C</b> juures.",
+   "Sulamise ajal keha <b>temperatuur ei muutu</b>, kuigi soojust antakse juurde – energia kulub osakeste vaheliste sidemete lõhkumiseks.",
+   "Sulatamiseks vajalik soojushulk: <b>Q = λ · m</b>. λ (lambda) on <b>sulamissoojus</b> – kui palju energiat vajab 1 kg aine sulamiseks.",
+   "<b>Aurumine</b>: vedelik muutub auruks oma pinnalt, igal temperatuuril. Aurumine <b>jahutab</b> (nt higi jahutab nahka). <b>Kondenseerumine</b>: aur → vedelik (udu, kaste, udune peegel).",
+   "<b>Keemine</b>: aurumine kogu vedeliku ulatuses, tekivad aurumullid. Vesi keeb normaalrõhul <b>100 °C</b> juures. Keemise ajal temperatuur ei muutu.",
+   "Aurustamiseks vajalik soojushulk: <b>Q = L · m</b>, kus L on <b>aurustumissoojus</b>.",
+   "<b>Külmkapp</b> kasutab aurumist: torudes olev aine aurub külmkapi sees ja võtab sealt soojust ära, väljas kondenseerub ja annab soojuse ära."
   ],
   terms: [
-   ["Siseenergia","Keha osakeste kineetiliste ja potentsiaalsete energiate summa."],
-   ["Soojushulk (Q)","Energia, mille keha soojusülekandel saab või kaotab. Ühik džaul (J)."],
-   ["Erisoojus (c)","Kui palju energiat on vaja 1 kg aine soojendamiseks 1 °C võrra."],
-   ["Soojusjuhtivus","Soojus liigub osakeselt osakesele, aine ise ei liigu."],
-   ["Konvektsioon","Soe vedelik/gaas tõuseb üles, külm vajub alla – tekib ringlus."],
-   ["Soojuskiirgus","Elektromagnetlaine, levib ka vaakumis."],
-   ["Soojuslik tasakaal","Olek, kus kehade temperatuurid on võrdsed."]
+   ["Agregaatolek","Aine olek: tahke, vedel või gaasiline."],
+   ["Sulamine / tahkumine","Tahke → vedel / vedel → tahke."],
+   ["Sulamistemperatuur","Temperatuur, mille juures aine sulab (jää: 0 °C)."],
+   ["Sulamissoojus (λ)","Energia, mida vajab 1 kg aine sulamiseks. Q = λm."],
+   ["Aurumine","Vedeliku muutumine auruks tema pinnalt; jahutab."],
+   ["Kondenseerumine","Aur muutub tagasi vedelikuks."],
+   ["Keemine","Aurumine kogu vedeliku ulatuses; vesi keeb 100 °C juures."],
+   ["Aurustumissoojus (L)","Energia, mida vajab 1 kg vedeliku aurustumiseks. Q = Lm."]
   ],
   quiz: [
-   ["Mis on soojushulga valem?",["Q = m · g · h","Q = c · m · Δt","Q = m / V"],1],
-   ["Kui palju energiat kulub 5 kg vase soojendamiseks 20 °C võrra? (c = 387 J/(kg·°C))",["38 700 J","1 935 J","7 740 J"],0],
-   ["Milline soojusülekanne toimub ka vaakumis?",["Soojusjuhtivus","Konvektsioon","Soojuskiirgus"],2],
-   ["Kus konvektsiooni EI toimu?",["Tahketes kehades","Vees","Õhus"],0],
-   ["Segati 20 kg 80 °C vett ja 5 kg 10 °C vett. Milline on lõpptemperatuur?",["45 °C","66 °C","70 °C"],1],
-   ["Milline materjal juhib soojust kõige paremini?",["Puit","Vask","Plastik"],1]
+   ["Mis on sulamine?",["Vedel → tahke","Tahke → vedel","Vedel → gaas"],1],
+   ["Mis juhtub jää temperatuuriga sulamise ajal?",["Tõuseb kiiresti","Ei muutu","Langeb"],1],
+   ["Mis on kondenseerumine?",["Aur muutub vedelikuks","Vedelik muutub auruks","Tahke muutub vedelaks"],0],
+   ["Mille juures keeb vesi normaalrõhul?",["0 °C","50 °C","100 °C"],2],
+   ["Miks higistamine jahutab keha?",["Aurumine võtab nahalt soojust","Higi on külm","Higi peegeldab päikest"],0],
+   ["Milline valem näitab sulatamiseks vajalikku soojushulka?",["Q = λ · m","Q = m · g · h","Q = m / V"],0]
   ]
  },
  "Keemia": {
   topic: "Happed",
-  tests: [["2026-11-18","KT: Happed","Korda hapete omadusi ja võrrandeid (hape + alus, hape + aluseline oksiid, hape + metall), TV ülesanded ja õpik."]],
+  tests: [["2026-11-18","KT: Happed","Korda hapete omadusi ja võrrandeid (hape + alus, hape + aluseline oksiid, hape + metall), TV ülesanded (nt 2.14) ja õpik."]],
+  hw: [["2026-11-09","Võta kindlasti töövihik kaasa. Hakka juba valmistuma hapete tööks (18.11)."]],
   simple: [
    "<b>Hape</b> on aine, mis annab vees vesinikioone <b>H⁺</b>. Hape = vesinik + happeanioon, nt HCl → H⁺ + Cl⁻.",
    "Happed on hapu maitsega, söövitavad ja muudavad indikaatori (nt lakmuse) <b>punaseks</b>.",
@@ -457,87 +471,91 @@ const ED = {
   ]
  },
  "Kirjandus": {
-  topic: "A. Kitzbergi „Libahunt“ → luuletuse esitamine",
-  hw: [["2026-11-04","Vali üks luuletus (Tera: Luuletused) ja õpi see peast ilmekalt esitama."],["2026-11-04","„Libahundi“ vastamist saab parandada või järele vastata 4.11 kl 14.00 eesti keele konsultatsioonis."]],
-  tests: [["2026-11-18","Vabalt valitud eestikeelne noorteromaan","Ideid: loemind.keskraamatukogu.ee (9. klass)"]],
+  topic: "Loodususundi hingestatud maailm: haldjad ja vaimolendid",
+  tests: [["2026-11-18","Vabalt valitud eestikeelne noorteromaan","Ideid: loemind.keskraamatukogu.ee (9. klass)"],["2026-12-09","Kohustuslik kirjandus: A. Kitzbergi „Kauka jumal“ või E. Vilde „Pisuhänd“","Vali üks kahest ja loe läbi."]],
   simple: [
    "Muistsed eestlased uskusid, et <b>loodus on hingestatud</b>: puudel, kividel, allikatel ja loomadel on hing.",
    "Igal paigal olid oma haldjad (metsa-, vee-, majahaldjas). Pühades kohtades (hiied, ohvrikivid, allikad) palvetati ja ohverdati.",
    "Inimene oli looduse osa, mitte peremees. Loodusest võeti nii palju, kui vaja, ja tänati.",
-   "„Libahunt“ (1912): Tiina kasvab külas võõrana, teda kardetakse ja peetakse libahundiks. Ta armastab Margust. Näidend räägib <b>eelarvamustest</b>, sellest, kuidas kogukond tõrjub teistsugust inimest, ning <b>vabadusest</b>.",
-   "Luuletuse peast õppimine: loe luuletust mitu korda valjult, õpi salm salmi haaval. Esita <b>ilmekalt</b>: rahulikult, selge häälega, tee pause ja rõhuta tähtsaid sõnu."
+   "Rahvausus elasid ümberringi ka <b>vaimolendid</b>: nt <b>kratt</b> (tõi peremehele vara), <b>pisuhänd</b> (teine nimi krati kohta), <b>vetevana</b>, <b>metsavana</b>. Õpikus lk 12–14.",
+   "„Libahunt“ (1912): Tiina kasvab külas võõrana, teda kardetakse ja peetakse libahundiks. Näidend räägib <b>eelarvamustest</b>, sellest, kuidas kogukond tõrjub teistsugust inimest, ning <b>vabadusest</b>."
   ],
   terms: [
    ["Loodususund","Usk, mille järgi kõik looduses on hingestatud."],
    ["Hiis","Püha mets või metsatukk."],
    ["Haldjas","Paiga, looduse või asja vaim/kaitsja."],
    ["Libahunt","Rahvausus inimene, kes võib muutuda hundiks."],
-   ["Näidend","Teos, mis on kirjutatud laval mängimiseks (dialoogid, vaatused)."]
+   ["Näidend","Teos, mis on kirjutatud laval mängimiseks (dialoogid, vaatused)."],
+   ["Kratt","Rahvausus olend, kes tõi peremehele vara."]
   ],
   quiz: [
    ["Mida tähendab „hingestatud loodus“?",["Loodus on ainult inimese jaoks","Kõigel looduses on hing","Loodust ei tohi puudutada"],1],
    ["Mis on hiis?",["Püha mets","Talu nimi","Muinasjutu tegelane"],0],
    ["Kes kirjutas „Libahundi“?",["A. H. Tammsaare","August Kitzberg","Oskar Luts"],1],
-   ["Mis on „Libahundi“ peamine teema?",["Sõda","Eelarvamused ja teistsuguse inimese tõrjumine","Linnaelu"],1]
+   ["Mis on „Libahundi“ peamine teema?",["Sõda","Eelarvamused ja teistsuguse inimese tõrjumine","Linnaelu"],1],
+   ["Mis on haldjas?",["Paiga või looduse vaim, kaitsja","Rahvalaulu liik","Vana tööriist"],0]
   ]
  },
  "Eesti keel": {
-  topic: "Lihtlause: korduvad täiendid ja määrused, lisand ja üte",
-  tests: [["2026-11-03","KT: Lihtlause","Kordamiseks Teras „Lihtlause“: slaidid ja harjutused."]],
-  hw: [["2026-11-03","Õpi lihtlause kontrolltööks: vaata üle kõik slaidid ja tehtud harjutused, õpik lk 100–101 (Tera: Lihtlause; Mida pead teadma lihtlause kontrolltöös)."]],
+  topic: "Liitlause: rindlause ja selle kirjavahemärgid",
+  hw: [["2026-11-10","Töövihikust harjutus 49 lõpetada. (Abiks õpik lk 103–105, Tera: Liitlause)"]],
   simple: [
-   "<b>Täiend</b> kirjeldab nimisõna (Missugune? Kelle?): „<u>punane</u> auto“. <b>Määrus</b> räägib tegevusest (Kus? Millal? Kuidas?).",
-   "<b>Korduvad täiendid</b> on mitu samaväärset täiendit ühe sõna ees. Kui nende vahel pole sidesõna, pane <b>koma</b>: „Tal on <u>suur, valge</u> koer.“",
-   "Kui vahel on <b>ja, ning, või</b>, siis koma ei pane: „suur ja valge koer“.",
-   "<b>Lisand</b> on nimisõna, mis seletab teist nimisõna ja on samas käändes. Lisand pannakse <b>komade vahele</b>: „Minu koer, <u>taks</u>, magab.“",
-   "Kui ametinimetus või tiitel on nime ees, siis koma ei pane: „<u>õpetaja</u> Mari Tamm“.",
-   "<b>Üte</b> on sõna, millega kellegi poole pöördutakse. Üte eraldatakse <b>komaga</b>: „<u>Mari</u>, tule siia!“, „Tere, <u>sõber</u>!“",
-   "Üte ei ole alus: lauses „Mari, tule siia!“ ei ole Mari tegija, vaid see, kelle poole pöördutakse."
+   "<b>Lihtlauses</b> on üks öeldis: „Koer haugub.“ <b>Liitlauses</b> on mitu osalauset, igaühel oma öeldis: „Koer haugub ja kass magab.“",
+   "Osalausete arvu leiad nii: loe kokku <b>öeldised</b> (pöördes tegusõnad). Kaks öeldist = kaks osalauset.",
+   "<b>Rindlause</b>: osalaused on <b>võrdsed</b>, kumbki saab ka üksi olla. Nad on ühendatud sidesõnaga (ja, ning, ega, või, aga, kuid, vaid) või ainult komaga.",
+   "Kui sidesõna pole, pane <b>koma</b>: „Päike paistis, linnud laulsid.“",
+   "Sidesõnade <b>ja, ning, ega, või</b> ees koma ei panda: „Ema luges ja isa küpsetas.“",
+   "Sidesõnade <b>aga, kuid, vaid</b> ees pannakse <b>alati koma</b>: „Tahtsin minna, aga sadas vihma.“"
   ],
   terms: [
-   ["Täiend","Täpsustab nimisõna: Missugune? Kelle? Mitmes?"],
-   ["Määrus","Kus? Millal? Kuidas? Miks?"],
-   ["Korduvad täiendid","Mitu samaväärset täiendit ühe sõna juures; ilma sidesõnata koma vahele."],
-   ["Lisand","Nimisõna, mis seletab teist nimisõna; komade vahel."],
-   ["Üte","Pöördumine kellegi poole; eraldatakse komaga."]
+   ["Liitlause","Lause, milles on kaks või rohkem osalauset."],
+   ["Osalause","Liitlause osa, millel on oma öeldis."],
+   ["Öeldis","Pöördes tegusõna – mida tehakse? (Nt loeb, mängisid)"],
+   ["Rindlause","Liitlause, mille osalaused on võrdsed."],
+   ["Sidesõna","Sõna, mis ühendab osalauseid (ja, ning, aga, kuid, vaid…)."]
   ],
   quiz: [
-   ["Kuhu käib koma? „Ostsin pehme sooja salli.“",["pehme, sooja salli","Ostsin, pehme","Koma ei käi"],0],
-   ["Kas siia käib koma? „Ta on tark(,) ja lahke.“",["Jah","Ei"],1],
-   ["Mis on lauses „Jüri, sulge aken!“ üte?",["Jüri","sulge","aken"],0],
-   ["Kuidas eraldatakse lisand?",["Komadega","Sidekriipsuga","Ei eraldata kunagi"],0],
-   ["Mis on lauses „Meie naaber, kalur, tuli koju.“ lisand?",["naaber","kalur","koju"],1]
+   ["Mitu osalauset on lauses „Vihma sadas ja tuul puhus.“?",["Üks","Kaks","Kolm"],1],
+   ["Kas siia käib koma? „Ma tahtsin tulla(,) aga jäin haigeks.“",["Jah","Ei"],0],
+   ["Kas siia käib koma? „Õde laulis(,) ja vend tantsis.“",["Jah","Ei"],1],
+   ["Mis on rindlause?",["Liitlause, mille osalaused on võrdsed","Lause, kus on ainult üks öeldis","Küsilause"],0],
+   ["Mis märk pannakse osalausete vahele, kui sidesõna pole?",["Koma","Mitte midagi","Küsimärk"],0]
   ]
  },
  "Bioloogia": {
-  topic: "Keha üldehitus, nahk, luud, lihased",
-  tests: [["2026-11-04","KT: Keha üldehitus, nahk, luud, lihased","Opiq e-õpik: 9d Bioloogia"],["2026-11-25","KT: Süda, vereringe, immuunsus",""]],
+  topic: "Süda ja vereringe",
+  tests: [["2026-11-25","KT: Süda, vereringe, immuunsus",""]],
+  hw: [["2026-11-11","Töövihik lk 14–15."]],
   simple: [
-   "Keha koosneb rakkudest → kudedest → elunditest → elundkondadest. Koed: epiteel-, side-, lihas- ja närvikude.",
-   "<b>Nahk</b> on 3 kihti: marrasknahk (pealmine), pärisnahk (veresooned, higi- ja rasunäärmed, karvanääpsud), nahaalune rasvkude.",
-   "Naha ülesanded: kaitse, kehatemperatuuri hoidmine (higistamine), tundlikkus, D-vitamiini tootmine.",
-   "Täiskasvanul on umbes <b>206 luud</b>. Luus on mineraalained (kõvadus) ja orgaanilised ained (elastsus). Punases luuüdis tekivad vererakud.",
-   "Lihaseid on 3 liiki: <b>skeletilihas</b> (liigutab keha, allub tahtele), <b>silelihas</b> (siseelundites), <b>südamelihas</b>.",
-   "Lihased saavad ainult kokku tõmbuda, seepärast töötavad nad paarikaupa (nt kakspealihas painutab, kolmpealihas sirutab kätt)."
+   "<b>Süda</b> on lihas, mis pumpab verd üle kogu keha. See on umbes rusika suurune ja asub rindkeres, veidi vasakul.",
+   "Südames on <b>4 õõnt</b>: 2 <b>koda</b> (üleval, võtavad verd vastu) ja 2 <b>vatsakest</b> (all, pumpavad verd välja). <b>Klapid</b> ei lase verel tagasi voolata.",
+   "Veresooni on 3 liiki: <b>arterid</b> viivad verd <b>südamest eemale</b>, <b>veenid</b> toovad verd <b>südamesse tagasi</b>, <b>kapillaarid</b> on kõige peenemad – seal liigub hapnik ja toit rakkudesse.",
+   "<b>Väike vereringe</b>: süda → kopsud → süda. Kopsudes saab veri hapnikku ja annab ära süsihappegaasi.",
+   "<b>Suur vereringe</b>: süda → kogu keha → süda. Veri viib rakkudele hapnikku ja toitaineid.",
+   "Veres on <b>punalibled</b> (kannavad hapnikku), <b>valgelibled</b> (kaitsevad haiguste eest) ja <b>vereliistakud</b> (aitavad verel hüübida)."
   ],
   terms: [
-   ["Marrasknahk","Naha pealmine kiht, kaitseb."],
-   ["Pärisnahk","Naha keskmine kiht – näärmed, veresooned, närvilõpmed."],
-   ["Liiges","Kahe luu liikuv ühendus (nt põlv)."],
-   ["Kõõlus","Ühendab lihase luuga."],
-   ["Punane luuüdi","Luu sees, toodab vererakke."]
+   ["Koda","Südame ülemine õõs, võtab verd vastu."],
+   ["Vatsake","Südame alumine õõs, pumpab verd välja."],
+   ["Arter","Veresoon, mis viib verd südamest eemale."],
+   ["Veen","Veresoon, mis toob verd südamesse."],
+   ["Kapillaar","Väga peen veresoon, kus toimub ainevahetus rakkudega."],
+   ["Pulss","Arteri seina tuksumine iga südamelöögiga."]
   ],
   quiz: [
-   ["Mitu luud on täiskasvanul umbes?",["106","206","306"],1],
-   ["Milline lihas allub tahtele?",["Skeletilihas","Silelihas","Südamelihas"],0],
-   ["Kus tekivad vererakud?",["Kõõlustes","Punases luuüdis","Nahas"],1],
-   ["Milles on higinäärmed?",["Pärisnahas","Marrasknahas","Luus"],0]
+   ["Mitu õõnt on inimese südames?",["2","3","4"],2],
+   ["Mis veresooned viivad verd südamest eemale?",["Arterid","Veenid","Kapillaarid"],0],
+   ["Kuhu viib väike vereringe verd?",["Kopsudesse","Jalgadesse","Maosse"],0],
+   ["Mis veres kannab hapnikku?",["Valgelibled","Punalibled","Vereliistakud"],1],
+   ["Mis takistab verel südames tagasi voolamast?",["Klapid","Kapillaarid","Kopsud"],0]
   ]
  },
  "Vene keel": {
-  topic: "Välimus ja iseloomujooned (как описать характер человека)",
-  hw: [["2026-11-05","Lõpeta TV lk 8 ül 13 (a): I veerg – tõlge eesti keelde, II – sünonüüm (sarnane tähendus) ja antonüüm (vastand). Kasuta tunnis õpitud sõnu, abiks õpik lk 22–23. Järgmises tunnis võrdleme, kes milliseid sõnu leidis."]],
+  topic: "Iseloomujooned; ettevalmistus suuliseks vestluseks (dok-film „Истории успеха“)",
+  hw: [["2026-11-06","Iseseisev töö: vaata ETV+ sarja „Edu lood“ (Истории успеха) dokfilmi (jupiterpluss.err.ee, lülita sisse eestikeelsed subtiitrid) ja vasta vaatamise ajal töölehe küsimustele. Kui puudusid, kasuta Teras olevat töölehte ja vasta vihikusse. See on ettevalmistus suuliseks vestluseks/intervjuuks."]],
   simple: [
+   "Tulemas on <b>suuline vestlus</b> vaadatud dokfilmi põhjal: räägid filmist ja avaldad oma arvamust. Kasuta õpitud iseloomusõnu ja fraasi <b>Я думаю, что…</b>",
+   "Elukutsete kirjeldamine: <b>Учитель должен быть…</b> (Õpetaja peab olema…) + omadussõna, nt честный, сообразительный (taibukas).",
    "Välimuse kirjeldamine: Он высокий / низкий. У него светлые / тёмные волосы. У него голубые / карие глаза.",
    "Iseloomu kirjeldamine: Он <b>добрый</b> (lahke) и <b>честный</b> (aus). Она <b>умная</b> (tark) и <b>весёлая</b> (rõõmsameelne).",
    "Omadussõna lõpp muutub soo järgi: он умн<b>ый</b>, она умн<b>ая</b>; он вежлив<b>ый</b>, она вежлив<b>ая</b>.",
@@ -597,7 +615,8 @@ const ED = {
   ]
  },
  "Ühiskonnaõpetus": {
-  topic: "Riigieelarve ja isiklik eelarve",
+  topic: "Isiklik eelarve; kordamine (ptk 1–8)",
+  tests: [["2026-11-13","Test ptk 1–8: majandus, ettevõtlus, tööturg, maksud, eelarve","Kaks osa. Korda ptk 1–8 ja ptk 8 isikliku eelarve töölehte."]],
   simple: [
    "<b>Eelarve</b> on plaan: kui palju raha tuleb sisse (tulud) ja kuhu see läheb (kulud).",
    "<b>Riigieelarve</b> tehakse üheks aastaks. Selle koostab <b>valitsus</b> (Rahandusministeerium) ja vastu võtab <b>Riigikogu</b>.",
