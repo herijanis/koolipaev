@@ -5,7 +5,7 @@
 <link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#f4efe8">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <script>
-const APP_V="1794490095";
+const APP_V="1794837998";
 async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();
  if(v&&v!==APP_V&&sessionStorage.getItem("tried")!==v){sessionStorage.setItem("tried",v);location.replace(location.pathname+"?v="+v);}}catch(e){}}
 checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
@@ -311,7 +311,7 @@ const ED_DATE = "6. nov";
 const ED = {
  "Geograafia": {
   topic: "Pinnamood ja selle kujunemine",
-  tests: [["2026-11-12","Kaarditöö: Euroopa ja Eesti reljeef","Kontuurkaart: Eesti kõrgustikud, tasandikud, lavamaad, madalikud, nõod ja orundid, Balti klint; Euroopa mäestikud ja tasandikud. Vaata iseõppepäeva ülesannet."],["2026-11-19","KT: Geograafia teooria – reljeef","Teooriatöö lükati klassi palvel 19.11-le. Kordamiseks: tööleht „Pinnamood ja selle kujunemine“, kinnistamise tööleht, näidistöö, Kahoot, Opiq."]],
+  tests: [["2026-11-19","KT: Geograafia teooria – reljeef","Teooriatöö lükati klassi palvel 19.11-le. Kordamiseks: tööleht „Pinnamood ja selle kujunemine“, kinnistamise tööleht, näidistöö, Kahoot, Opiq."]],
   hw: [["2026-11-12","Kaarditöö Euroopa ja Eesti reljeef – vaata iseõppepäeva ülesannet. Puudujad saavad kaarditöö teha teooriatöö päeval tunnis."]],
   simple: [
    "<b>Pinnamood</b> on maapinna kuju: kõrgustikud, madalikud, orud, mäed, nõod.",
@@ -616,7 +616,7 @@ const ED = {
  },
  "Ühiskonnaõpetus": {
   topic: "Isiklik eelarve; kordamine (ptk 1–8)",
-  tests: [["2026-11-13","Test ptk 1–8: majandus, ettevõtlus, tööturg, maksud, eelarve","Kaks osa. Korda ptk 1–8 ja ptk 8 isikliku eelarve töölehte."]],
+  tests: [],
   simple: [
    "<b>Eelarve</b> on plaan: kui palju raha tuleb sisse (tulud) ja kuhu see läheb (kulud).",
    "<b>Riigieelarve</b> tehakse üheks aastaks. Selle koostab <b>valitsus</b> (Rahandusministeerium) ja vastu võtab <b>Riigikogu</b>.",
