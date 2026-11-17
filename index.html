@@ -5,7 +5,7 @@
 <link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#f4efe8">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <script>
-const APP_V="1794848431";
+const APP_V="1794925086";
 async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();
  if(v&&v!==APP_V&&sessionStorage.getItem("tried")!==v){sessionStorage.setItem("tried",v);location.replace(location.pathname+"?v="+v);}}catch(e){}}
 checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
@@ -577,7 +577,7 @@ const ED = {
  },
  "Muusika": {
   topic: "Orkester",
-  tests: [["2026-11-16","KT: Orkester (kuulamine + kirjalik)","Kirjalik osa 15 küsimust + kuulamise osa 10 näidet B. Britteni teosest. Kuulamise ajal võib vihikut kasutada. Tera: ORKESTER tööleht I ja II."]],
+  tests: [],
   hw: [["2026-11-16","Valmistu orkestri tööks: 15 küsimust (Tera tööleht) ja Britteni „Young Person's Guide to the Orchestra“ – vihikus kommentaarid pillide kohta õpiku lk 30 tabeli järjekorras (mille järgi pille ja pillirühmi eristad)."]],
   simple: [
    "<b>Orkester</b> on suur pillimängijate koosseis. Seda juhatab <b>dirigent</b>.",
