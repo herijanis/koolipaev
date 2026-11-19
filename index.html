@@ -5,7 +5,7 @@
 <link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#f4efe8">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <script>
-const APP_V="1795093264";
+const APP_V="1795107672";
 async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();
  if(v&&v!==APP_V&&sessionStorage.getItem("tried")!==v){sessionStorage.setItem("tried",v);location.replace(location.pathname+"?v="+v);}}catch(e){}}
 checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
@@ -442,7 +442,7 @@ const ED = {
  },
  "Keemia": {
   topic: "Happed",
-  tests: [["2026-11-18","KT: Happed","Korda hapete omadusi ja võrrandeid (hape + alus, hape + aluseline oksiid, hape + metall), TV ülesanded (nt 2.14) ja õpik."]],
+  tests: [],
   hw: [["2026-11-09","Võta kindlasti töövihik kaasa. Hakka juba valmistuma hapete tööks (18.11)."]],
   simple: [
    "<b>Hape</b> on aine, mis annab vees vesinikioone <b>H⁺</b>. Hape = vesinik + happeanioon, nt HCl → H⁺ + Cl⁻.",
@@ -472,7 +472,7 @@ const ED = {
  },
  "Kirjandus": {
   topic: "Loodususundi hingestatud maailm: haldjad ja vaimolendid",
-  tests: [["2026-11-18","Vabalt valitud eestikeelne noorteromaan","Ideid: loemind.keskraamatukogu.ee (9. klass)"],["2026-12-09","Kohustuslik kirjandus: A. Kitzbergi „Kauka jumal“ või E. Vilde „Pisuhänd“","Vali üks kahest ja loe läbi."]],
+  tests: [["2026-12-09","Kohustuslik kirjandus: A. Kitzbergi „Kauka jumal“ või E. Vilde „Pisuhänd“","Vali üks kahest ja loe läbi."]],
   simple: [
    "Muistsed eestlased uskusid, et <b>loodus on hingestatud</b>: puudel, kividel, allikatel ja loomadel on hing.",
    "Igal paigal olid oma haldjad (metsa-, vee-, majahaldjas). Pühades kohtades (hiied, ohvrikivid, allikad) palvetati ja ohverdati.",
