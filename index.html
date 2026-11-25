@@ -5,7 +5,7 @@
 <link rel="apple-touch-icon" href="icon.png"><meta name="theme-color" content="#f4efe8">
 <style>:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}[hidden]{display:none!important}</style>
 <script>
-const APP_V="1795539659";
+const APP_V="1795613331";
 async function checkUpdate(){try{const r=await fetch("version.txt?"+Date.now(),{cache:"no-store"});const v=(await r.text()).trim();
  if(v&&v!==APP_V&&sessionStorage.getItem("tried")!==v){sessionStorage.setItem("tried",v);location.replace(location.pathname+"?v="+v);}}catch(e){}}
 checkUpdate();document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate();});
@@ -379,7 +379,7 @@ const ED = {
  },
  "Matemaatika": {
   topic: "Tegurdamine ja algebraliste murdude taandamine",
-  tests: [["2026-11-24","KT nr 3: Algebraliste murdude korrutamine ja jagamine",""],["2026-12-15","KT nr 4: Kõik tehted algebraliste murdudega",""]],
+  tests: [["2026-12-15","KT nr 4: Kõik tehted algebraliste murdudega",""]],
   hw: [["2026-11-09","Tööraamatust ül 88 (d–j): tegurdamise osa lahenda vihikusse, taanda tööraamatus. Vaata tunnis lahendatud ülesanded üle ja jälgi vormistust. (Tera: 03.11 – Algebraliste murdude taandamine. Tunnitöö)"],["2026-11-12","Vabatahtlik: kui tahad osaleda matemaatikaolümpiaadil, loe Stuudiumi Suhtlusest kirja ja registreeru kuni 12.11 kl 18.00."]],
   simple: [
    "<b>Tegurdamine</b> tähendab: kirjuta avaldis <b>korrutisena</b>. Nt 6x + 9 = 3(2x + 3).",
